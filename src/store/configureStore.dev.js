@@ -15,9 +15,9 @@ const configureStore = (preloadedState) => {
 	// }
 
 	return createStore(
-		rootReducer /* preloadedState, */
+		rootReducer /* preloadedState, */,
 		// window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-		// preloadedState
+		preloadedState
 		// composeEnhancer(
 		//     applyMiddleware(
 		//         thunk,
