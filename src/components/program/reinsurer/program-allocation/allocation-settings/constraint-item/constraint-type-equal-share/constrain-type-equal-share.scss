@@ -1,0 +1,22 @@
+.constraint-box {
+  width: 100%;
+  margin: 10px 0;
+
+  .constraint-settings {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-content: flex-start;
+  }
+
+  .constraint-explanation {
+    display: flex;
+    align-content: flex-start;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 15px;
+    color: #000000;
+  }
+}

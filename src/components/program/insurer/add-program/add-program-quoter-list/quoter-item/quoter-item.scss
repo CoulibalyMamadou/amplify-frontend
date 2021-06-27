@@ -1,0 +1,32 @@
+.quoter-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .quoter-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 5px 10px;
+    font-size: 12px;
+    line-height: 16px;
+    background: rgba(54, 123, 245, 0.25);
+    border-radius: 4px;
+    margin: 5px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    cursor: pointer;
+  }
+
+  .select {
+    background: #286dd6;
+    color: white;
+  }
+
+  .delete-badge {
+    display: flex;
+    height: 100%;
+    color: red;
+  }
+}

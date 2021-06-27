@@ -1,0 +1,90 @@
+.not-found-content {
+  display: flex;
+  flex-flow: column;
+  align-content: center;
+  align-items: center;
+  width: 100%;
+
+
+  .not-found-message {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    // box-shadow: -6px 5px 10px 2px grey;
+    color: #f90606;
+    width: 100%;
+    height: 64px;
+    margin: 11px 0;
+    font-family: Mulish, serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 36px;
+    line-height: 45px;
+  }
+
+
+}
+
+.login-logo {
+
+}
+
+
+// @media (prefers-reduced-motion: no-preference) {
+//   .login-logo {
+//     animation: App-logo-reveal ease 0.4s;
+//     /*animation: App-logo-spin ease-in 0.5s ;*/
+//   }
+// }
+
+
+@media (prefers-reduced-motion: no-preference) {
+  .not-found-message {
+    animation: error_clint infinite 2s linear;
+  }
+}
+
+
+@keyframes error_clint {
+  0% {
+    opacity: 0.4;
+  }
+  25% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 0.4;
+  }
+}
+
+
+// @keyframes App-logo-spin {
+//   from {
+//     opacity: 0;
+//   }
+//   to {
+//     opacity: 1;
+//   }
+// }
+
+
+// @keyframes App-logo-reveal {
+//   from {
+//     /*transform: rotate(0deg);*/
+//     opacity: 0;
+//     width: 2%;
+//   }
+//   to {
+//     opacity: 1;
+//     width: 100%;
+//     /*transform: rotate(360deg);*/
+//   }
+// }
+

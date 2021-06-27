@@ -1,0 +1,51 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": [
+    "plugin:react/recommended",
+    "standard",
+    "plugin:prettier/recommended"
+  ],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 12,
+    "sourceType": "module"
+  },
+  "plugins": ["react"],
+  "rules": {
+    "react/react-in-jsx-scope": 0,
+    "comma-dangle": [2, "never"],
+    "eqeqeq": ["error", "always"],
+    // "object-curly-spacing": [2, "never"],
+    "object-shorthand": [2, "always"],
+    // "array-bracket-spacing": [2, "never"],
+    "prettier/prettier": [
+      "error",
+      {
+        "printWidth": 80,
+        "trailingComma": "none", //"es5",
+        "semi": false,
+        "jsxSingleQuote": true,
+        "singleQuote": true,
+        "arrowParens": "always",
+        "bracketSpacing": true,
+        "embeddedLanguageFormatting": "auto",
+        "htmlWhitespaceSensitivity": "css",
+        "insertPragma": false,
+        "jsxBracketSameLine": false,
+        "proseWrap": "preserve",
+        "quoteProps": "as-needed",
+        "requirePragma": false,
+        //"tabWidth": 1,
+        "useTabs": true,
+        "vueIndentScriptAndStyle": false,
+        "tabWidth": 2
+        // "endOLine": "cr"
+      }
+    ]
+  }
+}

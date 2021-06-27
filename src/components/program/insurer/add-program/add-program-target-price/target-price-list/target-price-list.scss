@@ -1,0 +1,11 @@
+.share-button-action {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 90%;
+  margin: 5% 0;
+
+  .action-button {
+    outline: none;
+  }
+}

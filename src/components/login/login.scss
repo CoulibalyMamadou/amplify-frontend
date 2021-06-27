@@ -1,0 +1,147 @@
+.login-content {
+  display: flex;
+  flex-flow: column;
+  align-content: center;
+  align-items: center;
+}
+
+.login-form {
+  display: flex;
+  flex-flow: column;
+  align-content: center;
+  align-items: center;
+}
+
+.login-form-button {
+  width: 319px;
+  height: 63px;
+  margin: 11px 0;
+  background: #241C1C;
+  border-radius: 31.5px;
+  color: white;
+  border: none;
+}
+
+.login-form-input {
+  width: 288px;
+  height: 63px;
+  margin: 11px 0;
+  border: none;
+  padding: 0 15px;
+  background: #F5F4F2;
+  border-radius: 31.5px;
+}
+
+.login-form-input {
+  outline: none;
+}
+
+.t {
+  position: absolute;
+  width: 288px;
+  height: 63px;
+  left: 44px;
+  top: 253px;
+
+  font-family: Mulish, serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 23px;
+  display: flex;
+  align-items: center;
+  color: #828282;
+}
+
+.login-title {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #000000;
+  width: 106px;
+  height: 64px;
+  margin: 11px 0;
+  font-family: Mulish, serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 36px;
+  line-height: 45px;
+}
+
+.login-logo {
+
+}
+
+
+// @media (prefers-reduced-motion: no-preference) {
+//   .login-logo {
+//     animation: App-logo-reveal ease 0.4s ;
+//     /*animation: App-logo-spin ease-in 0.5s ;*/
+//   }
+// }
+
+
+.error_box {
+  width: 319px;
+  height: 44px;
+  margin: 11px 0;
+  background: #f90606;
+  //background: #e95c5c9e;
+  border-radius: 3.5px;
+  color: white;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: -6px 5px 10px 2px grey;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .error_box {
+    animation: error_clint infinite 2s linear;
+  }
+}
+
+
+@keyframes error_clint {
+  0% {
+    opacity: 0.4;
+  }
+  25% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 0.4;
+  }
+}
+
+
+// @keyframes App-logo-spin {
+//   from {
+//     opacity: 0;
+//   }
+//   to {
+//     opacity: 1;
+//   }
+// }
+
+
+// @keyframes App-logo-reveal {
+//   from {
+//     /*transform: rotate(0deg);*/
+//     opacity: 0;
+//     width: 2%;
+//   }
+//   to {
+//     opacity: 1;
+//     width: 100%;
+//     /*transform: rotate(360deg);*/
+//   }
+// }
+

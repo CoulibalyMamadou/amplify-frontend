@@ -1,0 +1,77 @@
+.add-placement-content {
+  position: relative;
+  display: flex;
+  // flex-flow: column;
+  justify-content: flex-start;
+  align-items: center;
+  height: calc(100% - 60px);
+  width: 100%;
+  background: #FFFFFF;
+  /* grayscale / divider */
+  border: 1px solid #DFE0EB;
+  box-sizing: border-box;
+  border-radius: 8px;
+  overflow-y: scroll;
+
+  /*placement section*/
+  .placement-info {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+    height: 95%;
+    border-right: 1px solid #DFE0EB;
+    overflow-y: scroll;
+
+    .info-card {
+      display: flex;
+      flex-flow: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      width: 95%;
+      height: 100%;
+      padding: 5px 0;
+      overflow-y: scroll;
+
+      .info-form {
+        display: flex;
+        flex-flow: column;
+        align-items: flex-start;
+        width: 80%;
+        //height: 100%;
+      }
+
+      .layer-form {
+        margin-top: 16px;
+        padding-top: 16px;
+        border-top: 1px solid #DFE0EB ;
+      }
+    }
+
+    .program-save-button{
+      display: flex;
+      width: 94%;
+      justify-content: flex-end;
+      align-items: center;
+    }
+
+  }
+
+  .placement-display {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    //height: 100%;
+    height: calc(100% - 215px);
+    width: 40%;
+    overflow-y: auto;
+  }
+
+
+}
+
+
+/* END Header section*/

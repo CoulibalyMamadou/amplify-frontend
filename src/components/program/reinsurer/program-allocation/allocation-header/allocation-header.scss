@@ -1,0 +1,26 @@
+.allocation-header {
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+  height: 30%;
+  min-height: 30%;
+  overflow-y: scroll;
+  border-bottom: 1px solid #DFE0EB;
+  margin: 2% 0;
+
+  .header-title {
+    height: 10%;
+    font-family: Mulish;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 23px;
+    letter-spacing: 0.3px;
+    color: #252733;
+  }
+
+}
+
+/* END Header section*/

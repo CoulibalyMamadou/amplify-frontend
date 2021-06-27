@@ -1,0 +1,53 @@
+
+.layer-quotation-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 98%;
+
+  .row-field {
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 10px;
+
+    .field-title {
+      font-size: 11px;
+      line-height: 13px;
+    }
+
+    .info-field-input {
+      width: 90%;
+      display: flex;
+      justify-content: center;
+      padding: 1px 6px 1px 3px;
+    }
+
+  }
+
+  .delete-order {
+    width: 1%;
+    padding: 0 5px;
+    // height: 35px;
+    background: #FFF;
+    margin-right: 1%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Quicksand, serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 28px;
+    letter-spacing: 0.15px;
+    border: none;
+    outline: none;
+    // border-radius: 99px;
+
+
+    img {
+      filter: drop-shadow(0 0 0.75rem gray);
+    }
+  }
+}
