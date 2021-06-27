@@ -66,7 +66,7 @@ export const loadTokenState = () => {
 export const resetTokenState = () => {
 	// const history = browserHistory()
 	try {
-		sessionStorage.clear()
+		// sessionStorage.clear()
 		location.href('/login')
 	} catch (err) {
 		return undefined
