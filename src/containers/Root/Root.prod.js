@@ -4,13 +4,13 @@ import App from '../App'
 // import App from '../App'
 
 const Root = ({ store }) => (
-    <Provider store={store}>
-        <App />
-    </Provider>
+	<Provider store={store}>
+		<App />
+	</Provider>
 )
 
 Root.propTypes = {
-    store: PropTypes.object.isRequired
+	store: PropTypes.object.isRequired
 }
 
 export default App
