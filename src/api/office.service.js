@@ -3,7 +3,8 @@ import { getHeadersWithAuth } from './headers.service'
 
 // const API = 'http://localhost:8080'
 // const API = 'http://localhost:8000'
-const API = 'http://mamadoucoulibaly.com/api'
+const API = 'http://mamadoucoulibaly.com/'
+// const API = 'http://mamadoucoulibaly.com/api'
 const token = loadState() || ''
 
 console.log('myHeaders : ', getHeadersWithAuth())
