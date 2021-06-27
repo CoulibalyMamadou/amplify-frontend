@@ -35,7 +35,7 @@ const HeadAction = () => {
 		console.log('canAcces programId : ', getCurrentParamWithoutPath())
 
 		const id = getCurrentParamWithoutPath()
-		if (id !== 'dashboard')
+		if (id !== 'dashboard' && id !== 'add')
 			getProgramStatus(getCurrentParamWithoutPath())
 				.then((response) => response.json())
 				.then((program) => {
