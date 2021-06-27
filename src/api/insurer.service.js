@@ -1,7 +1,7 @@
 import { loadState, resetTokenState } from '../sessionStorage/sessionStorage'
 // const API = 'http://localhost:8080'
 // const API = 'http://localhost:8000'
-const API = 'http://mamadoucoulibaly.com/'
+const API = 'http://mamadoucoulibaly.com'
 // const API = 'http://mamadoucoulibaly.com/api'
 
 export const getAllInsurer = () => {
