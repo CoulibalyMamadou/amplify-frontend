@@ -9,7 +9,7 @@ const GeneralInformation = ({ program, handleClick }) => {
 	 * @param {*} str
 	 * @returns {string}
 	 */
-	const capitalizeFirstLetter = (str) => {
+	const capitalizeFirstLetter = (str = '') => {
 		return (
 			str.charAt(0).toUpperCase() +
 			str.slice(1).toLowerCase().replaceAll('_', ' ')
