@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom'
 import AuthConfig from '../../guard/AuthConfig'
 import Insurer from './insurer/insurer'
 import Reinsurer from './reinsurer/reinsurer'
+import UserProfile from './user-profile/user-profile'
 import NotFound from '../NotFound/notFound'
 import { LOGOUT, USER_TYPE } from '../../constants'
 import { useDispatch, useSelector } from 'react-redux'
@@ -41,6 +42,7 @@ const Home = () => {
 					<AuthConfig path='/reinsurer' component={Reinsurer} />
 				)}
 
+				<AuthConfig path='/user-profile' component={UserProfile} />
 				<Route component={NotFound} />
 			</Switch>
 		</>

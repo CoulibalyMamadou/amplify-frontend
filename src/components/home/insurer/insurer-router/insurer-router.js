@@ -10,7 +10,7 @@ import AddProgramPlacedShare from '../../../program/insurer/add-program/add-prog
 import AddProgram from '../../../program/insurer/add-program/add-program'
 import InsurerProgramHome from '../../../program/insurer/program-home/insurer-program-home'
 import AddProgramDocument from '../../../program/insurer/add-program/add-program-document/add-program-document'
-import ProgramReview from '../../../program/reinsurer/program-review/program-review'
+import ProgramReview from '../../../program/insurer/program-review/program-review'
 import NotFound from '../../../NotFound/notFound'
 import InsurerHead from '../insurer-head/insurer-head'
 
@@ -69,6 +69,11 @@ const InsurerRouter = () => {
 					// exact
 					path={ROUTE_PREFIX.INSURER + '/program/allocation'}
 					component={AllocationProgram}
+				/>
+				<AuthConfig
+					// exact
+					path={ROUTE_PREFIX.INSURER + '/program/review'}
+					component={ProgramReview}
 				/>
 				<AuthConfig
 					// exact

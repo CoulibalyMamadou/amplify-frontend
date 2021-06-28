@@ -95,7 +95,12 @@ const QuotationLayerItem = ({
 		<>
 			<span className='layer-quotation-row'>
 				{viewDisplay}
-				<TiDeleteOutline size='1.4em' color='red' onClick={deleted} />
+				<TiDeleteOutline
+					size='1.4em'
+					color='red'
+					cursor='pointer'
+					onClick={deleted}
+				/>
 			</span>
 		</>
 	)

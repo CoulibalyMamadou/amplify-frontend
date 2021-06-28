@@ -1,32 +1,46 @@
 .quoter-badge {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 
-  .quoter-item {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 5px 10px;
-    font-size: 12px;
-    line-height: 16px;
-    background: rgba(54, 123, 245, 0.25);
-    border-radius: 4px;
-    margin: 5px;
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: normal;
-    cursor: pointer;
-  }
+	.quoter-item {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		padding: 5px 10px;
+		font-size: 12px;
+		line-height: 16px;
+		background: rgba(54, 123, 245, 0.25);
+		border-radius: 4px;
+		margin: 5px;
+		font-family: Roboto;
+		font-style: normal;
+		font-weight: normal;
+	}
+	.quoter-item:hover {
+		cursor: pointer;
+		background-color: #357bf5;
+		color: white;
+		transition-duration: 0.5s;
+	}
+	.quoter-item:active {
+		cursor: pointer;
+		background-color: #7aa9fc;
+		color: white;
+		transition-duration: 0.3s;
+	}
 
-  .select {
-    background: #286dd6;
-    color: white;
-  }
+	.select {
+		background: #286dd6;
+		color: white;
+	}
 
-  .delete-badge {
-    display: flex;
-    height: 100%;
-    color: red;
-  }
+	.delete-badge {
+		display: flex;
+		height: 100%;
+		color: red;
+	}
+	.delete-badge:hover {
+		cursor: pointer;
+	}
 }

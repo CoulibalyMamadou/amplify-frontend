@@ -27,6 +27,7 @@ const Select = ({
 	//     required: true
 	// },
 }) => {
+	// console.log('value is', groupName)
 	const selectRef = useRef(value)
 
 	const [inputValue, setInputValue] = useState(value)

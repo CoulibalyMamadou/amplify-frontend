@@ -1,9 +1,9 @@
 import './add-program-home.scss'
 import { useEffect, useState } from 'react'
-import add from '../../../../../assets/icon/add-icon.png'
 import AddLayerList from './add-layer-list/add-layer-list'
 import { createProgram } from '../../../../../api/program.service'
 import AddProgramInfo from './add-placement-info/add-program-info'
+import { FaPlusCircle } from 'react-icons/fa'
 import {
 	LIST_LINK,
 	PROGRAM_TYPE_OPTIONS,
@@ -211,11 +211,12 @@ const AddProgramHome = () => {
 	 */
 	const showToast = (message = '', status = 'success') => {
 		console.log('enter to toast')
+		console.log('enter to toast', status)
 		updateToast(message, status)
 	}
 
 	/**
-	 * change data value for form for all st ate field change
+	 * change data value for form for all state field change
 	 * @param inputIdentifier id of target field
 	 * @param inputValue
 	 */
@@ -267,7 +268,7 @@ const AddProgramHome = () => {
 		// programIsValid ? createProgram(programDTO) : saveDataHandler()
 		programIsValid
 			? createNewProgramHandler(programDTO)
-			: showToast('All data must be set for the program', 'warning')
+			: showToast('All data must be set for the program', 'error')
 		// saveDataHandler()
 
 		console.log('programIsValid : ', programIsValid)
@@ -302,11 +303,7 @@ const AddProgramHome = () => {
 
 					<div className='program-save-button'>
 						<button className='action-button' onClick={programCreateHandler}>
-							<img
-								src={add}
-								alt='Supporting documents'
-								className='action-img'
-							/>
+							<FaPlusCircle className='icon-plus' />
 							Create Program
 						</button>
 						{/* <button className='action-button' onClick={showToast}>

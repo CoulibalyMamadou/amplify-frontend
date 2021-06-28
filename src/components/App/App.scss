@@ -1,8 +1,6 @@
-
-
 .App {
-  text-align: center;
-  height: 100vh;
+	text-align: center;
+	height: 100vh;
 }
 
 /*.App-logo {*/
@@ -11,22 +9,22 @@
 /*}*/
 
 @media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+	.App-logo {
+		animation: App-logo-spin infinite 20s linear;
+	}
 }
 
 .App-header {
-  background-color: white;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+	background-color: white;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
 }
 
 .App-link {
-  color: #61dafb;
+	color: #61dafb;
 }
 
 /*@keyframes App-logo-spin {*/
@@ -39,29 +37,43 @@
 /*}*/
 
 .action-button {
+	width: auto;
+	padding: 3px 10px;
+	height: 36px;
+	background: #fff;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-family: Quicksand, serif;
+	font-style: normal;
+	font-weight: 500;
+	font-size: 15px;
+	line-height: 28px;
+	letter-spacing: 0.15px;
+	color: #367bf5;
+	border: none;
+	box-shadow: 0px 16px 24px #367bf529, 0px 6px 12px #367bf529;
+	border-radius: 99px;
+	.icon-plus {
+		margin-right: 10px;
+	}
+}
 
-  width: auto;
-  padding: 3px 10px;
-  height: 36px;
-  background: #FFF;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: Quicksand, serif;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 15px;
-  line-height: 28px;
-  letter-spacing: 0.15px;
-  color: #367BF5;
-  border: none;
-  box-shadow: 0px 16px 24px #367bf529, 0px 6px 12px #367bf529;
-  border-radius: 99px;
-
+.action-button:hover {
+	cursor: pointer;
+	background-color: #357bf5;
+	color: white;
+	transition-duration: 0.5s;
+}
+.action-button:active {
+	cursor: pointer;
+	background-color: #7aa9fc;
+	color: white;
+	transition-duration: 0.3s;
 }
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+	-webkit-appearance: none;
+	margin: 0;
 }

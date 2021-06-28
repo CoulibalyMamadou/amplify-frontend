@@ -1,46 +1,43 @@
-
-
 .field-title {
-  font-family: Inter;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 14px;
-  margin: 10px 0 5px;
-  line-height: 17px;
-  /* Grey AA */
-  color: #767676;
+	font-family: Inter;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 14px;
+	margin: 10px 0 5px;
+	line-height: 17px;
+	/* Grey AA */
+	color: #767676;
 }
 
 .field-sub-label {
+	font-family: Inter;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 10px;
+	line-height: 12px;
+	/* identical to box height */
 
-  font-family: Inter;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 10px;
-  line-height: 12px;
-  /* identical to box height */
+	/* Grey AA */
 
+	color: #767676;
 
-  /* Grey AA */
-
-  color: #767676;
-
-  /* Grey AA */
-  color: #767676;
+	/* Grey AA */
+	color: #767676;
 }
 
 .info-field-select {
-  width: 100%;
-  // height: inherit;
-  height: 25px;
-  padding: 3px 6px;
-  // margin: 8px 0;
-  // margin: 8px 0;
-  // padding: 0 16px;
+	width: 100%;
+	// height: inherit;
+	height: 35px;
+	padding: 3px 6px;
+	// margin: 8px 0;
+	// margin: 8px 0;
+	// padding: 0 16px;
 
-  background: #FFFFFF;
-  /* Grey AA Large */
-  border: 1px solid #949494;
-  box-sizing: border-box;
-  border-radius: 4px;
+	background: #ffffff;
+	/* Grey AA Large */
+	border: 1px solid #949494;
+	box-sizing: border-box;
+	border-radius: 4px;
+	outline: none;
 }

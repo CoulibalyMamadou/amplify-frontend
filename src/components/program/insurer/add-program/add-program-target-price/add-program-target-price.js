@@ -113,7 +113,11 @@ const AddProgramTargetPrice = () => {
 						)}
 					</form>
 					<section className='share-button-action'>
-						<button className='action-button' onClick={saveLayerHandler}>
+						<button
+							className='action-button'
+							onClick={saveLayerHandler}
+							data-testid='save-target-price'
+						>
 							<HiSaveAs size='2em' className='action-img' />
 							Save target price
 						</button>

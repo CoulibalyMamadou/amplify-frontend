@@ -1,7 +1,7 @@
 import './quotation-layer.scss'
 import { useEffect, useState } from 'react'
 import QuotationLayerItem from './quotation-layer-item/quotation-layer-item'
-import add from '../../../../../../assets/icon/add-icon.png'
+import { FaPlusCircle } from 'react-icons/fa'
 import * as PropTypes from 'prop-types'
 
 const QuotationLayer = ({
@@ -98,11 +98,7 @@ const QuotationLayer = ({
 					<span className='layer-quotation-list'>{viewDisplay}</span>
 					<span className='quotation-add-row'>
 						<button className='action-button' onClick={addOrderInListHandler}>
-							<img
-								src={add}
-								alt='Supporting documents'
-								className='action-img'
-							/>
+							<FaPlusCircle className='icon-plus' />
 							add order
 						</button>
 					</span>

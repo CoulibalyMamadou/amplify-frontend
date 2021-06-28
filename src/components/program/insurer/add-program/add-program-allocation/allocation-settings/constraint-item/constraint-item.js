@@ -111,8 +111,13 @@ const ConstraintItem = ({
 			<section className={'constraint-row'}>
 				{displayView}
 
-				<span className='delete-badge'>
-					<TiDeleteOutline onClick={onRemove} size='1.4em' color='red' />
+				<span className='delete-badge-constraints '>
+					<TiDeleteOutline
+						onClick={onRemove}
+						size='1.4em'
+						color='red'
+						cursor='pointer'
+					/>
 				</span>
 			</section>
 		</>

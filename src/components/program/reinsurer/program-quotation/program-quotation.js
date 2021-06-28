@@ -7,7 +7,7 @@ import {
 	getAllProgramQuotationListFill,
 	getProgramLayersByIdFill
 } from '../../../../api/program.service'
-import add from '../../../../assets/icon/add-icon.png'
+import { FaPlusCircle } from 'react-icons/fa'
 import useToast from '../../../../containers/Toast/useToast/useToast'
 import { TOAST } from '../../../../constants'
 import { requestInterceptor } from '../../../../sessionStorage/sessionStorage'
@@ -189,7 +189,7 @@ const ProgramQuotation = () => {
 				/>
 			</section>
 			<button className='action-button' onClick={submitQuotation}>
-				<img src={add} alt='Supporting documents' className='action-img' />
+				<FaPlusCircle className='icon-plus' />
 				Submit quotation
 			</button>
 

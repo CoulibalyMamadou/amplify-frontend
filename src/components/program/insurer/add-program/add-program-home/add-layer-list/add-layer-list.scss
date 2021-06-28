@@ -1,26 +1,27 @@
 .layer-list-view {
+	border: 1px solid #dfe0eb;
+	display: flex;
+	flex-flow: column;
+	border-radius: 8px;
+	margin: 2% 0;
+	/* padding: 1% 1%; */
+	width: 99%;
 
-  border: 1px solid #DFE0EB;
-  display: flex;
-  flex-flow: column;
-  border-radius: 8px;
-  margin: 2% 0;
-  /* padding: 1% 1%; */
-  width: 99%;
-
-  .delete-badge {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    color: red;
-  }
-
+	.delete-badge {
+		display: flex;
+		justify-content: flex-end;
+		align-items: center;
+		color: red;
+	}
+	.delete-badge:hover {
+		cursor: pointer;
+	}
 }
 
-.layer-add-button{
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  width: 100%;
-  margin: 3% 0;
+.layer-add-button {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	width: 100%;
+	margin: 3% 0;
 }

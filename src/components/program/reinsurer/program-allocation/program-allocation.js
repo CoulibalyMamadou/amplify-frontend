@@ -1,6 +1,6 @@
 import './program-allocation.scss'
 import AllocationSettings from './allocation-settings/allocation-settings'
-import add from '../../../../assets/icon/add-icon.png'
+import { FaPlusCircle } from 'react-icons/fa'
 import { useEffect, useState } from 'react'
 import AllocationHeader from './allocation-header/allocation-header'
 import {
@@ -109,8 +109,9 @@ const ProgramAllocation = () => {
 				 * Intercept Error code from API request
 				 */
 				requestInterceptor(allQuoteConstraints)
-				const { constraints } =
-					allQuoteConstraints.quoteConstraint[0].quoteConstraint
+				const {
+					constraints
+				} = allQuoteConstraints.quoteConstraint[0].quoteConstraint
 				setConstraintAllocation(() => [...constraints])
 				return constraints
 			})
@@ -222,12 +223,12 @@ const ProgramAllocation = () => {
 				/>
 
 				<section className='allocation-reinsurer-selection'>
-					<button className='add-constraint' onClick={addConstraint}>
-						<img src={add} alt='Add new constraint' className='action-img' />
+					<button className='action-button' onClick={addConstraint}>
+						<FaPlusCircle className='icon-plus' />
 						New constraint
 					</button>
 					<button className='action-button-save' onClick={submitConstraint}>
-						<IoSave size='2em' />
+						<IoSave size='2em' className='icon-save' />
 						Save constraint
 					</button>
 				</section>

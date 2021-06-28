@@ -1,10 +1,12 @@
 import * as PropTypes from 'prop-types'
-import add from '../../../../../../assets/icon/add-icon.png'
+import { FaPlusCircle } from 'react-icons/fa'
 import Modal from '../../../../../../containers/Modal/modal'
 import Input from '../../../../../form-component/Input/Input'
 import DropdownMultiple from '../../../../../form-component/DropdownMultiple/DropdownMultiple'
 import useModal from '../../../../../../containers/Modal/useModal'
 import { useEffect, useState } from 'react'
+import useToast from '../../../../../../containers/Toast/useToast/useToast'
+import { TOAST } from '../../../../../../constants'
 
 /**
  * Modal group edit component
@@ -14,6 +16,10 @@ import { useEffect, useState } from 'react'
  * @constructor
  */
 const AddGroupModal = ({ saveGroup, listOffice }) => {
+	/**
+	 * Toast component for notification
+	 */
+	const { updateToast, ToastComponent } = useToast('', 'success')
 	/**
 	 * group name form
 	 * @type {{valid: boolean, touched: boolean, elementConfig: {placeholder: string, type: string}, name: string, elementType: string, value: string}}
@@ -81,11 +87,35 @@ const AddGroupModal = ({ saveGroup, listOffice }) => {
 	}
 
 	/**
+	 * Show toast for any information of CRUD or error
+	 * @param message message view in toast
+	 * @param status toast status
+	 */
+	const showToast = (message = '', status = 'success') => {
+		console.log('enter to toast')
+		updateToast(message, status)
+	}
+
+	/**
 	 * Save group
 	 */
 	const addGroup = () => {
-		saveGroup(newGroup)
-		toggleLoginForm()
+		if (newGroup.name.length !== 0) {
+			if (newGroup.offices.length !== 0) {
+				saveGroup(newGroup)
+				toggleLoginForm()
+			} else {
+				showToast(
+					TOAST.PROGRAM_CONSTRAINT_CREATE_GROUP_SELECT_ERROR.message,
+					TOAST.PROGRAM_CONSTRAINT_CREATE_GROUP_SELECT_ERROR.state
+				)
+			}
+		} else {
+			showToast(
+				TOAST.PROGRAM_CONSTRAINT_CREATE_GROUP_INPUT_ERROR.message,
+				TOAST.PROGRAM_CONSTRAINT_CREATE_GROUP_INPUT_ERROR.state
+			)
+		}
 	}
 
 	/**
@@ -106,8 +136,8 @@ const AddGroupModal = ({ saveGroup, listOffice }) => {
 	 */
 	return (
 		<>
-			<button className='add-constraint' onClick={toggleLoginForm}>
-				<img src={add} alt='Add new constraint' className='action-img' />
+			<button className='action-button' onClick={toggleLoginForm}>
+				<FaPlusCircle className='icon-plus' />
 				Create group
 			</button>
 
@@ -117,6 +147,16 @@ const AddGroupModal = ({ saveGroup, listOffice }) => {
 				title='Create group'
 			>
 				<div className='group-box'>
+					<span className={'item-box'}>
+						<DropdownMultiple
+							name='locations'
+							searchable={['Search for location', 'No matching location']}
+							titleSingular='Insurer group'
+							title='Select offices group'
+							list={groupSelectList}
+							onChange={onChange}
+						/>
+					</span>
 					<span className={'item-box input'}>
 						<Input
 							id={input.name}
@@ -128,22 +168,13 @@ const AddGroupModal = ({ saveGroup, listOffice }) => {
 							changed={onChanged}
 						/>
 					</span>
-					<span className={'item-box'}>
-						<DropdownMultiple
-							name='locations'
-							searchable={['Search for location', 'No matching location']}
-							titleSingular='Insurer group'
-							title='Select offices group'
-							list={groupSelectList}
-							onChange={onChange}
-						/>
-					</span>
 				</div>
 				<div className='modal-action'>
 					<button className={'modal-action-button'} onClick={addGroup}>
-						create group
+						Create group
 					</button>
 				</div>
+				<ToastComponent />
 			</Modal>
 		</>
 	)

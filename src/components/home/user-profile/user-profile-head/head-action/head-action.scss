@@ -1,0 +1,58 @@
+.placement-action {
+	width: 100%;
+	height: 60px;
+	display: flex;
+	justify-content: space-between;
+	margin: 15px 0;
+	margin-top: 12%;
+
+	button {
+		width: auto;
+		padding: 4px 16px;
+		height: 55px;
+		background: #fff;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		outline: none;
+
+		/*content*/
+		font-family: Quicksand, serif;
+		font-style: normal;
+		font-weight: 500;
+		font-size: 20px;
+		line-height: 28px;
+		/* or 140% */
+		letter-spacing: 0.15px;
+
+		/* Blue Base */
+
+		color: #367bf5;
+		border: none;
+		/* end content*/
+
+		/* Shadow Blue · 16dp */
+		box-shadow: 0px 16px 24px rgba(54, 123, 245, 0.16),
+			0px 6px 12px rgba(54, 123, 245, 0.16);
+		border-radius: 99px;
+
+		.action-button-home {
+			width: 56px;
+			height: 56px;
+			padding: 8px;
+		}
+
+		.action-button-other {
+			width: 240px;
+			height: 55px;
+			align-self: flex-end;
+		}
+	}
+
+	.action-img {
+		width: 32px;
+		height: 32px;
+		/*left: 16px;*/
+		/*margin: 0 16px;*/
+	}
+}

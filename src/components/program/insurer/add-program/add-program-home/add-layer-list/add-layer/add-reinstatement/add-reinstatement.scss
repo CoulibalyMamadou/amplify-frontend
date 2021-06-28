@@ -1,42 +1,43 @@
 .layer-view {
+	display: flex;
+	width: 94%;
+	margin: 1% 1%;
+	padding: 2% 2%;
+	border: 1px solid #dfe0eb;
+	border-radius: 8px;
 
-  display: flex;
-  width: 94%;
-  margin: 1% 1%;
-  padding: 2% 2%;
-  border: 1px solid #DFE0EB;
-  border-radius: 8px;
+	.layer-bloc {
+		display: flex;
+		flex-flow: column;
+		width: 50%;
+		margin: 1% 1%;
+		padding: 2% 2%;
+		justify-content: center;
+		align-items: center;
+		// border: 1px solid #DFE0EB;
+	}
 
+	.layer-reinstatement {
+		display: flex;
+		flex-flow: column;
+		margin: 0% 1%;
+		padding: 1% 3%;
+		width: 48%;
+		justify-content: center;
+		align-items: center;
+		border: 1px solid #dfe0eb;
 
-  .layer-bloc {
-    display: flex;
-    flex-flow: column;
-    width: 50%;
-    margin: 1% 1%;
-    padding: 2% 2%;
-    justify-content: center;
-    align-items: center;
-    // border: 1px solid #DFE0EB;
+		.trash-icon {
+			cursor: pointer;
+			margin-top: 0.5em;
+		}
 
-  }
-
-  .layer-reinstatement {
-    display: flex;
-    flex-flow: column;
-    margin: 0% 1%;
-    padding: 1% 3%;
-    width: 48%;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid #DFE0EB;
-
-
-    .layer-reinstatement-button {
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-      width: 100%;
-      margin: 3% 0;
-    }
-  }
+		.layer-reinstatement-button {
+			display: flex;
+			justify-content: flex-end;
+			align-items: center;
+			width: 100%;
+			margin: 3% 0;
+		}
+	}
 }

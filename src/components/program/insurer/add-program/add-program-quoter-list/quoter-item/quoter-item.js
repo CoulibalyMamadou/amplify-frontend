@@ -71,7 +71,7 @@ const QuoterItem = ({
 				</span>
 				{resettable && (
 					<span className='delete-badge' onClick={insurerExclude}>
-						<TiDeleteOutline size='1em' />
+						<TiDeleteOutline size='1.25em' />
 					</span>
 				)}
 			</span>

@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import Input from '../../../../../../../form-component/Input/Input'
 import Select from '../../../../../../../form-component/Select/Select'
 import * as PropTypes from 'prop-types'
-import add from '../../../../../../../../assets/icon/add-icon.png'
+import { FaPlusCircle } from 'react-icons/fa'
 import { MdDelete } from 'react-icons/all'
 import { REINSTATEMENT_TYPE_OPTIONS } from '../../../../../../../../constants'
 import Checkbox from '../../../../../../../form-component/Checkbox/Checkbox'
@@ -197,12 +197,17 @@ const AddReinstatement = ({ changed = null }) => {
 						}
 					})}
 
-					<MdDelete size='1.4em' color='red' onClick={removeReinstatement} />
+					<MdDelete
+						size='1.4em'
+						color='red'
+						className='trash-icon'
+						onClick={removeReinstatement}
+					/>
 				</>
 			) : (
 				<div className='layer-reinstatement-button'>
 					<button className='action-button' onClick={updateReinstatementView}>
-						<img src={add} alt='Supporting documents' className='action-img' />
+						<FaPlusCircle className='icon-plus' />
 						Add reinstatement
 					</button>
 				</div>

@@ -1,6 +1,6 @@
 import './add-program-allocation.scss'
 import AllocationSettings from './allocation-settings/allocation-settings'
-import add from '../../../../../assets/icon/add-icon.png'
+import { FaPlusCircle } from 'react-icons/fa'
 import { useEffect, useState } from 'react'
 import Select from '../../../../form-component/Select/Select'
 import { useParams } from 'react-router'
@@ -36,7 +36,7 @@ const AddProgramAllocation = () => {
 	 */
 	const select = {
 		name: 'group',
-		label: 'Select group',
+		// label: 'Select group',
 		elementConfig: {
 			options: [
 				{
@@ -65,6 +65,7 @@ const AddProgramAllocation = () => {
 	 * new item for group list
 	 */
 	const [selectList, setSelectList] = useState([])
+	console.log('la list is', selectList)
 	/**
 	 * refactor selected list pour select display
 	 */
@@ -137,7 +138,6 @@ const AddProgramAllocation = () => {
 				const officeList = getOfficeList()
 				console.log('test officeList : ', officeList)
 
-				// console.log('item changed :', item, name)
 				let groupList = []
 				groupList = [
 					...response.constraints.map((constraint, index) => {
@@ -166,10 +166,16 @@ const AddProgramAllocation = () => {
 			: setDisableAddConstraint(false)
 	}, [selectedGroup])
 
+	console.log('list froup is', listGroup)
 	useEffect(() => {
 		const test = listGroup.reduce(
 			(previousValue, currentValue, currentIndex) => [
-				...previousValue,
+				...previousValue.reduce((unique, index) => {
+					if (!unique.some((obj) => obj.displayValue === index.displayValue)) {
+						unique.push(index)
+					}
+					return unique
+				}, []),
 				{
 					value: currentIndex,
 					displayValue: currentValue.name
@@ -285,7 +291,9 @@ const AddProgramAllocation = () => {
 		]
 		setConstraintsAllocation([...updateConstraintList])
 	}
-
+	console.log('name', selectGroup.name)
+	console.log('label', selectGroup.label)
+	console.log('elemconfig', selectGroup.elementConfig)
 	/**
 	 * Set content bloc for Program alloc
 	 */
@@ -293,10 +301,8 @@ const AddProgramAllocation = () => {
 		<>
 			<section className='allocation-content'>
 				{/* <h1 className='allocation-title'>Allocation constraints</h1> */}
-
+				<AddGroupModal listOffice={listOffice} saveGroup={saveGroup} />
 				<section className='allocation-insurer-selection'>
-					<AddGroupModal listOffice={listOffice} saveGroup={saveGroup} />
-
 					{
 						<span className={'group-select'}>
 							<Select
@@ -311,10 +317,10 @@ const AddProgramAllocation = () => {
 
 					<button
 						disabled={disableAddConstraint}
-						className='add-constraint'
+						className='action-button'
 						onClick={addConstraint}
 					>
-						<img src={add} alt='Add new constraint' className='action-img' />
+						<FaPlusCircle className='icon-plus' />
 						New constraint
 					</button>
 				</section>
@@ -325,16 +331,6 @@ const AddProgramAllocation = () => {
 					removed={removeConstraint}
 				/>
 
-				<section className='allocation-submit-constraint'>
-					<button
-						// disabled={disableAddConstraint}
-						className='add-constraint'
-						onClick={submitConstraint}
-					>
-						<img src={add} alt='Add new constraint' className='action-img' />
-						Submit constraint
-					</button>
-				</section>
 				{/* content footer of placement body */}
 
 				{/* <ChooseGroup selectList={selectList} /> */}
@@ -364,6 +360,16 @@ const AddProgramAllocation = () => {
 
 				{/*  showToast() */}
 				<ToastComponent />
+			</section>
+			<section className='allocation-submit-constraint'>
+				<button
+					// disabled={disableAddConstraint}
+					className='action-button'
+					onClick={submitConstraint}
+				>
+					<FaPlusCircle className='icon-plus' />
+					Submit constraint
+				</button>
 			</section>
 		</>
 	)

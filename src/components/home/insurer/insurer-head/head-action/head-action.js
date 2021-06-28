@@ -35,7 +35,7 @@ const HeadAction = () => {
 		console.log('canAcces programId : ', getCurrentParamWithoutPath())
 
 		const id = getCurrentParamWithoutPath()
-		if (id !== 'dashboard' && id !== 'add')
+		if (id !== 'dashboard')
 			getProgramStatus(getCurrentParamWithoutPath())
 				.then((response) => response.json())
 				.then((program) => {
@@ -203,6 +203,7 @@ const HeadAction = () => {
 					<button
 						className='action-button-other'
 						onClick={navigationLinkHandler}
+						data-testid='NEW-PROGRAM'
 					>
 						{headerAction.message}
 					</button>

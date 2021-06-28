@@ -1,0 +1,23 @@
+.home-content {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    align-content: center;
+    /* height: calc(100vh - 30px); */
+    /* height: calc(100vh - 100px); */
+    width: 80%;
+    justify-content: center;
+}
+
+.App-body {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    height: calc(100% - 60px) ;
+    width: 100%;
+}
+
+.App-footer {
+    height: 10vh;
+}
