@@ -43,27 +43,28 @@ const GeneralInformation = ({ program, handleClick }) => {
 					<li>{capitalizeFirstLetter(program.type)}</li>
 					<li>{capitalizeFirstLetter(program.lineOfBusiness)}</li>
 					<li>{capitalizeFirstLetter(program.riskStructure)}</li>
-					{program.layers.map((layer, index) => {
-						return (
-							<ul key={index}>
-								<li>
-									Layer {index + 1} : {layer.layerLimit}M xs{' '}
-									{layer.attachmentPoint}M {layer.portion}%
-									{layer.reinstatement ? (
-										layer.reinstatement.infinite ? (
-											` - Infinite @${layer.reinstatement.clause}%`
+					{program.layers &&
+						program.layers.map((layer, index) => {
+							return (
+								<ul key={index}>
+									<li>
+										Layer {index + 1} : {layer.layerLimit}M xs{' '}
+										{layer.attachmentPoint}M {layer.portion}%
+										{layer.reinstatement ? (
+											layer.reinstatement.infinite ? (
+												` - Infinite @${layer.reinstatement.clause}%`
+											) : (
+												` - ${replaceComaByDot(layer.reinstatement.number)}@${
+													layer.reinstatement.clause
+												}%`
+											)
 										) : (
-											` - ${replaceComaByDot(layer.reinstatement.number)}@${
-												layer.reinstatement.clause
-											}%`
-										)
-									) : (
-										<div></div>
-									)}
-								</li>
-							</ul>
-						)
-					})}
+											<div></div>
+										)}
+									</li>
+								</ul>
+							)
+						})}
 				</ul>
 			</section>
 		</section>

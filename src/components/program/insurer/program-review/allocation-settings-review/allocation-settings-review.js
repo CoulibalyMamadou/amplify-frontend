@@ -2,11 +2,11 @@ import './allocation-settings-review.scss'
 import { FaPen } from 'react-icons/fa'
 import * as PropTypes from 'prop-types'
 
-const AllocationSettings = ({ program, handleClick, constraint }) => {
+const AllocationSettings = ({ program = {}, handleClick, constraint }) => {
 	/**
 	 * Return an object with layer id
 	 */
-	const options = [
+	const options = program.layers && [
 		program.layers.map((layer, index) => {
 			return { value: layer._id, displayValue: 'Layer ' + (index + 1) }
 		})

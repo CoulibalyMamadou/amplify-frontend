@@ -94,17 +94,18 @@ const Documents = ({ program, handleClick }) => {
 				/>
 			</section>
 			<section className='display-document'>
-				{program.document.map((document, index) => {
-					return (
-						<span key={index}>
-							{displayDocument(document)}
+				{program.document &&
+					program.document.map((document, index) => {
+						return (
+							<span key={index}>
+								{displayDocument(document)}
 
-							<h5>
-								{document.title}.{document.extension}
-							</h5>
-						</span>
-					)
-				})}
+								<h5>
+									{document.title}.{document.extension}
+								</h5>
+							</span>
+						)
+					})}
 			</section>
 		</section>
 	)
