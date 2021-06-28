@@ -27,7 +27,7 @@ const loadHeaderWithAuth = () => {
 }
 
 export const getProgramById = (programId) => {
-	return fetch(`http://localhost:8000/program/${programId}`, {
+	return fetch(`${API}/program/${programId}`, {
 		method: 'GET',
 		headers: loadHeaderWithAuth()
 		// headers: myHeaders
@@ -38,7 +38,7 @@ export const getProgramById = (programId) => {
 }
 
 export const getProgramByIdFill = (programId) => {
-	return fetch(`http://localhost:8000/program/${programId}/fill`, {
+	return fetch(`${API}/program/${programId}/fill`, {
 		method: 'GET',
 		headers: loadHeaderWithAuth()
 		// 	{
