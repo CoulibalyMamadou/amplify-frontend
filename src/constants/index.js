@@ -36,12 +36,14 @@ export const INVALIDATE_SUBREDDIT = 'INVALIDATE_SUBREDDIT'
 
 export const USER_TYPE = {
 	INSURER: 'Insurer',
-	REINSURER: 'Reinsurer'
+	REINSURER: 'Reinsurer',
+	USERPROFILE: 'User-profile'
 }
 
 export const ROUTE_PREFIX = {
 	INSURER: '/insurer',
-	REINSURER: '/reinsurer'
+	REINSURER: '/reinsurer',
+	USERPROFILE: '/user-profile'
 }
 
 export const TOAST = {
@@ -80,6 +82,18 @@ export const TOAST = {
 	QUOTATION_SET_ERROR: {
 		message: 'Quotation set error',
 		state: 'error'
+	},
+	PROGRAM_CONSTRAINT_CREATE_GROUP_SUCCESS: {
+		message: 'Group create with success',
+		state: 'success'
+	},
+	PROGRAM_CONSTRAINT_CREATE_GROUP_SELECT_ERROR: {
+		message: 'Make sure you select a group office',
+		state: 'error'
+	},
+	PROGRAM_CONSTRAINT_CREATE_GROUP_INPUT_ERROR: {
+		message: 'Make sure all group info are filed',
+		state: 'error'
 	}
 }
 
@@ -101,9 +115,13 @@ export const LIST_LINK = {
 	QUOTATION: '/insurer/program/quotation',
 	// CONSTRAINT: '/insurer/program/allocation',
 	ALLOCATION: '/insurer/program/allocation',
-	FINAL: '/insurer/program/final',
 	REVIEW: '/insurer/program/review',
-	SUBMIT_PROGRAM: '/insurer/program/submit'
+	FINAL: '/insurer/program/final',
+	SUBMIT_PROGRAM: '/insurer/program/submit',
+	USER_PROFILE: '/user-profile'
+}
+export const USER_LINK = {
+	DASHBOARD: '/user-profile'
 }
 
 export const VIEW_ACTION_MESSAGE = {
@@ -129,6 +147,7 @@ export const StatusStructureTypeEnum = {
 	QUOTATION_RESTRICTED: 'QUOTATION (Quoter)',
 	QUOTATION: 'QUOTATION',
 	QUOTED: 'QUOTED'
+	// [LIST_LINK.USER_PROFILE]: 'User profile'
 }
 
 export const ACTION_BUTTON = {
@@ -139,6 +158,10 @@ export const ACTION_BUTTON = {
 				<img src={add} className='action-img' /> New program
 			</>
 		)
+	},
+	'/user-profile': {
+		link: USER_LINK.DASHBOARD,
+		message: 'Update'
 	},
 	'/insurer/dashboard': {
 		link: LIST_LINK.ADD_PROGRAM,
@@ -192,17 +215,16 @@ export const ACTION_BUTTON = {
 		)
 	},
 	'/insurer/program/add/allocation': {
-		link: LIST_LINK.DASHBOARD,
-		// message: 'Dashboard'
-		message: (
-			<>
-				<BsCloudUpload size={'1em'} className='action-img' /> Submit
-			</>
-		)
+		link: LIST_LINK.REVIEW,
+		message: 'Review'
+	},
+	'/insurer/program/review': {
+		link: LIST_LINK.ALLOCATION,
+		message: 'Allocation'
 	},
 	'/insurer/program/allocation': {
-		link: LIST_LINK.SUBMIT_PROGRAM,
-		message: 'Submit'
+		link: LIST_LINK.DASHBOARD,
+		message: 'Dashboard'
 	},
 	'/insurer/program/submit': {
 		link: LIST_LINK.DASHBOARD,
@@ -718,6 +740,13 @@ export const PROGRAM_TYPE_OPTIONS = {
 	options: [
 		{ value: '', displayValue: '' },
 		{ value: 'TREATY', displayValue: 'Treaty reinsurance' }
+	]
+}
+// const structureOptionsGroupUser = {
+export const PROGRAM_TYPE_OPTIONS_USER = {
+	options: [
+		{ value: '', displayValue: '' },
+		{ value: 'REINSURANCE', displayValue: 'Reinsurance underwriter' }
 	]
 }
 
