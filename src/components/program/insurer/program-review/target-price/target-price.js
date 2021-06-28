@@ -2,7 +2,7 @@ import './target-price.scss'
 import { FaPen } from 'react-icons/fa'
 import * as PropTypes from 'prop-types'
 
-const TargetPrice = ({ program, handleClick }) => {
+const TargetPrice = ({ program = {}, handleClick }) => {
 	/**
 	 * Add decimal
 	 * @param {*} number
@@ -27,15 +27,16 @@ const TargetPrice = ({ program, handleClick }) => {
 				/>
 			</section>
 			<section className='display-target-prices'>
-				{program.layers.map((layer, index) => {
-					return (
-						<ul key={index}>
-							<li>
-								Layer {index + 1} : {addDecimal(layer.targetPrice)}% Rol
-							</li>
-						</ul>
-					)
-				})}
+				{program.layers &&
+					program.layers.map((layer, index) => {
+						return (
+							<ul key={index}>
+								<li>
+									Layer {index + 1} : {addDecimal(layer.targetPrice)}% Rol
+								</li>
+							</ul>
+						)
+					})}
 			</section>
 		</section>
 	)
