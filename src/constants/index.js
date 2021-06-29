@@ -51,15 +51,15 @@ export const ROUTE_PREFIX = {
 
 export const TOAST = {
 	PROGRAM_CREATE_SUCCESS: {
-		message: 'Program create success',
+		message: 'Program successfully created',
 		state: 'success'
 	},
 	PROGRAM_QUOTATION_LIST_SUCCESS: {
-		message: 'Quotation list create success',
+		message: 'Reinsurers list successfully created',
 		state: 'success'
 	},
 	PROGRAM_ALLOCATION_LIST_SUCCESS: {
-		message: 'Allocation list create success',
+		message: 'Settings successfully created',
 		state: 'success'
 	},
 	PROGRAM_ALLOCATION_SET_ERROR: {
@@ -71,11 +71,11 @@ export const TOAST = {
 		state: 'warning'
 	},
 	PROGRAM_CONSTRAINT_LIST_SUCCESS: {
-		message: 'Constraint list create success',
+		message: 'Settings list successfully created',
 		state: 'success'
 	},
 	PROGRAM_CONSTRAINT_SUCCESS: {
-		message: 'Quotation list create success',
+		message: 'Quotation list successfully created',
 		state: 'success'
 	},
 	PROGRAM_CREATE_ERROR: {
@@ -196,15 +196,15 @@ export const ACTION_BUTTON = {
 	// 	link: '/insurer/program/add/document',
 	// 	message: 'Supporting documents'
 	// },
+	// '/insurer/program/add/document': {
+	// 	link: LIST_LINK.ADD_PLACED_SHARE,
+	// 	message: (
+	// 		<>
+	// 			Placed share <RiArrowRightSLine size={'1em'} className='action-img' />
+	// 		</>
+	// 	)
+	// },
 	'/insurer/program/add/document': {
-		link: LIST_LINK.ADD_PLACED_SHARE,
-		message: (
-			<>
-				Placed share <RiArrowRightSLine size={'1em'} className='action-img' />
-			</>
-		)
-	},
-	'/insurer/program/add/placedShare': {
 		link: LIST_LINK.ADD_TARGET_PRICE,
 		message: (
 			<>
@@ -212,6 +212,14 @@ export const ACTION_BUTTON = {
 			</>
 		)
 	},
+	// '/insurer/program/add/placedShare': {
+	// 	link: LIST_LINK.ADD_TARGET_PRICE,
+	// 	message: (
+	// 		<>
+	// 			Target Price <RiArrowRightSLine size={'1em'} className='action-img' />
+	// 		</>
+	// 	)
+	// },
 	'/insurer/program/add/targetPrice': {
 		link: LIST_LINK.ADD_QUOTER_LIST,
 		message: (
@@ -391,6 +399,16 @@ export const ACTION_BUTTON_INSURER = {
 			</>
 		)
 	},
+	'/reinsurer/program/review': {
+		link: LIST_LINK.DASHBOARD,
+		// message: 'Dashboard'
+		message: (
+			<>
+				<BsCloudUpload size={'1em'} className='action-img' /> Submit
+			</>
+		)
+		// message: 'Dashboard'
+	},
 	'/insurer/program/allocation': {
 		link: LIST_LINK.SUBMIT_PROGRAM,
 		message: 'Submit'
@@ -565,20 +583,31 @@ export const ACTION_BUTTON_REVIEW = {
 }
 
 export const ACTION_BUTTON_QUOTATION_RESTRICTED = {
+	// '/reinsurer/program/review': {
+	// 	link: '/reinsurer/cedent/ask',
+	// 	message: (
+	// 		<>
+	// 			Ask cedent <RiArrowRightSLine size={'1em'} className='action-img' />
+	// 		</>
+	// 	),
+	// 	guard: true,
+	// 	requireStatus: [
+	// 		StatusStructureTypeEnum.QUOTATION_RESTRICTED,
+	// 		StatusStructureTypeEnum.QUOTATION
+	// 	]
+	// },
+	// '/reinsurer/cedent/ask': {
+	// 	link: '/reinsurer/program/allocation',
+	// 	message: (
+	// 		<>
+	// 			Allocation constraints{' '}
+	// 			<RiArrowRightSLine size={'1em'} className='action-img' />
+	// 		</>
+	// 	),
+	// 	guard: true,
+	// 	requireStatus: [StatusStructureTypeEnum.QUOTATION_RESTRICTED]
+	// },
 	'/reinsurer/program/review': {
-		link: '/reinsurer/cedent/ask',
-		message: (
-			<>
-				Ask cedent <RiArrowRightSLine size={'1em'} className='action-img' />
-			</>
-		),
-		guard: true,
-		requireStatus: [
-			StatusStructureTypeEnum.QUOTATION_RESTRICTED,
-			StatusStructureTypeEnum.QUOTATION
-		]
-	},
-	'/reinsurer/cedent/ask': {
 		link: '/reinsurer/program/allocation',
 		message: (
 			<>

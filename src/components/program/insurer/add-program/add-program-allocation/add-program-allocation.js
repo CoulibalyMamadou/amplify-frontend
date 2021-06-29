@@ -368,7 +368,7 @@ const AddProgramAllocation = () => {
 					onClick={submitConstraint}
 				>
 					<FaPlusCircle className='icon-plus' />
-					Submit constraint
+					Submit constraints
 				</button>
 			</section>
 		</>

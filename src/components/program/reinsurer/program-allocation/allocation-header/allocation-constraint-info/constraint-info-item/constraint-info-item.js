@@ -38,7 +38,7 @@ const ConstraintInfoItem = ({
 				office +
 				' obtains at least a ' +
 				constraintValue +
-				' share of ' +
+				'% share of ' +
 				constraintTarget +
 				' if below market price'
 			break
@@ -48,7 +48,7 @@ const ConstraintInfoItem = ({
 				office +
 				' obtains at least a ' +
 				constraintValue +
-				' share of ' +
+				'% share of ' +
 				constraintTarget +
 				' if below market price'
 			break
@@ -58,7 +58,7 @@ const ConstraintInfoItem = ({
 				office +
 				' cannot obtain only ' +
 				constraintValue +
-				' share of ' +
+				'% share of ' +
 				constraintTarget
 			break
 		default:
@@ -69,7 +69,7 @@ const ConstraintInfoItem = ({
 				constraintTarget +
 				' cannot obtain only ' +
 				constraintValue +
-				' share of the program'
+				'% share of the program'
 			break
 	}
 

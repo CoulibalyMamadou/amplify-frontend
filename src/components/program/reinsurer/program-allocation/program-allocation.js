@@ -112,8 +112,9 @@ const ProgramAllocation = () => {
 				 * Intercept Error code from API request
 				 */
 				requestInterceptor(allQuoteConstraints)
-				const { constraints } =
-					allQuoteConstraints.quoteConstraint[0].quoteConstraint
+				console.log('all quote constraint come : ', allQuoteConstraints)
+				const { constraints } = allQuoteConstraints
+				// allQuoteConstraints.quoteConstraint[0].quoteConstraint
 				setConstraintAllocation(() => [...constraints])
 				return constraints
 			})

@@ -8,7 +8,7 @@ const TargetPriceItem = ({ index, changed = null, defaultValue }) => {
 		price: {
 			name: 'layer' + (index + 1),
 			label: 'Layer ' + (index + 1),
-			subLabel: 'Target RoL',
+			subLabel: 'Premium rate',
 			elementType: 'input',
 			elementConfig: {
 				type: 'number',

@@ -3,7 +3,11 @@ import { FaPlusCircle } from 'react-icons/fa'
 import { matchPath, useHistory, useLocation, useParams } from 'react-router'
 import { useEffect, useState } from 'react'
 import { BsHouseFill } from 'react-icons/bs'
-import { ACTION_BUTTON, ROUTE_PREFIX } from '../../../../../constants'
+import {
+	ACTION_BUTTON,
+	LIST_LINK,
+	ROUTE_PREFIX
+} from '../../../../../constants'
 
 const HeadAction = () => {
 	/**
@@ -96,7 +100,7 @@ const HeadAction = () => {
 	 * return to home
 	 */
 	const homeHandler = () => {
-		history.push(ROUTE_PREFIX.INSURER + '/dashboard')
+		history.push(LIST_LINK.HOME)
 	}
 
 	/**

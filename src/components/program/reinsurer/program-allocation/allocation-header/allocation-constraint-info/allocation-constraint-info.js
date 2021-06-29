@@ -23,7 +23,7 @@ const AllocationConstraintInfo = ({
 	const labelValue = (target) => {
 		const recup = options.find((option) => option.value === target) || ''
 
-		return recup.displayValue || ''
+		return recup.displayValue || 'Overall program'
 	}
 
 	console.log('info layers : ', layers)
