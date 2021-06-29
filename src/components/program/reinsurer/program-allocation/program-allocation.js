@@ -14,9 +14,12 @@ import { IoSave } from 'react-icons/all'
 import { requestInterceptor } from '../../../../sessionStorage/sessionStorage'
 import { getReinsurer } from '../../../../api/reinsurer.service'
 import { getOffice } from '../../../../api/office.service'
+import { TOAST } from '../../../../constants'
+import useToast from '../../../../containers/Toast/useToast/useToast'
 
 const ProgramAllocation = () => {
 	const { programId } = useParams()
+	const { updateToast, ToastComponent } = useToast('', 'success')
 	const [programConstraint, setProgramConstraint] = useState([])
 	const [constraintAllocation, setConstraintAllocation] = useState([])
 	const [loadingAllocation, setLoadingAllocation] = useState(false)
@@ -171,6 +174,14 @@ const ProgramAllocation = () => {
 		setConstraintAllocation((prevState) => [...updateConstraint])
 	}
 
+	/**
+	 * save data in file for feature for @Tristan
+	 */
+	const showToast = (message = '', variant = 'success') => {
+		console.log('enter to toast')
+		updateToast(message, variant)
+	}
+
 	const submitConstraint = () => {
 		const programQuote = {
 			office: reinsurer.office,
@@ -184,10 +195,18 @@ const ProgramAllocation = () => {
 				 * Intercept Error code from API request
 				 */
 				requestInterceptor(response)
+				showToast(
+					TOAST.PROGRAM_ALLOCATION_LIST_SUCCESS.message,
+					TOAST.PROGRAM_ALLOCATION_LIST_SUCCESS.state
+				)
 				console.log('response of return : ', response)
 			})
 			.catch((reason) => {
 				console.log('response of reason : ', reason)
+				showToast(
+					TOAST.PROGRAM_ALLOCATION_SET_ERROR.message,
+					TOAST.PROGRAM_ALLOCATION_SET_ERROR.state
+				)
 			})
 	}
 
@@ -246,6 +265,7 @@ const ProgramAllocation = () => {
 				)}
 				{/* content footer of placement body */}
 			</section>
+			<ToastComponent />
 		</>
 	)
 }

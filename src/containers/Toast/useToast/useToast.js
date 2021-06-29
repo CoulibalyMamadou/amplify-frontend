@@ -43,7 +43,7 @@ const useToast = ({ toastMessage = '', variant = 'success', style = {} }) => {
 	const openToast = () => {
 		toastRef.current.classList.add('show')
 		setTimeout(function () {
-			toastRef.current.classList.remove('show')
+			toastRef.current.classList && toastRef.current.classList.remove('show')
 			setShowToast(false)
 		}, 2000)
 	}

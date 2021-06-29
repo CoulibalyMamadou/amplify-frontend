@@ -136,6 +136,10 @@ const ProgramQuotationFinal = () => {
 		createProgramQuotation({ programId, programQuote })
 			.then((val) => val.json())
 			.then((response) => {
+				/**
+				 * Intercept Error code from API request
+				 */
+				requestInterceptor(response)
 				showToast(
 					TOAST.PROGRAM_CREATE_SUCCESS.message,
 					TOAST.PROGRAM_CREATE_SUCCESS.state

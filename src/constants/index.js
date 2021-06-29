@@ -58,6 +58,18 @@ export const TOAST = {
 		message: 'Quotation list create success',
 		state: 'success'
 	},
+	PROGRAM_ALLOCATION_LIST_SUCCESS: {
+		message: 'Allocation list create success',
+		state: 'success'
+	},
+	PROGRAM_ALLOCATION_SET_ERROR: {
+		message: 'Allocation set error',
+		state: 'error'
+	},
+	PROGRAM_ALLOCATION_CREATE_WARNING: {
+		message: 'Make sure all allocation info is correct',
+		state: 'warning'
+	},
 	PROGRAM_CONSTRAINT_LIST_SUCCESS: {
 		message: 'Constraint list create success',
 		state: 'success'
