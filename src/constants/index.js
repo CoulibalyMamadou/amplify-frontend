@@ -120,6 +120,7 @@ export const CONSTRAINT_TYPE = {
 	CONDITIONAL_MINIMUM: 'cond_min'
 }
 export const LIST_LINK = {
+	HOME: '/',
 	DASHBOARD: '/insurer/dashboard',
 	ADD_PROGRAM: '/insurer/program/add',
 	ADD_DOCUMENT: '/insurer/program/add/document',

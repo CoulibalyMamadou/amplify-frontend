@@ -77,7 +77,7 @@ const Nav = () => {
 	}
 
 	const Home = () => {
-		history.push(LIST_LINK.DASHBOARD)
+		history.push(LIST_LINK.HOME)
 	}
 
 	/**
