@@ -1,11 +1,12 @@
 import { loadState, resetTokenState } from '../sessionStorage/sessionStorage'
+import { API } from '../constants'
 // const API = 'http://localhost:8080'
 // const API = 'http://localhost:8000'
-const API = 'http://mamadoucoulibaly.com'
+// const API = 'https://www.mamadoucoulibaly.com'
 // const API = 'http://mamadoucoulibaly.com/api'
 
 export const getAllInsurer = () => {
-	return fetch(`http://localhost:8000/insurer/`, {
+	return fetch(`${API}/insurer/`, {
 		method: 'GET',
 		headers: {
 			'Content-Type': 'application/json'
@@ -14,7 +15,7 @@ export const getAllInsurer = () => {
 }
 
 export const getAllReinsurer = () => {
-	return fetch(`http://localhost:8000/reinsurer/`, {
+	return fetch(`${API}/reinsurer/`, {
 		method: 'GET',
 		headers: {
 			'Content-Type': 'application/json'
@@ -37,7 +38,7 @@ export const getInsurer = () => {
 	})
 }
 export const getInsurerById = (insurerId) => {
-	return fetch(`http://localhost:8000/insurer/${insurerId}`, {
+	return fetch(`${API}/insurer/${insurerId}`, {
 		method: 'GET',
 		headers: {
 			'Content-Type': 'application/json'
@@ -46,7 +47,7 @@ export const getInsurerById = (insurerId) => {
 }
 
 export const getInsurerByIdFill = (insurerId) => {
-	return fetch(`http://localhost:8000/insurer/${insurerId}/fill`, {
+	return fetch(`${API}/insurer/${insurerId}/fill`, {
 		method: 'GET',
 		headers: {
 			'Content-Type': 'application/json'

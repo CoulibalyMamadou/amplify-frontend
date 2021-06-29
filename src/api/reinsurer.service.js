@@ -1,10 +1,6 @@
 import { loadState, resetTokenState } from '../sessionStorage/sessionStorage'
 import { getHeadersWithAuth } from './headers.service'
-
-// const API = 'http://localhost:8080'
-// const API = 'http://localhost:8000'
-const API = 'http://mamadoucoulibaly.com'
-// const API = 'http://mamadoucoulibaly.com/api'
+import { API } from '../constants'
 
 const token = loadState() || ''
 
@@ -23,7 +19,7 @@ const loadHeaderWithAuth = () => {
 }
 
 export const getAllRereinsurer = () => {
-	return fetch(`http://localhost:8000/reinsurer/`, {
+	return fetch(`${API}/reinsurer/`, {
 		method: 'GET',
 		headers: {
 			'Content-Type': 'application/json'
@@ -55,7 +51,7 @@ export const getReinsurer = () => {
 }
 
 export const getRereinsurer = (reinsurerId) => {
-	return fetch(`http://localhost:8000/reinsurer/${reinsurerId}`, {
+	return fetch(`${API}/reinsurer/${reinsurerId}`, {
 		method: 'GET',
 		headers: {
 			'Content-Type': 'application/json'
@@ -64,7 +60,7 @@ export const getRereinsurer = (reinsurerId) => {
 }
 
 export const getRereinsurerByIdFill = (reinsurerId) => {
-	return fetch(`http://localhost:8000/reinsurer/${reinsurerId}/fill`, {
+	return fetch(`${API}/reinsurer/${reinsurerId}/fill`, {
 		method: 'GET',
 		headers: {
 			'Content-Type': 'application/json'

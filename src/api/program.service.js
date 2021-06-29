@@ -1,15 +1,8 @@
 import { loadState, resetTokenState } from '../sessionStorage/sessionStorage'
 import { getHeadersWithAuth } from './headers.service'
+import { API } from '../constants'
 
-// const API = 'http://localhost:8080'
-// const API = 'http://localhost:8000'
-const API = 'http://mamadoucoulibaly.com'
-// const API = 'http://mamadoucoulibaly.com/api'
 const token = loadState() || ''
-// const myHeaders = new Headers()
-// myHeaders.append('Access-Control-Allow-Origin', '*')
-// myHeaders.append('Authorization', `Bearer ${token?.token?.token}`)
-// myHeaders.append('Content-Type', 'application/json')
 
 console.log('myHeaders : ', getHeadersWithAuth())
 // console.log('myHeaders myHeaders : ', myHeaders)

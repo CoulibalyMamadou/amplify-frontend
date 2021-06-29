@@ -378,19 +378,20 @@ const AddProgramQuoterList = () => {
 			<section className='list-panel'>
 				<h1 className='list-title'>Exclude</h1>
 				<section className='list-box'>
-					{officeList.map((office, id) => {
-						return (
-							<QuoterItem
-								key={id}
-								index={id}
-								target={'exclude'}
-								toggleSelected={toggleSelected}
-								selected={selectedList.exclude.includes(office._id)}
-								resettable={false}
-								quoter={office}
-							/>
-						)
-					})}
+					{officeList &&
+						officeList.map((office, id) => {
+							return (
+								<QuoterItem
+									key={id}
+									index={id}
+									target={'exclude'}
+									toggleSelected={toggleSelected}
+									selected={selectedList.exclude.includes(office._id)}
+									resettable={false}
+									quoter={office}
+								/>
+							)
+						})}
 				</section>
 			</section>
 

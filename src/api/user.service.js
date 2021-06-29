@@ -1,7 +1,4 @@
-// const API = 'http://localhost:8080'
-// const API = 'http://localhost:8000'
-const API = 'http://mamadoucoulibaly.com'
-// const API = 'http://mamadoucoulibaly.com/api'
+import { API } from '../constants'
 
 export const userSignIn = (body) => {
 	return fetch(`${API}/insurer/signIn`, {
@@ -24,7 +21,7 @@ export const userLogin = (body) => {
 }
 
 export const userList = () => {
-	return fetch('http://localhost:8000/insurer', {
+	return fetch(`${API}/insurer`, {
 		headers: {
 			Accept: 'application/json'
 		}

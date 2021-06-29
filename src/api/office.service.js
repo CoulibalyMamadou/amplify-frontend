@@ -1,10 +1,7 @@
 import { loadState, resetTokenState } from '../sessionStorage/sessionStorage'
 import { getHeadersWithAuth } from './headers.service'
+import { API } from '../constants'
 
-// const API = 'http://localhost:8080'
-// const API = 'http://localhost:8000'
-const API = 'http://mamadoucoulibaly.com'
-// const API = 'http://mamadoucoulibaly.com/api'
 const token = loadState() || ''
 
 console.log('myHeaders : ', getHeadersWithAuth())
@@ -22,14 +19,14 @@ const loadHeaderWithAuth = () => {
 }
 
 export const getAllOffice = () => {
-	return fetch(`http://localhost:8000/office/all`, {
+	return fetch(`${API}/office/all`, {
 		method: 'GET',
 		headers: loadHeaderWithAuth()
 	})
 }
 
 export const getAllOfficeQuoter = (programId) => {
-	return fetch(`http://localhost:8000/program/quoteList/${programId}`, {
+	return fetch(`${API}/program/quoteList/${programId}`, {
 		method: 'GET',
 		headers: loadHeaderWithAuth()
 	})
@@ -43,7 +40,7 @@ export const getOffice = () => {
 }
 
 export const getOfficeByIdFill = (officeId) => {
-	return fetch(`http://localhost:8000/office/${officeId}/fill`, {
+	return fetch(`${API}/office/${officeId}/fill`, {
 		method: 'GET',
 		headers: {
 			'Content-Type': 'application/json'
