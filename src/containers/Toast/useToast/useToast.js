@@ -16,6 +16,11 @@ const useToast = ({ toastMessage = '', variant = 'success', style = {} }) => {
 	const [message, setMessage] = useState('')
 
 	/**
+	 * Status in toast content
+	 */
+	const [status, setStatus] = useState('')
+
+	/**
 	 * Toast must be show ?
 	 */
 	const [showToast, setShowToast] = useState(false)
@@ -50,7 +55,7 @@ const useToast = ({ toastMessage = '', variant = 'success', style = {} }) => {
 	 */
 	const updateToast = (info, type = 'success') => {
 		setMessage((prevState) => info)
-		variant = type
+		setStatus(type)
 		setShowToast(true)
 	}
 	/**
@@ -58,7 +63,7 @@ const useToast = ({ toastMessage = '', variant = 'success', style = {} }) => {
 	 */
 	let icon
 
-	switch (variant) {
+	switch (status) {
 		case 'success':
 			icon = <BsCheck size={'2em'} fillOpacity={'#2db92d'} />
 			break
@@ -86,7 +91,7 @@ const useToast = ({ toastMessage = '', variant = 'success', style = {} }) => {
 			{showToast ? (
 				<div
 					ref={toastRef}
-					className={' snackbar ' + variant}
+					className={' snackbar ' + status}
 					// style={{ ...toastStyle, ...style }}
 				>
 					<div className={'content'}>
