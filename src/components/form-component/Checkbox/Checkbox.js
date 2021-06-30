@@ -50,6 +50,7 @@ const Checkbox = ({
 				className='info-field-input'
 				{...elementConfig}
 				defaultChecked={value}
+				label={label}
 				name={name}
 				id={name}
 				onChange={InputChangeHandler}

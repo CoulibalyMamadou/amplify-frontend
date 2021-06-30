@@ -3,7 +3,7 @@ import './DropdownMultiple.scss'
 import * as PropTypes from 'prop-types'
 import { BsCheck, IoIosArrowDown, IoIosArrowUp } from 'react-icons/all'
 // import { BsArrowDown, BsArrowUp, BsCheck } from 'react-icons/all'
-import { pluralize } from 'jest-matcher-utils'
+// import { pluralize } from 'jest-matcher-utils'
 
 const DropdownMultiple = ({
 	id,
@@ -145,16 +145,24 @@ const DropdownMultiple = ({
 	const handleTitle = () => {
 		const length = selectedItems.length
 
+		setTitle(`${length} ${titleSingular}`)
 		if (!length) {
 			setTitle(title)
-		} else if (length === 1) {
-			setTitle(`${length} ${titleSingular}`)
-		} else if (titlePlural) {
-			setTitle(`${length} ${titlePlural}`)
 		} else {
-			const pluralizedTitle = pluralize(titleSingular, length)
-			setTitle(`${length} ${pluralizedTitle}`)
+			// const pluralizedTitle = pluralize(titleSingular, length)
+			setTitle(`${length} ${titleSingular}`)
 		}
+
+		// if (!length) {
+		// 	setTitle(title)
+		// } else if (length === 1) {
+		// 	setTitle(`${length} ${titleSingular}`)
+		// } else if (titlePlural) {
+		// 	setTitle(`${length} ${titlePlural}`)
+		// } else {
+		// 	const pluralizedTitle = pluralize(titleSingular, length)
+		// 	setTitle(`${length} ${pluralizedTitle}`)
+		// }
 	}
 
 	const selectItem = (item, noCloseOnSelection = false) => {

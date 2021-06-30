@@ -150,7 +150,7 @@ const AddReinstatement = ({ changed = null }) => {
 										id={formElement.id}
 										key={formElement.id}
 										name={formElement.config.name}
-										label={formElement.label}
+										label={formElement.config.label}
 										value={isChecked}
 										// value={constrain.value}
 										elementConfig={formElement.config.elementConfig}

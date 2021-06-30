@@ -1,5 +1,5 @@
 import './update-user-profile-program-home.scss'
-import { PROGRAM_TYPE_OPTIONS_USER } from '../../../../../constants'
+// import { PROGRAM_TYPE_OPTIONS_USER } from '../../../../../constants'
 import Input from '../../../../form-component/Input/Input'
 import Select from '../../../../form-component/Select/Select'
 import * as PropTypes from 'prop-types'
@@ -26,21 +26,21 @@ const UpdateUserProfileProgramHome = ({ user = {} }) => {
 			valid: false,
 			touched: false
 		},
-		company: {
-			name: 'company',
-			label: 'Company',
-			elementType: 'input',
-			elementConfig: {
-				type: 'text',
-				placeholder: 'Company'
-			},
-			value: '',
-			// validation: {
-			//     required: true
-			// },
-			valid: false,
-			touched: false
-		},
+		// company: {
+		// 	name: 'company',
+		// 	label: 'Company',
+		// 	elementType: 'input',
+		// 	elementConfig: {
+		// 		type: 'text',
+		// 		placeholder: 'Company'
+		// 	},
+		// 	value: '',
+		// 	// validation: {
+		// 	//     required: true
+		// 	// },
+		// 	valid: false,
+		// 	touched: false
+		// },
 		email: {
 			name: 'email',
 			label: 'Email Address',
@@ -101,7 +101,8 @@ const UpdateUserProfileProgramHome = ({ user = {} }) => {
 				placeholder: 'Office',
 				disabled: true
 			},
-			value: user.office,
+			// value: user.office,
+			value: '',
 			// validation: {
 			//     required: true
 			// },
@@ -162,7 +163,8 @@ const UpdateUserProfileProgramHome = ({ user = {} }) => {
 			name: 'position',
 			label: 'Position',
 			elementType: 'select',
-			elementConfig: PROGRAM_TYPE_OPTIONS_USER,
+			// elementConfig: PROGRAM_TYPE_OPTIONS_USER,
+			elementConfig: {},
 			value: '',
 			// validation: {
 			//     required: true

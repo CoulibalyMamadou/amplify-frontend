@@ -158,6 +158,7 @@ export const VIEW_ACTION_MESSAGE = {
 	[LIST_LINK.CONSTRAINT]: 'Allocation constraints',
 	[LIST_LINK.ALLOCATION]: 'Allocation',
 	[LIST_LINK.REVIEW]: 'Review',
+	[LIST_LINK.SUBMIT_PROGRAM]: 'Review',
 	[LIST_LINK.USER_PROFILE]: 'User profile'
 }
 
@@ -532,16 +533,6 @@ export const ACTION_BUTTON_INSURER_UNCOMPLETE = {
 		]
 	},
 	'/insurer/program/add/document': {
-		link: LIST_LINK.ADD_PLACED_SHARE,
-		message: (
-			<>
-				Placed share <RiArrowRightSLine size={'1em'} className='action-img' />
-			</>
-		),
-		guard: true,
-		requireStatus: [StatusStructureTypeEnum.UN_COMPLETE]
-	},
-	'/insurer/program/add/placedShare': {
 		link: LIST_LINK.ADD_TARGET_PRICE,
 		message: (
 			<>
@@ -550,7 +541,25 @@ export const ACTION_BUTTON_INSURER_UNCOMPLETE = {
 		),
 		guard: true,
 		requireStatus: [StatusStructureTypeEnum.UN_COMPLETE]
+		// link: LIST_LINK.ADD_PLACED_SHARE,
+		// message: (
+		// 	<>
+		// 		Placed share <RiArrowRightSLine size={'1em'} className='action-img' />
+		// 	</>
+		// ),
+		// guard: true,
+		// requireStatus: [StatusStructureTypeEnum.UN_COMPLETE]
 	},
+	// '/insurer/program/add/placedShare': {
+	// 	link: LIST_LINK.ADD_TARGET_PRICE,
+	// 	message: (
+	// 		<>
+	// 			Target Price <RiArrowRightSLine size={'1em'} className='action-img' />
+	// 		</>
+	// 	),
+	// 	guard: true,
+	// 	requireStatus: [StatusStructureTypeEnum.UN_COMPLETE]
+	// },
 	'/insurer/program/add/targetPrice': {
 		link: LIST_LINK.ADD_QUOTER_LIST,
 		message: (

@@ -130,10 +130,10 @@ const HeadAction = () => {
 						<button className='action-button-home' onClick={homeHandler}>
 							<BsHouseFill size='1em' />
 						</button>
-						<button className='action-button' onClick={navigationLinkHandler}>
+						{/* <button className='action-button' onClick={navigationLinkHandler}>
 							<FaPlusCircle className='icon-plus' />
 							{headerAction.message}
-						</button>
+						</button> */}
 					</>
 				)}
 			</section>
