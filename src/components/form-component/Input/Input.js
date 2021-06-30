@@ -11,7 +11,8 @@ const Input = ({
 	changed = null,
 	elementConfig = {
 		type: 'text',
-		placeholder: 'Country'
+		placeholder: 'Country',
+		disabled: false
 	},
 	valid = false
 

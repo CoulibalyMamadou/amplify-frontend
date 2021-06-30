@@ -38,14 +38,14 @@ const ConstraintTypeBorder = ({
 				options: [
 					{ value: '', displayValue: '' },
 					{ value: CONSTRAINT_TYPE.MAXIMUM, displayValue: 'Maximum share' },
-					{
-						value: CONSTRAINT_TYPE.RELATIVE_MAXIMUM,
-						displayValue: 'Relative maximum'
-					},
-					{
-						value: CONSTRAINT_TYPE.RELATIVE_MINIMUM,
-						displayValue: 'Relative minimum'
-					},
+					// {
+					// 	value: CONSTRAINT_TYPE.RELATIVE_MAXIMUM,
+					// 	displayValue: 'Relative maximum'
+					// },
+					// {
+					// 	value: CONSTRAINT_TYPE.RELATIVE_MINIMUM,
+					// 	displayValue: 'Relative minimum'
+					// },
 					{
 						value: CONSTRAINT_TYPE.CONDITIONAL_MINIMUM,
 						displayValue: 'Conditional minimum share'
