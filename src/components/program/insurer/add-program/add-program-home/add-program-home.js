@@ -89,6 +89,23 @@ const AddProgramHome = () => {
 			valid: false,
 			touched: false
 		},
+		premiumIncome: {
+			name: 'premiumIncome',
+			label: 'Estimated Premium Income',
+			elementType: 'input',
+			elementConfig: {
+				type: 'number',
+				placeholder: 0.0,
+				step: 0.1,
+				min: 0.0
+			},
+			value: 0.0,
+			// validation: {
+			//     required: true
+			// },
+			valid: false,
+			touched: false
+		},
 		limit: {
 			name: 'limit',
 			label: 'Limit (M€)',

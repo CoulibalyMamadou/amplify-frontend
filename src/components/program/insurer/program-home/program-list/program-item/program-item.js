@@ -31,7 +31,8 @@ const ProgramItem = ({
 			>
 				<span className='wrapContent'>
 					{/* <span> <BsHouseFill size="2em"/> </span> */}
-					<span> {icon} </span>
+					{/* <span> {icon} </span> */}
+					<span> --- </span>
 					<span className='span-box'>
 						<span> {program.title}</span>
 						<span>

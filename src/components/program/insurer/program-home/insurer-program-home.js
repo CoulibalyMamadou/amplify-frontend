@@ -89,7 +89,7 @@ const InsurerProgramHome = () => {
 					<span>Placed by</span>
 					<span>Quotation starts</span>
 					<span>Quotation ends</span>
-					<span> : </span>
+					{/* <span> : </span> */}
 				</div>
 			</div>
 
