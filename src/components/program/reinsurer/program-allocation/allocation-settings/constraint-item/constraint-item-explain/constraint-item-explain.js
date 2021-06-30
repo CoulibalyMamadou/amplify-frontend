@@ -46,6 +46,14 @@ const ConstraintItemExplain = ({
 				'% share of the ' +
 				constraintTarget
 			break
+		case CONSTRAINT_TYPE.CONDITIONAL_MINIMUM:
+			infoDisplay =
+				reinsurer +
+				' requires that obtain only ' +
+				constraintValue +
+				'% share of the ' +
+				constraintTarget
+			break
 		default:
 			infoDisplay = ' '
 			break

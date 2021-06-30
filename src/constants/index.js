@@ -132,6 +132,7 @@ export const LIST_LINK = {
 	// CONSTRAINT: '/insurer/program/allocation',
 	ALLOCATION: '/insurer/program/allocation',
 	REVIEW: '/insurer/program/review',
+	FINAL_REVIEW: '/insurer/program/final_review',
 	FINAL: '/insurer/program/final',
 	SUBMIT_PROGRAM: '/insurer/program/submit',
 	USER_PROFILE: '/user-profile'
@@ -247,12 +248,26 @@ export const ACTION_BUTTON = {
 		message: 'Allocation'
 	},
 	'/insurer/program/allocation': {
-		link: LIST_LINK.DASHBOARD,
-		message: 'Dashboard'
+		link: LIST_LINK.SUBMIT_PROGRAM,
+		message: (
+			<>
+				Review <RiArrowRightSLine size={'1em'} className='action-img' />
+			</>
+		)
+
+		// message: 'Dashboard'
 	},
 	'/insurer/program/submit': {
+		// link: LIST_LINK.DASHBOARD,
+		// message: <BsHouseFill size='1em' />
+
 		link: LIST_LINK.DASHBOARD,
-		message: <BsHouseFill size='1em' />
+		// message: 'Dashboard'
+		message: (
+			<>
+				<BsCloudUpload size={'1em'} className='action-img' /> Submit
+			</>
+		)
 	},
 	// reinsurer action button list
 	'/reinsurer/program/review': {
@@ -554,15 +569,37 @@ export const ACTION_BUTTON_INSURER_UNCOMPLETE = {
 		requireStatus: [StatusStructureTypeEnum.UN_COMPLETE]
 	},
 	'/insurer/program/add/allocation': {
-		link: LIST_LINK.DASHBOARD,
+		link: LIST_LINK.SUBMIT_PROGRAM,
 		// message: 'Dashboard'
 		message: (
 			<>
-				<BsCloudUpload size={'1em'} className='action-img' /> Submit
+				Review <RiArrowRightSLine size={'1em'} className='action-img' />
 			</>
 		),
 		guard: true,
 		requireStatus: [StatusStructureTypeEnum.UN_COMPLETE]
+	},
+	'/insurer/program/allocation': {
+		link: LIST_LINK.SUBMIT_PROGRAM,
+		message: (
+			<>
+				Review <RiArrowRightSLine size={'1em'} className='action-img' />
+			</>
+		)
+	},
+	'/insurer/program/submit': {
+		link: LIST_LINK.HOME,
+		message: <>Submit</>,
+		guard: true,
+		requireStatus: [StatusStructureTypeEnum.UN_COMPLETE]
+	},
+	'/insurer/program/final_review': {
+		link: LIST_LINK.DASHBOARD,
+		message: (
+			<>
+				<BsCloudUpload size={'1em'} className='action-img' /> Submit
+			</>
+		)
 	}
 }
 

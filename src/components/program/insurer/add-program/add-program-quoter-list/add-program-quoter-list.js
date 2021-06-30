@@ -333,107 +333,111 @@ const AddProgramQuoterList = () => {
 	 * Set content bloc for Quoter list
 	 */
 	return (
-		<section className='quoter-list-content'>
-			{/* header of placement box */}
-			<section className='list-panel'>
-				<h1 className='list-title'>Quoter</h1>
-				<section className='list-box'>
-					{quoteList.map((office, id) => {
-						return (
-							<QuoterItem
-								key={id}
-								index={id}
-								toggleSelected={toggleSelected}
-								target={'quoter'}
-								selected={selectedList.quoter.includes(office._id)}
-								unSelected={AddToInsurerList}
-								quoter={office}
-							/>
-						)
-					})}
-				</section>
-			</section>
-
-			{/* body of placement body */}
-			<section className='list-panel'>
-				<h1 className='list-title'>Follower</h1>
-				<section className='list-box'>
-					{followerList.map((office, id) => {
-						return (
-							<QuoterItem
-								key={id}
-								index={id}
-								toggleSelected={toggleSelected}
-								target={'follower'}
-								selected={selectedList.follower.includes(office._id)}
-								unSelected={AddToInsurerList}
-								quoter={office}
-							/>
-						)
-					})}
-				</section>
-			</section>
-
-			{/* body of placement body */}
-			<section className='list-panel'>
-				<h1 className='list-title'>Exclude</h1>
-				<section className='list-box'>
-					{officeList &&
-						officeList.map((office, id) => {
+		<>
+			<section className='quoter-list-content'>
+				{/* header of placement box */}
+				<section className='list-panel'>
+					<h1 className='list-title'>Quoter</h1>
+					<section className='list-box'>
+						{quoteList.map((office, id) => {
 							return (
 								<QuoterItem
 									key={id}
 									index={id}
-									target={'exclude'}
 									toggleSelected={toggleSelected}
-									selected={selectedList.exclude.includes(office._id)}
-									resettable={false}
+									target={'quoter'}
+									selected={selectedList.quoter.includes(office._id)}
+									unSelected={AddToInsurerList}
 									quoter={office}
 								/>
 							)
 						})}
+					</section>
+				</section>
+
+				{/* body of placement body */}
+				<section className='list-panel'>
+					<h1 className='list-title'>Follower</h1>
+					<section className='list-box'>
+						{followerList.map((office, id) => {
+							return (
+								<QuoterItem
+									key={id}
+									index={id}
+									toggleSelected={toggleSelected}
+									target={'follower'}
+									selected={selectedList.follower.includes(office._id)}
+									unSelected={AddToInsurerList}
+									quoter={office}
+								/>
+							)
+						})}
+					</section>
+				</section>
+
+				{/* body of placement body */}
+				<section className='list-panel'>
+					<h1 className='list-title'>Exclude</h1>
+					<section className='list-box'>
+						{officeList &&
+							officeList.map((office, id) => {
+								return (
+									<QuoterItem
+										key={id}
+										index={id}
+										target={'exclude'}
+										toggleSelected={toggleSelected}
+										selected={selectedList.exclude.includes(office._id)}
+										resettable={false}
+										quoter={office}
+									/>
+								)
+							})}
+					</section>
+				</section>
+
+				<section className='switch-action-content'>
+					<button
+						className='switch-action-button'
+						onClick={() => updateSelectedList('quoter')}
+					>
+						<IoIosArrowBack size='2em' />
+					</button>
+					<button
+						className='switch-action-button'
+						onClick={() => updateSelectedList('follower')}
+					>
+						<IoIosArrowForward size='2em' />
+					</button>
+				</section>
+
+				<section className='move-action-content'>
+					<button
+						className='switch-action-button'
+						onClick={() => updateSelectedList('follower', true)}
+					>
+						<IoIosArrowBack size='2em' />
+					</button>
+					<button
+						className='switch-action-button'
+						onClick={() => updateSelectedList('exclude', false)}
+					>
+						<IoIosArrowForward size='2em' />
+					</button>
+				</section>
+
+				{/*  showToast() */}
+				<ToastComponent />
+				{/* content footer of placement body */}
+			</section>
+			<section className='action-row'>
+				<section className='save-action-content'>
+					<button className='save-action-button' onClick={saveQuoterList}>
+						<IoSave size='2em' /> Save List
+					</button>
 				</section>
 			</section>
-
-			<section className='switch-action-content'>
-				<button
-					className='switch-action-button'
-					onClick={() => updateSelectedList('quoter')}
-				>
-					<IoIosArrowBack size='2em' />
-				</button>
-				<button
-					className='switch-action-button'
-					onClick={() => updateSelectedList('follower')}
-				>
-					<IoIosArrowForward size='2em' />
-				</button>
-			</section>
-
-			<section className='move-action-content'>
-				<button
-					className='switch-action-button'
-					onClick={() => updateSelectedList('follower', true)}
-				>
-					<IoIosArrowBack size='2em' />
-				</button>
-				<button
-					className='switch-action-button'
-					onClick={() => updateSelectedList('exclude', false)}
-				>
-					<IoIosArrowForward size='2em' />
-				</button>
-			</section>
-			<section className='save-action-content'>
-				<button className='save-action-button' onClick={saveQuoterList}>
-					<IoSave size='2em' /> Save List
-				</button>
-			</section>
-
-			{/*  showToast() */}
-			<ToastComponent />
-			{/* content footer of placement body */}
-		</section>
+		</>
 	)
 }
 

@@ -7,6 +7,7 @@ import {
 	ACTION_BUTTON_INSURER_ALLOCATION,
 	ACTION_BUTTON_INSURER_REVIEW,
 	ACTION_BUTTON_INSURER_UNCOMPLETE,
+	LIST_LINK,
 	ROUTE_PREFIX,
 	StatusStructureTypeEnum
 } from '../../../../../constants'
@@ -72,7 +73,9 @@ const HeadAction = () => {
 	 * Redirection to the right link compared to programId or matchParams
 	 */
 	const navigationLinkHandler = () => {
-		programId
+		getCurrentPathWithoutLastPart() === LIST_LINK.SUBMIT_PROGRAM
+			? homeHandler()
+			: programId
 			? history.push(headerAction.link + '/' + programId)
 			: history.push(headerAction.link)
 	}
