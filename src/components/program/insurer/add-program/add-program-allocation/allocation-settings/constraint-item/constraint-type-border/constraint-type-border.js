@@ -17,18 +17,25 @@ import { CONSTRAINT_TYPE } from '../../../../../../../../constants'
  */
 const ConstraintTypeBorder = ({
 	groupName,
+
 	onChanged,
 	layerList = [],
+
 	defaultConstraint = {
 		type: '',
 		value: '',
 		target: ''
 	}
 }) => {
+	console.log('Defaut value', defaultConstraint)
+	console.log('Defaut value target', defaultConstraint.target)
+	console.log('New layer list', layerList)
+
 	/**
 	 * Constraint form builder
 	 * @type {{type: {valid: boolean, touched: boolean, elementConfig: {options: [{displayValue: string, value: string}, {displayValue: string, value: string}, {displayValue: string, value: string}, {displayValue: string, value: string}, {displayValue: string, value: string}]}, name: string, elementType: string, value: string}, value: {valid: boolean, touched: boolean, elementConfig: {min: number, max: number, placeholder: number, type: string}, name: string, elementType: string, value: number}, target: {valid: boolean, touched: boolean, elementConfig: {options: ({displayValue: string, value: string}|{displayValue: string, value: string}|{displayValue: string, value: *})[]}, name: string, elementType: string, value: string}}}
 	 */
+
 	const constraintForm = {
 		type: {
 			name: 'constraintForm',
@@ -36,7 +43,7 @@ const ConstraintTypeBorder = ({
 			elementType: 'select',
 			elementConfig: {
 				options: [
-					{ value: '', displayValue: '' },
+					// { value: '', displayValue: '' },
 					{ value: CONSTRAINT_TYPE.MAXIMUM, displayValue: 'Maximum share' },
 					// {
 					// 	value: CONSTRAINT_TYPE.RELATIVE_MAXIMUM,
@@ -78,18 +85,22 @@ const ConstraintTypeBorder = ({
 			elementType: 'select',
 			elementConfig: {
 				options: [
-					{ value: '', displayValue: '' },
+					// { value: '', displayValue: '' },
 					{ value: 'Overall program', displayValue: 'Overall program' },
 					...layerList.map((layer, index) => {
-						return { value: layer._id, displayValue: 'Layer ' + (index + 1) }
+						return {
+							value: layer._id,
+							displayValue: 'Layer ' + (index + 1)
+						}
 					})
 				]
 			},
-			value: defaultConstraint.target || '',
+			value: defaultConstraint.target,
 			valid: false,
 			touched: false
 		}
 	}
+	console.log('Target Map', constraintForm.target.elementConfig.options)
 
 	/**
 	 * constraint structure
@@ -160,7 +171,7 @@ const ConstraintTypeBorder = ({
 		temp.target = target
 		setConstraint((prevState) => temp)
 	}
-
+	console.log('la value is', constraintForm.type.value)
 	return (
 		<section className='constraint-box'>
 			{/* constrain parameter */}

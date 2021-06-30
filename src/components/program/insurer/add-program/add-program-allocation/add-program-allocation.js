@@ -31,6 +31,11 @@ const AddProgramAllocation = () => {
 	const { programId } = useParams()
 
 	/**
+	 * Loader
+	 */
+	const [isLoading, setIsLoading] = useState(true)
+
+	/**
 	 * Form for group select
 	 * @type {{valid: boolean, touched: boolean, elementConfig: {options: [{displayValue: string, value: string}]}, name: string, label: string, value: string}}
 	 */
@@ -65,7 +70,7 @@ const AddProgramAllocation = () => {
 	 * new item for group list
 	 */
 	const [selectList, setSelectList] = useState([])
-	console.log('la list is', selectList)
+
 	/**
 	 * refactor selected list pour select display
 	 */
@@ -122,18 +127,20 @@ const AddProgramAllocation = () => {
 				 */
 				requestInterceptor(response)
 				console.log('constraintsAllocation init value  : ', response)
+				setIsLoading(false)
 				// setConstraintsAllocation((prevState) => [...response.constraints])
+
 				setConstraintsAllocation((prevState) => [
 					...response.constraints.map((constraintItem, index) => {
 						return {
 							// type: 'interval',
 							type: constraintItem.type,
 							groupOffice: constraintItem.groupOffice,
-							constraint: constraintItem.constraint
+							constraint: constraintItem.constraint,
+							NewConstraint: constraintItem.constraint
 						}
 					})
 				])
-				console.log('constraintsAllocation is set  : ', constraintsAllocation)
 
 				const officeList = getOfficeList()
 				console.log('test officeList : ', officeList)
@@ -159,6 +166,7 @@ const AddProgramAllocation = () => {
 			setConstraintsAllocation([])
 		}
 	}, [])
+	console.log('constraintsAllocation is set  : ', constraintsAllocation)
 
 	useEffect(() => {
 		selectedGroup === ''
@@ -166,24 +174,24 @@ const AddProgramAllocation = () => {
 			: setDisableAddConstraint(false)
 	}, [selectedGroup])
 
-	console.log('list froup is', listGroup)
 	useEffect(() => {
-		const test = listGroup.reduce(
-			(previousValue, currentValue, currentIndex) => [
-				...previousValue.reduce((unique, index) => {
-					if (!unique.some((obj) => obj.displayValue === index.displayValue)) {
-						unique.push(index)
+		if (!isLoading) {
+			const test = listGroup.reduce(
+				(previousValue, currentValue, currentIndex) => [
+					...previousValue,
+					{
+						value: currentIndex,
+						displayValue: currentValue.name
 					}
-					return unique
-				}, []),
-				{
-					value: currentIndex,
-					displayValue: currentValue.name
-				}
-			],
-			[]
-		)
-		setSelectList(test)
+				],
+				[]
+			)
+			const removeDuplicates = (data, key) => {
+				return [...new Map(data.map((item) => [key(item), item])).values()]
+			}
+
+			setSelectList(removeDuplicates(test, (item) => item.displayValue))
+		}
 	}, [listGroup])
 
 	useEffect(() => {
@@ -294,6 +302,7 @@ const AddProgramAllocation = () => {
 	console.log('name', selectGroup.name)
 	console.log('label', selectGroup.label)
 	console.log('elemconfig', selectGroup.elementConfig)
+
 	/**
 	 * Set content bloc for Program alloc
 	 */

@@ -1,8 +1,7 @@
-import { FaPen } from 'react-icons/fa'
 import * as PropTypes from 'prop-types'
 import './general-information.scss'
 
-const GeneralInformation = ({ program, handleClick }) => {
+const GeneralInformation = ({ program }) => {
 	/**
 	 * Converte all letter in Upper case to lower case exept the first
 	 * Replace '_' by ' '
@@ -28,13 +27,7 @@ const GeneralInformation = ({ program, handleClick }) => {
 	return (
 		<section className='general-information'>
 			<section className='display-modify'>
-				<h3>General information</h3>{' '}
-				<FaPen
-					className='faPen'
-					id='GENERAL_INFORMATION'
-					data-testid='GENERAL_INFORMATION'
-					onClick={handleClick}
-				/>
+				<h3>General information</h3>
 			</section>
 
 			<section className='display-information'>

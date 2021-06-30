@@ -27,10 +27,16 @@ const ConstraintItem = ({
 	onRemoved
 }) => {
 	let displayView = ''
+
 	/**
 	 * Targeted Program Id
 	 */
 	const { programId } = useParams()
+
+	/**
+	 * Loader
+	 */
+	const [isLoading, setIsLoading] = useState(true)
 
 	/**
 	 * Layer list
@@ -46,6 +52,7 @@ const ConstraintItem = ({
 			.then((res) => res.json())
 			.then((allLayer) => {
 				setLayerList(allLayer)
+				setIsLoading(false)
 				console.log('allLayer : ', allLayer)
 				return allLayer
 			})
@@ -89,6 +96,7 @@ const ConstraintItem = ({
 			displayView = (
 				<ConstraintTypeBorder
 					groupName={groupName}
+					isLoading={isLoading}
 					onChanged={onUpdate}
 					defaultConstraint={defaultConstraint}
 					layerList={layerList.layers}
@@ -106,7 +114,9 @@ const ConstraintItem = ({
 	/**
 	 * Set content bloc for constraint item
 	 */
-	return (
+	return isLoading ? (
+		<div> </div>
+	) : (
 		<>
 			<section className={'constraint-row'}>
 				{displayView}

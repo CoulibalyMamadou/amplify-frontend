@@ -3,8 +3,8 @@ import logo from '../../../assets/logo/Logo_Bifrost.svg'
 import avatar from '../../../assets/avatar/avatar.png'
 import settingIcon from '../../../assets/icon/settings-icon.png'
 import logoutIcon from '../../../assets/icon/logout-icon.png'
-import notification from '../../../assets/icon/notification-new-icon.png'
-import search from '../../../assets/icon/search-icon.png'
+// import notification from '../../../assets/icon/notification-new-icon.png'
+// import search from '../../../assets/icon/search-icon.png'
 import { useHistory, useLocation } from 'react-router'
 import { VIEW_ACTION_MESSAGE, LIST_LINK } from '../../../constants'
 import { useEffect, useRef, useState } from 'react'
@@ -92,7 +92,7 @@ const Nav = () => {
 				<img src={logo} alt='Logo Bifrost' className='login-logo' />
 			</div>
 			<div className='header-action'>
-				<div className='app-action'>
+				{/* <div className='app-action'>
 					<a href='/'>
 						<img src={search} alt='search icon' className='nav-search-icon' />
 					</a>
@@ -103,7 +103,7 @@ const Nav = () => {
 							className='nav-notification-icon'
 						/>
 					</a>
-				</div>
+				</div> */}
 				<div className='user-action-bar' onClick={onClick}>
 					<p className='user-info'>
 						{user.firstName} {user.lastName}

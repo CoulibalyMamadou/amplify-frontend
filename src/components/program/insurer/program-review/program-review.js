@@ -111,9 +111,6 @@ const ProgramReview = () => {
 	const handleClick = (event) => {
 		const identification = event.currentTarget.id
 
-		if (identification === 'GENERAL_INFORMATION') {
-			history.push(LIST_LINK.DASHBOARD)
-		}
 		if (identification === 'DOCUMENT') {
 			history.push(LIST_LINK.ADD_DOCUMENT + '/' + id)
 		}

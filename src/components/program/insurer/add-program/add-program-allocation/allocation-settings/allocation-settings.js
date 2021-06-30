@@ -23,6 +23,7 @@ const AllocationSettings = ({ listConstraint, changed, removed }) => {
 		console.log('constraint : ', constraint)
 		setConstraint(updateConstraint)
 	}, [listConstraint])
+	console.log('new constraints', constraint)
 
 	/**
 	 * Update constraint list
@@ -53,7 +54,7 @@ const AllocationSettings = ({ listConstraint, changed, removed }) => {
 							key={index}
 							id={index}
 							type='interval'
-							defaultConstraint={constraint.constraint}
+							defaultConstraint={constraint.NewConstraint}
 							groupName={constraint.groupOffice.name}
 							onChanged={update}
 							onRemoved={removeConstraint}

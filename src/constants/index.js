@@ -13,8 +13,8 @@ export const VALID_LOGIN_MESSAGE = 'Bienvenue sur Bifrost web app'
 export const LOGOUT = 'LOGOUT'
 export const LOGOUT_MESSAGE = 'LOGOUT'
 
-export const API = 'https://www.mamadoucoulibaly.com'
-// export const API = 'http://localhost:8000'
+// export const API = 'https://www.mamadoucoulibaly.com'
+export const API = 'http://localhost:8000'
 
 // USER
 export const ERROR_USER = 'ERROR_USER'
@@ -52,6 +52,10 @@ export const ROUTE_PREFIX = {
 export const TOAST = {
 	PROGRAM_CREATE_SUCCESS: {
 		message: 'Program successfully created',
+		state: 'success'
+	},
+	PROGRAM_TARGET_PRICE_SUCCESS: {
+		message: 'Target price saved successfully',
 		state: 'success'
 	},
 	PROGRAM_QUOTATION_LIST_SUCCESS: {
@@ -153,7 +157,8 @@ export const VIEW_ACTION_MESSAGE = {
 	[LIST_LINK.QUOTATION]: 'Reinsurer types',
 	[LIST_LINK.CONSTRAINT]: 'Allocation constraints',
 	[LIST_LINK.ALLOCATION]: 'Allocation',
-	[LIST_LINK.REVIEW]: 'Review'
+	[LIST_LINK.REVIEW]: 'Review',
+	[LIST_LINK.USER_PROFILE]: 'User profile'
 }
 
 export const StatusStructureTypeEnum = {

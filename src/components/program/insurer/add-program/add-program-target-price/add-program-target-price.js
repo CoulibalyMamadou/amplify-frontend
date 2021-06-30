@@ -8,6 +8,8 @@ import {
 import { useParams } from 'react-router'
 import { HiSaveAs } from 'react-icons/all'
 import { requestInterceptor } from '../../../../../sessionStorage/sessionStorage'
+import { TOAST } from '../../../../../constants'
+import useToast from '../../../../../containers/Toast/useToast/useToast'
 
 /**
  * Target price edit component
@@ -20,7 +22,10 @@ const AddProgramTargetPrice = () => {
 	 */
 	const { programId } = useParams()
 
-	const [status, setStatus] = useState('')
+	/**
+	 * Toast component for notification
+	 */
+	const { updateToast, ToastComponent } = useToast('', 'success')
 
 	/**
 	 * Layer list
@@ -89,9 +94,23 @@ const AddProgramTargetPrice = () => {
 				 * Intercept Error code from API request
 				 */
 				requestInterceptor(value)
-				setStatus('Target prices saved')
+				showToast(
+					TOAST.PROGRAM_TARGET_PRICE_SUCCESS.message,
+					TOAST.PROGRAM_TARGET_PRICE_SUCCESS.state
+				)
 				// setStatus(value.status)
 			})
+	}
+
+	/**
+	 * Show toast for any information of CRUD or error
+	 * @param message message view in toast
+	 * @param status toast status
+	 */
+	const showToast = (message = '', status = 'success') => {
+		console.log('enter to toast')
+		console.log('enter to toast', status)
+		updateToast(message, status)
 	}
 
 	/**
@@ -122,13 +141,12 @@ const AddProgramTargetPrice = () => {
 							Save target price
 						</button>
 					</section>
-					<p className='share-status'> {status} </p>
 				</div>
 			</section>
 
 			{/* body of placement body */}
 			<section className='placement-display'> </section>
-
+			<ToastComponent />
 			{/* content footer of placement body */}
 		</section>
 	)

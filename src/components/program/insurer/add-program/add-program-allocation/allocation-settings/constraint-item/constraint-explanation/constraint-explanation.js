@@ -31,7 +31,7 @@ const ConstraintExplanation = ({
 					groupName +
 					' Group obtains at least a ' +
 					constraintValue +
-					'% share of' +
+					'% share of ' +
 					constraintTarget +
 					' if below market price on '
 				break
@@ -41,7 +41,7 @@ const ConstraintExplanation = ({
 					groupName +
 					' Group obtains more than ' +
 					constraintValue +
-					'% share of' +
+					'% share of ' +
 					constraintTarget +
 					' if below market price on '
 				break

@@ -16,7 +16,8 @@ const UpdateUserProfileProgramHome = ({ user = {} }) => {
 			elementType: 'input',
 			elementConfig: {
 				type: 'text',
-				placeholder: 'First Name'
+				placeholder: 'First Name',
+				disabled: true
 			},
 			value: user.firstName,
 			// validation: {
@@ -46,7 +47,8 @@ const UpdateUserProfileProgramHome = ({ user = {} }) => {
 			elementType: 'input',
 			elementConfig: {
 				type: 'email',
-				placeholder: 'email address'
+				placeholder: 'email address',
+				disabled: true
 			},
 			value: user.email,
 			// validation: {
@@ -61,7 +63,8 @@ const UpdateUserProfileProgramHome = ({ user = {} }) => {
 			elementType: 'input',
 			elementConfig: {
 				type: 'password',
-				placeholder: 'current password'
+				placeholder: 'current password',
+				disabled: true
 			},
 			value: user.password,
 			// validation: {
@@ -79,7 +82,8 @@ const UpdateUserProfileProgramHome = ({ user = {} }) => {
 			elementType: 'input',
 			elementConfig: {
 				type: 'text',
-				placeholder: 'Last name'
+				placeholder: 'Last name',
+				disabled: true
 			},
 			value: user.lastName,
 			// validation: {
@@ -94,7 +98,8 @@ const UpdateUserProfileProgramHome = ({ user = {} }) => {
 			elementType: 'input',
 			elementConfig: {
 				type: 'text',
-				placeholder: 'Office'
+				placeholder: 'Office',
+				disabled: true
 			},
 			value: user.office,
 			// validation: {
@@ -109,7 +114,8 @@ const UpdateUserProfileProgramHome = ({ user = {} }) => {
 			elementType: 'input',
 			elementConfig: {
 				type: 'number',
-				placeholder: 'phone'
+				placeholder: 'phone',
+				disabled: true
 			},
 			value: '',
 			// validation: {
@@ -124,7 +130,8 @@ const UpdateUserProfileProgramHome = ({ user = {} }) => {
 			elementType: 'input',
 			elementConfig: {
 				type: 'password',
-				placeholder: 'New Password'
+				placeholder: 'New Password',
+				disabled: true
 			},
 			value: '',
 			// validation: {
@@ -139,7 +146,8 @@ const UpdateUserProfileProgramHome = ({ user = {} }) => {
 			elementType: 'input',
 			elementConfig: {
 				type: 'password',
-				placeholder: 'Confirm New Password'
+				placeholder: 'Confirm New Password',
+				disabled: true
 			},
 			value: '',
 			// validation: {

@@ -170,7 +170,7 @@ const AddGroupModal = ({ saveGroup, listOffice }) => {
 					</span>
 				</div>
 				<div className='modal-action'>
-					<button className={'modal-action-button'} onClick={addGroup}>
+					<button className='modal-action-button' onClick={addGroup}>
 						Create group
 					</button>
 				</div>

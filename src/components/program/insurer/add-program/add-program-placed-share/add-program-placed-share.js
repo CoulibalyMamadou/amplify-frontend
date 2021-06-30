@@ -8,6 +8,8 @@ import {
 } from '../../../../../api/program.service'
 import { HiSaveAs } from 'react-icons/all'
 import { requestInterceptor } from '../../../../../sessionStorage/sessionStorage'
+import { TOAST } from '../../../../../constants'
+import useToast from '../../../../../containers/Toast/useToast/useToast'
 
 /**
  * Place share edit component
@@ -20,7 +22,12 @@ const AddProgramPlacedShare = () => {
 	 */
 	const { programId } = useParams()
 
-	const [status, setStatus] = useState('')
+	// const [status, setStatus] = useState('')
+
+	/**
+	 * Toast component for notification
+	 */
+	const { updateToast, ToastComponent } = useToast('', 'success')
 
 	/**
 	 * Layer list
@@ -92,8 +99,22 @@ const AddProgramPlacedShare = () => {
 				 * Intercept Error code from API request
 				 */
 				requestInterceptor(value)
-				setStatus(value.status)
+				showToast(
+					TOAST.PROGRAM_TARGET_PRICE_SUCCESS.message,
+					TOAST.PROGRAM_TARGET_PRICE_SUCCESS.state
+				)
+				// setStatus(value.status)
 			})
+	}
+	/**
+	 * Show toast for any information of CRUD or error
+	 * @param message message view in toast
+	 * @param status toast status
+	 */
+	const showToast = (message = '', status = 'success') => {
+		console.log('enter to toast')
+		console.log('enter to toast', status)
+		updateToast(message, status)
 	}
 
 	/**
@@ -118,13 +139,13 @@ const AddProgramPlacedShare = () => {
 								Save share
 							</button>
 						</section>
-						<p className='share-status'> {status} </p>
+						{/* <p className='share-status'> {status} </p> */}
 					</div>
 				</section>
 
 				{/* body of placement body */}
 				<section className='placement-display'> </section>
-
+				<ToastComponent />
 				{/* content footer of placement body */}
 			</section>
 		</>

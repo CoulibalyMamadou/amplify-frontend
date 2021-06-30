@@ -1,6 +1,6 @@
 import './add-layer-list.scss'
 import { useEffect, useState } from 'react'
-import add from '../../../../../../assets/icon/add-icon.png'
+import { FaPlusCircle } from 'react-icons/fa'
 import AddLayer from './add-layer/add-layer'
 import * as PropTypes from 'prop-types'
 import { TiDeleteOutline } from 'react-icons/all'
@@ -49,6 +49,7 @@ const AddLayerList = ({ limit = 0, setData }) => {
 	 */
 	const addLayerHandler = (e) => {
 		e.preventDefault()
+		console.log('XXXXX', layerList)
 		let addList = []
 		if (layerList.length > 0) {
 			const lastLayer = layerList[layerList.length - 1]
@@ -162,7 +163,7 @@ const AddLayerList = ({ limit = 0, setData }) => {
 			{countTotalAllocate < limit ? (
 				<div className='layer-add-button'>
 					<button className='action-button' onClick={addLayerHandler}>
-						<img src={add} alt='Supporting documents' className='action-img' />
+						<FaPlusCircle className='icon-plus' />
 						New layer
 					</button>
 				</div>
