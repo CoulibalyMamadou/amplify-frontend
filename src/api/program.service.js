@@ -124,7 +124,8 @@ export const getProgramQuoteConstraintListFill = ({ programId }) => {
 }
 
 export const getAllProgramQuotationListFill = ({ programId }) => {
-	return fetch(`${API}/program/quotation/${programId}`, {
+	// return fetch(`${API}/program/quotation/${programId}`, {
+	return fetch(`${API}/quotation/${programId}`, {
 		headers: loadHeaderWithAuth()
 	})
 }
