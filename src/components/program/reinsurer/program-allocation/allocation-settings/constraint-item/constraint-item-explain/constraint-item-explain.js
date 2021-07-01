@@ -15,27 +15,27 @@ const ConstraintItemExplain = ({
 			infoDisplay =
 				'Reinsurer ' +
 				reinsurer +
-				' requires that obtain more than a ' +
+				' requires a maximum share of ' +
 				constraintValue +
-				'% share of the ' +
+				'% of ' +
 				constraintTarget
 			break
 		case CONSTRAINT_TYPE.RELATIVE_MINIMUM:
 			infoDisplay =
 				'Reinsurer ' +
 				reinsurer +
-				' requires at least a ' +
+				' requires a minimum share of ' +
 				constraintValue +
-				'% share of the program ' +
+				'% of its allocation on ' +
 				constraintTarget
 			break
 		case CONSTRAINT_TYPE.RELATIVE_MAXIMUM:
 			infoDisplay =
 				'Reinsurer ' +
 				reinsurer +
-				' requires at least a ' +
+				' requires a maximum share of ' +
 				constraintValue +
-				'% share of the program ' +
+				'% of its allocation on ' +
 				constraintTarget
 			break
 		case CONSTRAINT_TYPE.EQUAL:
@@ -48,11 +48,13 @@ const ConstraintItemExplain = ({
 			break
 		case CONSTRAINT_TYPE.CONDITIONAL_MINIMUM:
 			infoDisplay =
+				'Reinsurer ' +
 				reinsurer +
-				' requires that obtain only ' +
+				' requires a minimum share of ' +
 				constraintValue +
-				'% share of the ' +
-				constraintTarget
+				'% of ' +
+				constraintTarget +
+				' if bellow market price'
 			break
 		default:
 			infoDisplay = ' '

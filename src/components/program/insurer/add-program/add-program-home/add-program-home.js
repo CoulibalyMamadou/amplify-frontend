@@ -91,7 +91,7 @@ const AddProgramHome = () => {
 		},
 		premiumIncome: {
 			name: 'premiumIncome',
-			label: 'Estimated Premium Income',
+			label: 'Estimated Premium Income (M€)',
 			elementType: 'input',
 			elementConfig: {
 				type: 'number',

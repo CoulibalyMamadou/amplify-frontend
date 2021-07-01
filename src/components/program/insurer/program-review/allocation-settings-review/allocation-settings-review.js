@@ -38,9 +38,9 @@ const AllocationSettings = ({ program = {}, handleClick, constraint }) => {
 
 			if (type === 'max') {
 				if (layer) {
-					return `A single reinsurer cannot obtain more than a ${value}% share of ${layer}`
+					return `A single reinsurer in ${name} Group cannot obtain more than a ${value}% share of ${layer}`
 				} else {
-					return `A single reinsurer cannot obtain more than a ${value}% share of Overall program`
+					return `A single reinsurer in ${name} Group cannot obtain more than a ${value}% share of Overall program`
 				}
 			}
 			if (type === 'cond_min') {
@@ -79,13 +79,14 @@ const AllocationSettings = ({ program = {}, handleClick, constraint }) => {
 				/>
 			</section>
 			<section className='display-allocation-settings'>
-				{constraint.constraints.map((constraint, index) => {
-					return (
-						<ul key={index}>
-							<li>{constraintSentence(constraint)}</li>
-						</ul>
-					)
-				})}
+				{constraint.constraints &&
+					constraint.constraints.map((constraint, index) => {
+						return (
+							<ul key={index}>
+								<li>{constraintSentence(constraint)}</li>
+							</ul>
+						)
+					})}
 			</section>
 		</section>
 	)

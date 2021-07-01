@@ -13,8 +13,8 @@ export const VALID_LOGIN_MESSAGE = 'Bienvenue sur Bifrost web app'
 export const LOGOUT = 'LOGOUT'
 export const LOGOUT_MESSAGE = 'LOGOUT'
 
-export const API = 'https://www.mamadoucoulibaly.com'
-// export const API = 'http://localhost:8000'
+// export const API = 'https://www.mamadoucoulibaly.com'
+export const API = 'http://localhost:8000'
 
 // USER
 export const ERROR_USER = 'ERROR_USER'
@@ -107,11 +107,11 @@ export const TOAST = {
 		state: 'success'
 	},
 	PROGRAM_CONSTRAINT_CREATE_GROUP_SELECT_ERROR: {
-		message: 'Make sure you select a group office',
+		message: 'Make sure to select a group',
 		state: 'error'
 	},
 	PROGRAM_CONSTRAINT_CREATE_GROUP_INPUT_ERROR: {
-		message: 'Make sure all group info are filed',
+		message: 'Make sure all group info are correct',
 		state: 'error'
 	}
 }
@@ -148,7 +148,7 @@ export const USER_LINK = {
 export const VIEW_ACTION_MESSAGE = {
 	[LIST_LINK.DASHBOARD]: 'Dashboard',
 	[LIST_LINK.ADD_PROGRAM]: 'General information',
-	[LIST_LINK.ADD_DOCUMENT]: 'Document settings',
+	[LIST_LINK.ADD_DOCUMENT]: 'Documents',
 	[LIST_LINK.ADD_PLACED_SHARE]: 'Placed share',
 	[LIST_LINK.ADD_TARGET_PRICE]: 'Target price',
 	[LIST_LINK.ADD_QUOTER_LIST]: 'Reinsurer types',
@@ -231,7 +231,7 @@ export const ACTION_BUTTON = {
 		link: LIST_LINK.ADD_QUOTER_LIST,
 		message: (
 			<>
-				Quoter/ Follower list{' '}
+				Reinsurer types{' '}
 				<RiArrowRightSLine size={'1em'} className='action-img' />
 			</>
 		)
@@ -397,7 +397,7 @@ export const ACTION_BUTTON_INSURER = {
 		link: LIST_LINK.ADD_QUOTER_LIST,
 		message: (
 			<>
-				Quoter/ Follower list{' '}
+				Reinsurer types{' '}
 				<RiArrowRightSLine size={'1em'} className='action-img' />
 			</>
 		)
@@ -564,7 +564,7 @@ export const ACTION_BUTTON_INSURER_UNCOMPLETE = {
 		link: LIST_LINK.ADD_QUOTER_LIST,
 		message: (
 			<>
-				Quoter/ Follower list{' '}
+				Reinsurer types{' '}
 				<RiArrowRightSLine size={'1em'} className='action-img' />
 			</>
 		),

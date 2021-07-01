@@ -36,6 +36,8 @@ const GeneralInformation = ({ program }) => {
 					<li>{capitalizeFirstLetter(program.type)}</li>
 					<li>{capitalizeFirstLetter(program.lineOfBusiness)}</li>
 					<li>{capitalizeFirstLetter(program.riskStructure)}</li>
+					<li>Estimated Premium Income : {program.premiumIncome} (M€)</li>
+					<li>Limit : {program.limit} (M€)</li>
 					{program.layers &&
 						program.layers.map((layer, index) => {
 							return (

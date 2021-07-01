@@ -61,7 +61,7 @@ const AddLayer = ({
 		},
 		attachmentPoint: {
 			name: 'attachmentPoint',
-			label: 'Attachment Point',
+			label: 'Attachment Point (M€)',
 			elementType: 'input',
 			elementConfig: {
 				type: 'number',

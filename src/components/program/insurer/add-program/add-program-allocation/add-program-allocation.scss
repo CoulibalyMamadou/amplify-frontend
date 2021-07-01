@@ -90,12 +90,10 @@
 	}
 
 	.allocation-submit-constraint {
+		width: 100%;
 		display: flex;
-		width: 96%;
-		padding: 2%;
-		justify-content: center;
-		align-content: center;
-		align-items: center;
+		justify-content: flex-end;
+		border: 2px red solid;
 	}
 }
 

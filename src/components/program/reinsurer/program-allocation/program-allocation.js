@@ -248,7 +248,7 @@ const ProgramAllocation = () => {
 					</button>
 					<button className='action-button-save' onClick={submitConstraint}>
 						<IoSave size='2em' className='icon-save' />
-						Save constraint
+						Save constraints
 					</button>
 				</section>
 				{/* header of placement box */}

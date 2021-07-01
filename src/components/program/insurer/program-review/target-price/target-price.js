@@ -32,7 +32,8 @@ const TargetPrice = ({ program = {}, handleClick }) => {
 						return (
 							<ul key={index}>
 								<li>
-									Layer {index + 1} : {addDecimal(layer.targetPrice)}% Rol
+									Layer {index + 1} : {addDecimal(layer.targetPrice)}% Premium
+									rate
 								</li>
 							</ul>
 						)

@@ -151,8 +151,8 @@ const AddGroupModal = ({ saveGroup, listOffice }) => {
 						<DropdownMultiple
 							name='locations'
 							searchable={['Search for location', 'No matching location']}
-							titleSingular='Insurer group'
-							title='Select offices group'
+							titleSingular='reinsurer selected'
+							title='Select group'
 							list={groupSelectList}
 							onChange={onChange}
 						/>

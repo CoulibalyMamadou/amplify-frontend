@@ -18,23 +18,25 @@ const ReinsurerTypes = ({ handleClick, quoterList }) => {
 				<div>
 					<h4>Quoters</h4>
 
-					{quoterList.quoterList.quoter.map((quoter, index) => {
-						return (
-							<ul key={index}>
-								<li>{quoter.name}</li>
-							</ul>
-						)
-					})}
+					{quoterList.quoterList &&
+						quoterList.quoterList.quoter.map((quoter, index) => {
+							return (
+								<ul key={index}>
+									<li>{quoter.name}</li>
+								</ul>
+							)
+						})}
 				</div>
 				<div>
 					<h4>Followers</h4>
-					{quoterList.quoterList.follower.map((follower, index) => {
-						return (
-							<ul key={index}>
-								<li>{follower.name}</li>
-							</ul>
-						)
-					})}
+					{quoterList.quoterList &&
+						quoterList.quoterList.follower.map((follower, index) => {
+							return (
+								<ul key={index}>
+									<li>{follower.name}</li>
+								</ul>
+							)
+						})}
 				</div>
 				<div>
 					<h4>Excluded</h4>

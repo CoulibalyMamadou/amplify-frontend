@@ -199,7 +199,7 @@ const AddProgramAllocation = () => {
 			{
 				// label: '',
 				value: '',
-				displayValue: 'Select office group',
+				displayValue: 'Select group',
 				disabled: true
 			},
 			...selectList
