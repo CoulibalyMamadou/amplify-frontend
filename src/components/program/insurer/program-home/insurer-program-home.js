@@ -1,5 +1,5 @@
 import './insurer-program-home.scss'
-import { FaFilter, MdSort } from 'react-icons/all'
+// import { FaFilter, MdSort } from 'react-icons/all'
 import ProgramList from './program-list/program-list'
 // import ProgramFooter from './program-footer/program-footer'
 import { useEffect, useState } from 'react'
