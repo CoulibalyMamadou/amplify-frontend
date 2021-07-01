@@ -13,8 +13,8 @@ export const VALID_LOGIN_MESSAGE = 'Bienvenue sur Bifrost web app'
 export const LOGOUT = 'LOGOUT'
 export const LOGOUT_MESSAGE = 'LOGOUT'
 
-// export const API = 'https://www.mamadoucoulibaly.com'
-export const API = 'http://localhost:8000'
+export const API = 'https://www.mamadoucoulibaly.com'
+// export const API = 'http://localhost:8000'
 
 // USER
 export const ERROR_USER = 'ERROR_USER'

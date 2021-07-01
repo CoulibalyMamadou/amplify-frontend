@@ -74,14 +74,14 @@ const InsurerProgramHome = () => {
 			<div className='placement-header'>
 				<div className='placement-action'>
 					<p className='placement-action-title'>All placements</p>
-					<div className='placement-action-button'>
+					{/* <div className='placement-action-button'>
 						<span>
 							<MdSort /> Sort
 						</span>
 						<span>
 							<FaFilter /> Filter
 						</span>
-					</div>
+					</div> */}
 				</div>
 				<div className='placement-head'>
 					<span>Placement details</span>
