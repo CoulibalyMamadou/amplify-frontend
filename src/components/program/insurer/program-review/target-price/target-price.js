@@ -19,12 +19,16 @@ const TargetPrice = ({ program = {}, handleClick }) => {
 		<section className='target-prices'>
 			<section className='display-modify'>
 				<h3>Target prices</h3>
-				<FaPen
-					className='faPen'
-					id='ADD_TARGET_PRICE'
-					data-testid='ADD_TARGET_PRICE'
-					onClick={handleClick}
-				/>
+				{program.status === 'UNCOMPLETE' ? (
+					<FaPen
+						className='faPen'
+						id='DOCUMENT'
+						data-testid='DOCUMENT'
+						onClick={handleClick}
+					/>
+				) : (
+					<div></div>
+				)}
 			</section>
 			<section className='display-target-prices'>
 				{program.layers &&

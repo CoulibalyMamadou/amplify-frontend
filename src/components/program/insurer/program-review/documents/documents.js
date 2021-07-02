@@ -86,12 +86,16 @@ const Documents = ({ program, handleClick }) => {
 		<section className='document'>
 			<section className='display-modify'>
 				<h3>Documents</h3>
-				<FaPen
-					className='faPen'
-					id='DOCUMENT'
-					data-testid='DOCUMENT'
-					onClick={handleClick}
-				/>
+				{program.status === 'UNCOMPLETE' ? (
+					<FaPen
+						className='faPen'
+						id='DOCUMENT'
+						data-testid='DOCUMENT'
+						onClick={handleClick}
+					/>
+				) : (
+					<div></div>
+				)}
 			</section>
 			<section className='display-document'>
 				{program.document &&

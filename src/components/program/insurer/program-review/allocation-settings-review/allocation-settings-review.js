@@ -71,12 +71,16 @@ const AllocationSettings = ({ program = {}, handleClick, constraint }) => {
 		<section className='allocation-settings'>
 			<section className='display-modify'>
 				<h3>Allocation settings</h3>
-				<FaPen
-					className='faPen'
-					id='ADD_ALLOCATION_CONSTRAINT'
-					data-testid='ADD_ALLOCATION_CONSTRAINT'
-					onClick={handleClick}
-				/>
+				{program.status === 'UNCOMPLETE' ? (
+					<FaPen
+						className='faPen'
+						id='DOCUMENT'
+						data-testid='DOCUMENT'
+						onClick={handleClick}
+					/>
+				) : (
+					<div></div>
+				)}
 			</section>
 			<section className='display-allocation-settings'>
 				{constraint.constraints &&

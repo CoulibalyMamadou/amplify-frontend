@@ -10,7 +10,7 @@ import { LIST_LINK } from '../../../../constants/index'
 import { useLocation, useHistory } from 'react-router'
 import GeneralInformation from './general-information/general-information'
 import Documents from './documents/documents'
-import TargetPrice from './target-price/target-price'
+// import TargetPrice from './target-price/target-price'
 import ReinsurerTypes from './reinsurer-types/reinsurer-types'
 import AllocationSettings from './allocation-settings-review/allocation-settings-review'
 
@@ -133,8 +133,12 @@ const ProgramReview = () => {
 				<section className='review-informations'>
 					<GeneralInformation program={program} handleClick={handleClick} />
 					<Documents program={program} handleClick={handleClick} />
-					<TargetPrice program={program} handleClick={handleClick} />
-					<ReinsurerTypes handleClick={handleClick} quoterList={quoterList} />
+					{/* <TargetPrice program={program} handleClick={handleClick} /> */}
+					<ReinsurerTypes
+						handleClick={handleClick}
+						quoterList={quoterList}
+						program={program}
+					/>
 					<AllocationSettings
 						program={program}
 						handleClick={handleClick}

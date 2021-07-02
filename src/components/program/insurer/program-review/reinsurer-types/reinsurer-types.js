@@ -2,17 +2,21 @@ import './reinsurer-types.scss'
 import { FaPen } from 'react-icons/fa'
 import * as PropTypes from 'prop-types'
 
-const ReinsurerTypes = ({ handleClick, quoterList }) => {
+const ReinsurerTypes = ({ handleClick, quoterList, program }) => {
 	return (
 		<section className='reinsurer-type'>
 			<section className='display-modify'>
 				<h3>Reinsurer types</h3>
-				<FaPen
-					className='faPen'
-					id='ADD_QUOTER_LIST'
-					data-testid='ADD_QUOTER_LIST'
-					onClick={handleClick}
-				/>
+				{program.status === 'UNCOMPLETE' ? (
+					<FaPen
+						className='faPen'
+						id='DOCUMENT'
+						data-testid='DOCUMENT'
+						onClick={handleClick}
+					/>
+				) : (
+					<div></div>
+				)}
 			</section>
 			<section className='dysplay-reinsurer-type'>
 				<div>
@@ -48,7 +52,8 @@ const ReinsurerTypes = ({ handleClick, quoterList }) => {
 
 ReinsurerTypes.propTypes = {
 	handleClick: PropTypes.func,
-	quoterList: PropTypes.object
+	quoterList: PropTypes.object,
+	program: PropTypes.object
 }
 
 export default ReinsurerTypes

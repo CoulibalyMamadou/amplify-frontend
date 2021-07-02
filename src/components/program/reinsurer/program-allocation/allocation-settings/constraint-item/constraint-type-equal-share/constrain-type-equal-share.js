@@ -42,6 +42,7 @@ const ConstrainTypeEqualShare = ({ onChanged }) => {
 				/>
 			</section>
 			{/* constrain explanation */}
+
 			<p className='constraint-explanation'>
 				Reinsurer Quoter 1 {isChecked ? 'requires' : 'does not require'} an
 				equal share allocation on every layers
