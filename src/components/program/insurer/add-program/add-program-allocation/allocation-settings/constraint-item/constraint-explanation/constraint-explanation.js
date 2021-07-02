@@ -47,9 +47,9 @@ const ConstraintExplanation = ({
 				break
 			case CONSTRAINT_TYPE.CONDITIONAL_MINIMUM:
 				message =
-					'If bellow market price, every reinsurer in group ' +
+					`If bellow market price, every reinsurer in ` +
 					groupName +
-					' cannot obtain more than a ' +
+					` should obtain at least a ` +
 					constraintValue +
 					'% share of ' +
 					constraintTarget

@@ -5,7 +5,7 @@ import { useLocation } from 'react-router'
 
 import GeneralInformation from './general-information/general-information'
 import Documents from './documents/documents'
-import TargetPrice from './target-price/target-price'
+// import TargetPrice from './target-price/target-price'
 
 const ProgramReview = () => {
 	/**
@@ -71,7 +71,7 @@ const ProgramReview = () => {
 				<section className='review-informations'>
 					<GeneralInformation program={program} />
 					<Documents program={program} />
-					<TargetPrice program={program} />
+					{/* <TargetPrice program={program} /> */}
 				</section>
 			</section>
 		</section>

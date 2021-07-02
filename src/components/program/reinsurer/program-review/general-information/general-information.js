@@ -37,6 +37,9 @@ const GeneralInformation = ({ program }) => {
 					<li>{capitalizeFirstLetter(program.lineOfBusiness)}</li>
 					<li>{capitalizeFirstLetter(program.riskStructure)}</li>
 					<li>Estimated Premium Income : {program.premiumIncome} (M€)</li>
+					<li>
+						Budget of the cedent for the program : {program.premiumIncome} (M€)
+					</li>
 					<li>Limit : {program.limit} (M€)</li>
 					{program.layers.map((layer, index) => {
 						return (

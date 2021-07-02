@@ -38,9 +38,9 @@ const ReinsurerTypes = ({ handleClick, quoterList }) => {
 							)
 						})}
 				</div>
-				<div>
+				{/* <div>
 					<h4>Excluded</h4>
-				</div>
+				</div> */}
 			</section>
 		</section>
 	)

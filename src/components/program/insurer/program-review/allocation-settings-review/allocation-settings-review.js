@@ -45,9 +45,9 @@ const AllocationSettings = ({ program = {}, handleClick, constraint }) => {
 			}
 			if (type === 'cond_min') {
 				if (layer) {
-					return `If bellow market price, every reinsurer in group ${name} cannot obtain more than a ${value}% share of ${layer}`
+					return `If bellow market price, every reinsurer in ${name} should obtain at least a ${value}% share of ${layer}`
 				} else {
-					return `If bellow market price, every reinsurer in group ${name} cannot obtain more than a ${value}% share of Overall program`
+					return `If bellow market price, every reinsurer in ${name} should obtain at least a  ${value}% share of Overall program`
 				}
 			}
 
