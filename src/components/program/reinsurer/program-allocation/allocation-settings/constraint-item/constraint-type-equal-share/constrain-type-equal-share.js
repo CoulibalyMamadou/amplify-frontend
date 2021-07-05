@@ -1,9 +1,9 @@
 import './constrain-type-equal-share.scss'
 import * as PropTypes from 'prop-types'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Checkbox from '../../../../../../form-component/Checkbox/Checkbox'
 
-const ConstrainTypeEqualShare = ({ onChanged }) => {
+const ConstrainTypeEqualShare = ({ isEqualShare, onChanged }) => {
 	const constrain = {
 		name: 'equalShare',
 		label: 'Equal share allocation ',
@@ -19,12 +19,16 @@ const ConstrainTypeEqualShare = ({ onChanged }) => {
 		valid: false,
 		touched: false
 	}
-	const [isChecked, setIsChecked] = useState(false)
+	const [isChecked, setIsChecked] = useState(isEqualShare)
+
+	useEffect(() => {
+		setIsChecked(isEqualShare)
+	}, [isEqualShare])
 
 	const constraintFieldUpdateHandler = (id, fieldValue) => {
 		console.log('Field value  : ', fieldValue)
 		onChanged(fieldValue)
-		setIsChecked(fieldValue)
+		// setIsChecked(fieldValue)
 	}
 
 	return (
@@ -52,6 +56,7 @@ const ConstrainTypeEqualShare = ({ onChanged }) => {
 }
 
 ConstrainTypeEqualShare.propTypes = {
+	isEqualShare: PropTypes.bool,
 	onChanged: PropTypes.func
 }
 

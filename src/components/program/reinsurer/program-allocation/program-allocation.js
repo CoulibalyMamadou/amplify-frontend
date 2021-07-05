@@ -24,6 +24,7 @@ const ProgramAllocation = () => {
 	const [constraintAllocation, setConstraintAllocation] = useState([])
 	const [loadingAllocation, setLoadingAllocation] = useState(false)
 	const [layerList, setLayerList] = useState([])
+	const [equalShare, setEqualShare] = useState(false)
 
 	/**
 	 * TODO: Rewrite insurerId selector
@@ -112,6 +113,8 @@ const ProgramAllocation = () => {
 				 * Intercept Error code from API request
 				 */
 				requestInterceptor(allQuoteConstraints)
+				allQuoteConstraints.equalShare &&
+					setEqualShare(() => allQuoteConstraints.equalShare)
 				console.log('all quote constraint come : ', allQuoteConstraints)
 				const { constraints } = allQuoteConstraints
 				// allQuoteConstraints.quoteConstraint[0].quoteConstraint
@@ -165,6 +168,14 @@ const ProgramAllocation = () => {
 	}, [])
 
 	/**
+	 * Update equalShare field
+	 * @param equalShareValue
+	 */
+	const updateEqualShare = (equalShareValue) => {
+		setEqualShare((prevState) => equalShareValue)
+	}
+
+	/**
 	 * Update constraint value after change in constraint field
 	 * @param id constraint slot in table
 	 * @param value update value
@@ -187,6 +198,7 @@ const ProgramAllocation = () => {
 		const programQuote = {
 			office: reinsurer.office,
 			program: programId,
+			equalShare,
 			constraints: [...constraintAllocation]
 		}
 		createProgramQuoteConstraint({ programId, programQuote })
@@ -257,8 +269,10 @@ const ProgramAllocation = () => {
 					<AllocationSettings
 						listConstraint={constraintAllocation}
 						layers={layerList}
+						isEqualShare={equalShare}
 						changed={updateConstraint}
 						removed={removeConstraint}
+						equalShared={updateEqualShare}
 						reinsurer={reinsurer}
 					/>
 				) : (

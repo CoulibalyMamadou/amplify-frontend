@@ -6,10 +6,12 @@ import { useEffect, useState } from 'react'
 
 const AllocationSettings = ({
 	listConstraint,
+	isEqualShare,
 	layers = [],
 	reinsurer = {},
 	changed,
-	removed
+	removed,
+	equalShared
 }) => {
 	const [allocationConstraint, setAllocationConstraint] = useState([])
 	const [equalShare, setEqualShare] = useState(false)
@@ -17,6 +19,10 @@ const AllocationSettings = ({
 	useEffect(() => {
 		setAllocationConstraint(listConstraint)
 	}, [listConstraint])
+
+	useEffect(() => {
+		setEqualShare(isEqualShare)
+	}, [isEqualShare])
 
 	const update = (id, dataValue) => {
 		changed(id, dataValue)
@@ -27,13 +33,17 @@ const AllocationSettings = ({
 	}
 
 	const updateEqualShare = (fieldValue) => {
-		setEqualShare(fieldValue)
+		// setEqualShare(fieldValue)
+		equalShared(fieldValue)
 	}
 
 	return (
 		<>
 			<section className='allocation-constraint-list'>
-				<ConstrainTypeEqualShare onChanged={updateEqualShare} />
+				<ConstrainTypeEqualShare
+					isEqualShare={isEqualShare}
+					onChanged={updateEqualShare}
+				/>
 				{allocationConstraint.map((constraint, index) => {
 					return (
 						<ConstraintItem
@@ -57,9 +67,11 @@ const AllocationSettings = ({
 AllocationSettings.propTypes = {
 	listConstraint: PropTypes.array,
 	layers: PropTypes.array,
+	isEqualShare: PropTypes.bool,
 	changed: PropTypes.func,
 	reinsurer: PropTypes.object,
-	removed: PropTypes.func
+	removed: PropTypes.func,
+	equalShared: PropTypes.func
 }
 
 export default AllocationSettings
