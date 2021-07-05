@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react'
 import AllocationHeader from './allocation-header/allocation-header'
 import {
 	createProgramQuoteConstraint,
-	getAllProgramConstraintListFill,
+	getAllConstraintListFill,
 	getProgramLayersByIdFill,
 	getProgramQuoteConstraintListFill
 } from '../../../../api/program.service'
@@ -124,7 +124,7 @@ const ProgramAllocation = () => {
 	}
 
 	useEffect(() => {
-		getAllProgramConstraintListFill(programId)
+		getAllConstraintListFill(programId)
 			.then((value) => value.json())
 			.then((response) => {
 				/**

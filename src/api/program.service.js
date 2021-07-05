@@ -105,6 +105,12 @@ export const getAllReinsurerProgramListFill = () => {
 }
 
 export const getAllProgramConstraintListFill = (programId) => {
+	return fetch(`${API}/program/constraint/list/fill/${programId}`, {
+		headers: loadHeaderWithAuth()
+	})
+}
+
+export const getAllConstraintListFill = (programId) => {
 	return fetch(`${API}/program/constraint/fill/${programId}`, {
 		headers: loadHeaderWithAuth()
 	})
