@@ -105,7 +105,7 @@ const ConstraintTypeBorder = ({
 	useEffect(() => {
 		updateTypeOption()
 		updateTargetOption()
-	}, [isEqualShare])
+	}, [isEqualShare, constraint.type])
 
 	/**
 	 * update type choice at equal share change
@@ -147,6 +147,7 @@ const ConstraintTypeBorder = ({
 	/**
 	 * update target choice at equal share change
 	 */
+
 	const updateTargetOption = () => {
 		let options = []
 		isEqualShare
@@ -158,6 +159,14 @@ const ConstraintTypeBorder = ({
 						// 	disabled: true
 						// },
 						{ value: 'Overall program', displayValue: 'Overall program' }
+					]
+			  })
+			: constraint.type === 'rel_min' || constraint.type === 'rel_max'
+			? (options = {
+					options: [
+						...layerList.map((layer, index) => {
+							return { value: layer._id, displayValue: 'Layer ' + (index + 1) }
+						})
 					]
 			  })
 			: (options = {
@@ -176,7 +185,7 @@ const ConstraintTypeBorder = ({
 			  })
 		setTargetOption(options)
 	}
-
+	console.log('QQQQQ', targetOption)
 	/**
 	 * update constraint type value on change
 	 * @param id constraint Id
