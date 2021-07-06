@@ -242,6 +242,7 @@ const ProgramAllocation = () => {
 		}
 		setConstraintAllocation((prevState) => [...prevState, newConstraint])
 	}
+	console.log('XXXXX', reinsurer)
 
 	return (
 		<>
@@ -273,7 +274,7 @@ const ProgramAllocation = () => {
 						changed={updateConstraint}
 						removed={removeConstraint}
 						equalShared={updateEqualShare}
-						reinsurer={reinsurer}
+						reinsurer={office.name}
 					/>
 				) : (
 					<h3>Loading previous allocation</h3>

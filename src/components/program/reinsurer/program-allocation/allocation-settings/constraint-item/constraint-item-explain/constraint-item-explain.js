@@ -9,7 +9,6 @@ const ConstraintItemExplain = ({
 	reinsurer
 }) => {
 	let infoDisplay = ''
-
 	switch (constraintType) {
 		case CONSTRAINT_TYPE.MAXIMUM:
 			infoDisplay =

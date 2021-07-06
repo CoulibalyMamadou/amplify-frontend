@@ -152,22 +152,22 @@ const ConstraintTypeBorder = ({
 		isEqualShare
 			? (options = {
 					options: [
-						{
-							value: '',
-							displayValue: 'Select layers',
-							disabled: true
-						},
+						// {
+						// 	value: '',
+						// 	displayValue: 'Select layers',
+						// 	disabled: true
+						// },
 						{ value: 'Overall program', displayValue: 'Overall program' }
 					]
 			  })
 			: (options = {
 					options: [
-						{
-							value: '',
-							displayValue: 'Select layers',
-							disabled: true
-							// hidden: true
-						},
+						// {
+						// 	value: '',
+						// 	displayValue: 'Select layers',
+						// 	disabled: true
+						// 	// hidden: true
+						// },
 						{ value: 'Overall program', displayValue: 'Overall program' },
 						...layerList.map((layer, index) => {
 							return { value: layer._id, displayValue: 'Layer ' + (index + 1) }
@@ -265,7 +265,7 @@ const ConstraintTypeBorder = ({
 				</span>
 			</section>
 			<ConstraintItemExplain
-				reinsurer={reinsurer.firstName + ' ' + reinsurer.lastName}
+				reinsurer={reinsurer}
 				constraintTarget={labelValue()}
 				constraintType={constraintType}
 				constraintValue={constraintValue}

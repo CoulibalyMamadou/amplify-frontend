@@ -33,7 +33,7 @@ const QuotationLayerItem = ({
 		},
 		price: {
 			name: 'price',
-			label: 'Price (RoL)',
+			label: 'Price (Premium rate)',
 			elementType: 'input',
 			elementConfig: {
 				type: 'number',

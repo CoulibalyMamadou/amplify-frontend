@@ -8,7 +8,7 @@ const AllocationSettings = ({
 	listConstraint,
 	isEqualShare,
 	layers = [],
-	reinsurer = {},
+	reinsurer,
 	changed,
 	removed,
 	equalShared
@@ -69,9 +69,9 @@ AllocationSettings.propTypes = {
 	layers: PropTypes.array,
 	isEqualShare: PropTypes.bool,
 	changed: PropTypes.func,
-	reinsurer: PropTypes.object,
 	removed: PropTypes.func,
-	equalShared: PropTypes.func
+	equalShared: PropTypes.func,
+	reinsurer: PropTypes.string
 }
 
 export default AllocationSettings
