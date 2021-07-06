@@ -700,19 +700,19 @@ export const ACTION_BUTTON_QUOTATION_RESTRICTED = {
 
 export const ACTION_BUTTON_QUOTATION = {
 	'/reinsurer/program/review': {
-		link: '/reinsurer/cedent/ask',
-		message: (
-			<>
-				Ask cedent <RiArrowRightSLine size={'1em'} className='action-img' />
-			</>
-		),
-		guard: true,
-		requireStatus: [
-			StatusStructureTypeEnum.QUOTATION_RESTRICTED,
-			StatusStructureTypeEnum.QUOTATION
-		]
-	},
-	'/reinsurer/cedent/ask': {
+		// 	link: '/reinsurer/cedent/ask',
+		// 	message: (
+		// 		<>
+		// 			Ask cedent <RiArrowRightSLine size={'1em'} className='action-img' />
+		// 		</>
+		// 	),
+		// 	guard: true,
+		// 	requireStatus: [
+		// 		StatusStructureTypeEnum.QUOTATION_RESTRICTED,
+		// 		StatusStructureTypeEnum.QUOTATION
+		// 	]
+		// },
+		// '/reinsurer/cedent/ask': {
 		link: '/reinsurer/program/quotation/update',
 		message: (
 			<>
