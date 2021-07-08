@@ -41,6 +41,7 @@ const AllocationSettings = ({
 		<>
 			<section className='allocation-constraint-list'>
 				<ConstrainTypeEqualShare
+					reinsurer={reinsurer}
 					isEqualShare={isEqualShare}
 					onChanged={updateEqualShare}
 				/>

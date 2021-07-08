@@ -3,7 +3,11 @@ import * as PropTypes from 'prop-types'
 import { useEffect, useState } from 'react'
 import Checkbox from '../../../../../../form-component/Checkbox/Checkbox'
 
-const ConstrainTypeEqualShare = ({ isEqualShare, onChanged }) => {
+const ConstrainTypeEqualShare = ({
+	reinsurer = '',
+	isEqualShare,
+	onChanged
+}) => {
 	const constrain = {
 		name: 'equalShare',
 		label: 'Equal share allocation ',
@@ -48,14 +52,15 @@ const ConstrainTypeEqualShare = ({ isEqualShare, onChanged }) => {
 			{/* constrain explanation */}
 
 			<p className='constraint-explanation'>
-				Reinsurer Quoter 1 {isChecked ? 'requires' : 'does not require'} an
-				equal share allocation on every layers
+				{reinsurer} {isChecked ? 'requires' : 'does not require'} an equal share
+				allocation on every layers
 			</p>
 		</section>
 	)
 }
 
 ConstrainTypeEqualShare.propTypes = {
+	reinsurer: PropTypes.string,
 	isEqualShare: PropTypes.bool,
 	onChanged: PropTypes.func
 }
