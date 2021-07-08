@@ -131,7 +131,7 @@ const HeadAction = () => {
 		return actionButton[pathname]
 			? actionButton[pathname]
 			: actionButton[url]
-			? actionButton[url].link === '/insurer/dashboard'
+			? actionButton[url].link === '/reinsurer/dashboard'
 				? {
 						link: actionButton[url].link,
 						message: actionButton[url].message

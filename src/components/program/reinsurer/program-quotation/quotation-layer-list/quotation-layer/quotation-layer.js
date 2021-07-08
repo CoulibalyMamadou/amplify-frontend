@@ -24,6 +24,10 @@ const QuotationLayer = ({
 		changed(index, layer)
 	}, [layer])
 
+	useEffect(() => {
+		setLayer(() => [...orderList])
+	}, [orderList])
+
 	/**
 	 * Update layer value from layer item
 	 * @param inputIdentifier id of layer in table
@@ -44,6 +48,7 @@ const QuotationLayer = ({
 		setOrderList((prevState) => [
 			...prevState.filter((value, index) => index !== orderNumber)
 		])
+		console.log('order in list : ', orderNumber)
 	}
 
 	/**
@@ -71,7 +76,7 @@ const QuotationLayer = ({
 							min={limitMin}
 							quotation={value}
 							changed={updateHandler}
-							deleted={() => removeOrderInListHandler(index)}
+							deleted={removeOrderInListHandler}
 						/>
 					)
 
@@ -83,7 +88,7 @@ const QuotationLayer = ({
 						quotation={value}
 						min={orderList[index - 1].quantity || 0}
 						changed={updateHandler}
-						deleted={() => removeOrderInListHandler(index)}
+						deleted={removeOrderInListHandler}
 					/>
 				)
 			})}

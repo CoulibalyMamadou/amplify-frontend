@@ -62,6 +62,11 @@ const QuotationLayerItem = ({
 		// console.log('index Layer update: ', inputIdentifier)
 	}
 
+	const deleteHandler = () => {
+		deleted(index)
+		// console.log('index Layer update: ', inputIdentifier)
+	}
+
 	const formElementsArray = []
 	for (const key in layerForm) {
 		// console.log('programForm key : ', key)
@@ -99,7 +104,7 @@ const QuotationLayerItem = ({
 					size='1.4em'
 					color='red'
 					cursor='pointer'
-					onClick={deleted}
+					onClick={deleteHandler}
 				/>
 			</span>
 		</>
