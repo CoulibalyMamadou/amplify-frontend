@@ -51,27 +51,27 @@ const QuotationGraph = ({
 							fill: false,
 							stepped: 'after'
 							// borderWidth: 1,
+						},
+						{
+							label: 'test',
+							data: [17, 17, 17, 17, 17],
+							// data: [1, 8, 5, 6],
+							borderColor: '#fffff',
+							fill: true,
+							stepped: 'after',
+							borderWidth: 1,
+							backgroundColor: '#28cc9680'
+						},
+						{
+							label: 'test1',
+							data: [23, 23, 23, 23, 23],
+							// data: [1, 8, 5, 6],
+							borderColor: 'black',
+							fill: true,
+							stepped: 'after',
+							borderWidth: 1,
+							backgroundColor: '#f12b2c42'
 						}
-						// {
-						// 	label: 'test',
-						// 	data: [17, 17, 17, 17, 17],
-						// 	// data: [1, 8, 5, 6],
-						// 	borderColor: '#fffff',
-						// 	fill: true,
-						// 	stepped: 'after',
-						// 	borderWidth: 1,
-						// 	backgroundColor: '#28cc9680'
-						// },
-						// {
-						// 	label: 'test1',
-						// 	data: [23, 23, 23, 23, 23],
-						// 	// data: [1, 8, 5, 6],
-						// 	borderColor: 'black',
-						// 	fill: true,
-						// 	stepped: 'after',
-						// 	borderWidth: 1,
-						// 	backgroundColor: '#f12b2c42'
-						// }
 					]
 				}}
 				options={{

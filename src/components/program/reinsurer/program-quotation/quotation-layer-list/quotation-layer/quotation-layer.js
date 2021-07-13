@@ -32,6 +32,7 @@ const QuotationLayer = ({
 	}, [quotation])
 
 	useEffect(() => {
+		changed(index, orderList)
 		setLayer(() => [...orderList])
 	}, [orderList])
 
@@ -59,6 +60,7 @@ const QuotationLayer = ({
 		setOrderList((prevState) => [
 			...prevState.filter((value, index) => index !== orderNumber)
 		])
+
 		console.log('order in list : ', orderNumber)
 	}
 
@@ -123,7 +125,7 @@ const QuotationLayer = ({
 
 			{/* body of placement body */}
 			<section className='quotation-display'>
-				<div>GRAPH HERE</div>
+				{/* <div>GRAPH HERE</div> */}
 				<QuotationGraph quotation={layer} />
 			</section>
 			{/* content footer of placement body */}
