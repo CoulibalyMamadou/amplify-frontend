@@ -1,0 +1,23 @@
+.share-button-action {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	width: 90%;
+	margin: 5% 0;
+
+	.action-button {
+		outline: none;
+	}
+	.action-button:hover {
+		cursor: pointer;
+		background-color: #357bf5;
+		color: white;
+		transition-duration: 0.5s;
+	}
+	.action-button:active {
+		cursor: pointer;
+		background-color: #7aa9fc;
+		color: white;
+		transition-duration: 0.3s;
+	}
+}

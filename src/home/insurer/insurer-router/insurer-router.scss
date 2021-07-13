@@ -1,0 +1,12 @@
+.App-body {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    height: calc(100% - 60px) ;
+    width: 100%;
+}
+
+.App-footer {
+    height: 10vh;
+}

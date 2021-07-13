@@ -1,0 +1,33 @@
+.allocation-settings {
+	.display-modify {
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+		h3 {
+			width: 175px;
+			text-align: left;
+			margin: 10px 0 10px 0;
+		}
+
+		.faPen {
+			color: #307ff6;
+			margin-left: 10px;
+		}
+		.faPen:hover {
+			cursor: pointer;
+		}
+	}
+	.display-allocation-settings {
+		display: flex;
+		flex-flow: column;
+		align-items: flex-start;
+
+		ul {
+			list-style-type: none;
+			padding: inherit;
+			margin: inherit;
+			margin-bottom: 8px;
+			text-align: left;
+		}
+	}
+}

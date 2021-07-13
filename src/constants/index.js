@@ -7,7 +7,7 @@ export const IS_LOGIN = 'IS_LOGIN'
 export const ERROR_LOGIN = 'ERROR_LOGIN'
 export const INVALID_LOGIN = 'INVALID_LOGIN'
 export const VALID_LOGIN = 'VALID_LOGIN'
-export const INVALID_LOGIN_MESSAGE = 'Incorrect login or password'
+export const INVALID_LOGIN_MESSAGE = 'Identifiant ou mot de passe incorrect'
 export const LOGIN_MESSAGE = 'Veuillez vous reconnecter'
 export const VALID_LOGIN_MESSAGE = 'Bienvenue sur Bifrost web app'
 export const LOGOUT = 'LOGOUT'
@@ -124,6 +124,7 @@ export const CONSTRAINT_TYPE = {
 	CONDITIONAL_MINIMUM: 'cond_min'
 }
 export const LIST_LINK = {
+	// Link for insurer
 	HOME: '/',
 	DASHBOARD: '/insurer/dashboard',
 	ADD_PROGRAM: '/insurer/program/add',
@@ -139,6 +140,16 @@ export const LIST_LINK = {
 	FINAL_REVIEW: '/insurer/program/final_review',
 	FINAL: '/insurer/program/final',
 	SUBMIT_PROGRAM: '/insurer/program/submit',
+
+	// Link for reinsurer
+	REINSURER_REVIEW: '/reinsurer/program/review',
+	REINSURER_ALLOCATION: '/reinsurer/program/allocation',
+	REINSURER_QUOTATION: '/reinsurer/program/quotation',
+	REINSURER_ALLOCATION_CONSTRAINTS: '/reinsurer/program/quotation/update',
+	REINSURER_QUOTATION_2: '/reinsurer/program/quotation/follower',
+	REINSURER_ASK: '/reinsurer/cedent/ask',
+	RE_SUBMIT_PROGRAM: '/reinsurer/program/submit',
+	RE_DASHBOARD: '/reinsurer/dashboard',
 	USER_PROFILE: '/user-profile'
 }
 export const USER_LINK = {
@@ -159,7 +170,13 @@ export const VIEW_ACTION_MESSAGE = {
 	[LIST_LINK.ALLOCATION]: 'Allocation',
 	[LIST_LINK.REVIEW]: 'Review',
 	[LIST_LINK.SUBMIT_PROGRAM]: 'Review',
-	[LIST_LINK.USER_PROFILE]: 'User profile'
+	[LIST_LINK.USER_PROFILE]: 'User profile',
+	[LIST_LINK.REINSURER_REVIEW]: 'Review',
+	[LIST_LINK.REINSURER_ALLOCATION]: 'Allocation constraints',
+	[LIST_LINK.REINSURER_QUOTATION]: 'Quotation',
+	[LIST_LINK.REINSURER_ALLOCATION_CONSTRAINTS]: 'Allocation constraints',
+	[LIST_LINK.REINSURER_QUOTATION_2]: 'Quotation',
+	[LIST_LINK.REINSURER_ASK]: 'Ask cedent'
 }
 
 export const StatusStructureTypeEnum = {
@@ -619,13 +636,13 @@ export const ACTION_BUTTON_INSURER_UNCOMPLETE = {
 
 /** ** Reinsurer ****/
 export const ACTION_BUTTON_REVIEW = {
-	'/reinsurer/program/review': {
+	/* '/reinsurer/program/review': {
 		link: '/reinsurer/dashboard',
 		message: <BsHouseFill size='1em' />,
 		guard: true,
 		requireStatus: [StatusStructureTypeEnum.QUOTATION]
 		// message: 'Dashboard'
-	},
+	}, */
 	'/insurer/program/add': {
 		link: LIST_LINK.DASHBOARD,
 		// message: 'Dashboard'
@@ -738,22 +755,29 @@ export const ACTION_BUTTON_QUOTATION = {
 		requireStatus: [StatusStructureTypeEnum.QUOTATION]
 	},
 	'/reinsurer/program/quotation/follower': {
-		link: '/reinsurer/program/quotation/review',
+		link: '/reinsurer/dashboard',
 		// link: '/reinsurer/dashboard',
-		message: (
-			<>
-				Review <RiArrowRightSLine size={'1em'} className='action-img' />
-			</>
-		),
+		// 	message: (
+		// 		<>
+		// 			Submit <RiArrowRightSLine size={'1em'} className='action-img' />
+		// 		</>
+		// 	),
+		// 	guard: true,
+		// 	requireStatus: [StatusStructureTypeEnum.QUOTATION]
+		// },
+		// '/reinsurer/program/quotation/review': {
+		// 	link: '/',
+		// link: LIST_LINK.RE_DASHBOARD,
+		message: <>Submit</>,
 		guard: true,
 		requireStatus: [StatusStructureTypeEnum.QUOTATION]
-	},
-	'/reinsurer/program/quotation/review': {
+	} /* ,
+	'/reinsurer/dashboard': {
 		link: '/reinsurer/dashboard',
 		message: <BsHouseFill size='1em' />,
 		guard: true,
 		requireStatus: []
-	}
+	} */
 }
 
 // Program structure group option
@@ -843,15 +867,5 @@ export const PROGRAM_TYPE_OPTIONS_USER = {
 	options: [
 		{ value: '', displayValue: '' },
 		{ value: 'REINSURANCE', displayValue: 'Reinsurance underwriter' }
-	]
-}
-
-// const structureOptionsGroup = {
-export const REINSTATEMENT_TYPE_OPTIONS = {
-	options: [
-		{ value: '', displayValue: '' },
-		{ value: 'PRO_RATA_CAPITA', displayValue: 'Pro rata capita' },
-		{ value: 'PRO_RATA_TEMPORIS', displayValue: 'Pro rata temporis' },
-		{ value: 'PRO_RATA_DOUBLE', displayValue: 'Pro rata double' }
 	]
 }

@@ -1,0 +1,64 @@
+
+
+.multiselect {
+  width: 200px;
+
+
+  .selectBox {
+    position: relative;
+
+    select {
+      background: #FFFFFF;
+      border: 1px solid #949494;
+      box-sizing: border-box;
+      border-radius: 4px;
+      height: 30px;
+      width: 100%;
+      font-family: Montserrat, sans-serif;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 15px;
+      color: #CACACA;
+      padding: 0 1%;
+      // width: 100%;
+      // font-weight: bold;
+    }
+
+    .overSelect {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+    }
+
+  }
+
+  #checkboxes {
+    display: none;
+    border: 1px #dfe0eb solid;
+    position: absolute;
+    width: inherit;
+    z-index: 1;
+    background: white;
+    box-shadow: 0 16px 24px #367bf529,
+    0 6px 12px #367bf529;
+
+    select {
+      width: 100%;
+      height: 100%;
+      max-height: 200px;
+    }
+
+    label {
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+
+      :hover {
+        background-color: #1e90ff;
+      }
+    }
+  }
+
+}

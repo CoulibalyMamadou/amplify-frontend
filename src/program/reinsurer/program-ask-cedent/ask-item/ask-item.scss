@@ -1,0 +1,22 @@
+.ask-body {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 30%;
+  max-width: 70%;
+  height: 25%;
+  min-height: 5%;
+  overflow-y: scroll;
+  align-self: flex-start;
+  padding: 2%;
+  background: #29CC97;
+  border-radius: 5px;
+  margin: 1% 0;
+
+  &.right {
+    align-self: flex-end;
+    background: #EBEBEB;
+    border-radius: 5px;
+  }
+
+}

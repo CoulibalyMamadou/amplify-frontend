@@ -1,0 +1,225 @@
+import './head-action.scss'
+import { matchPath, useHistory, useLocation, useParams } from 'react-router'
+import {
+	ACTION_BUTTON,
+	ACTION_BUTTON_QUOTATION,
+	ACTION_BUTTON_QUOTATION_RESTRICTED,
+	ACTION_BUTTON_REVIEW,
+	ROUTE_PREFIX,
+	StatusStructureTypeEnum
+} from '../../../../../constants'
+import { useEffect, useState } from 'react'
+import { BsHouseFill } from 'react-icons/bs'
+import { getProgramStatus } from '../../../../../api/program.service'
+import { requestInterceptor } from '../../../../../sessionStorage/sessionStorage'
+import { RiArrowLeftSLine } from 'react-icons/all'
+
+const HeadAction = () => {
+	/**
+	 * get user navigation history for redirection
+	 * @type {History<LocationState>}
+	 */
+	const history = useHistory()
+	/**
+	 * Route param for composed route
+	 * ProgramId here
+	 */
+	const { programId } = useParams()
+
+	const [canAccess, setCanAccess] = useState(false)
+	const [canGo, setCanGo] = useState(false)
+	const [status, setStatus] = useState('')
+
+	const getStatus = () => {
+		// if (programId)
+		console.log('canAcces programId : ', getCurrentParamWithoutPath())
+
+		const id = getCurrentParamWithoutPath()
+		if (id !== 'dashboard')
+			getProgramStatus(getCurrentParamWithoutPath())
+				.then((response) => response.json())
+				.then((program) => {
+					/**
+			s	 * Intercept Error code from API request
+				 */
+					requestInterceptor(program)
+					setStatus(program.status)
+					setCanGo(program.canGo)
+					// if (headerAction.requireStatus.includes(program.status))
+					// 	setCanAccess(true)
+					// console.log(
+					// 	'canAcces headerAction.requireStatus.includes(program.status) : ',
+					// 	headerAction.requireStatus.includes(program.status)
+					// )
+					console.log('canAcces status : ', status)
+					console.log('canAcces program : ', program)
+				})
+	}
+
+	/**
+	 * Url path
+	 */
+	const { pathname } = useLocation()
+	const location = useLocation()
+
+	/**
+	 * Check if location math with some predefine route
+	 * @type {match<{[K in keyof Params]?: string}>}
+	 */
+	const match = matchPath(pathname, {
+		path: [ROUTE_PREFIX.REINSURER + '/dashboard', ROUTE_PREFIX.REINSURER + '/'],
+		exact: true,
+		strict: true
+	})
+
+	/**
+	 * Redirection to the right link compared to programId or matchParams
+	 */
+	const navigationLinkHandler = () => {
+		console.log('pathname', pathname)
+		console.log('status : ', status)
+		console.log('go on', headerAction.link)
+		console.log('ACTION_BUTTON[pathname]', ACTION_BUTTON[pathname])
+		// getStatus()
+		programId
+			? history.push(headerAction.link + '/' + programId)
+			: history.push(headerAction.link)
+	}
+
+	/**
+	 * Get Location  programId
+	 * @returns {string}
+	 */
+	const getCurrentPathWithoutLastPart = () => {
+		return location.pathname.slice(0, location.pathname.lastIndexOf('/'))
+	}
+
+	/**
+	 * GetLocation Without programId
+	 * @returns {string}
+	 */
+	const getCurrentParamWithoutPath = () => {
+		return location.pathname.slice(
+			location.pathname.lastIndexOf('/') + 1,
+			location.pathname.length
+		)
+	}
+
+	/**
+	 * create next link from current Link
+	 * @param pathname
+	 * @returns {*|{link, message}|{link: string, message}|{link: string, message: string}}
+	 */
+	const actionButtonInitHandler = (pathname) => {
+		const url = getCurrentPathWithoutLastPart()
+		console.log('url  de la page : ', url)
+		let actionButton = {}
+		switch (status) {
+			case StatusStructureTypeEnum.QUOTATION_RESTRICTED:
+				actionButton = ACTION_BUTTON_QUOTATION_RESTRICTED
+				break
+			case StatusStructureTypeEnum.QUOTATION:
+				actionButton = ACTION_BUTTON_QUOTATION
+				break
+			default:
+				actionButton = ACTION_BUTTON_REVIEW
+				break
+		}
+
+		console.log('actionButton : ', actionButton)
+		// getStatus()
+		return actionButton[pathname]
+			? actionButton[pathname]
+			: actionButton[url]
+			? actionButton[url].link === '/reinsurer/dashboard'
+				? {
+						link: actionButton[url].link,
+						message: actionButton[url].message
+				  }
+				: {
+						...actionButton[url],
+						link: actionButton[url].link + '/' + getCurrentParamWithoutPath()
+						// message: ACTION_BUTTON[url].message
+				  }
+			: {
+					link: ROUTE_PREFIX.REINSURER + '/program/add',
+					message: 'New program'
+			  }
+	}
+
+	/**
+	 * return to home
+	 */
+	const homeHandler = () => {
+		history.push(ROUTE_PREFIX.REINSURER + '/dashboard')
+	}
+
+	/**
+	 * content of action button
+	 */
+	const [headerAction, setHeaderAction] = useState(
+		actionButtonInitHandler(pathname)
+	)
+
+	useEffect(() => {
+		setHeaderAction(actionButtonInitHandler(pathname))
+		setCanAccess(false)
+		getStatus()
+
+		return () => {
+			setCanAccess(false)
+			setHeaderAction({})
+		}
+	}, [pathname])
+
+	useEffect(() => {
+		setCanAccess(false)
+		if (headerAction.guard && headerAction.requireStatus.includes(status)) {
+			setCanAccess(true)
+		}
+	}, [headerAction])
+
+	useEffect(() => {
+		setHeaderAction(actionButtonInitHandler(pathname))
+	}, [status])
+
+	/**
+	 * Redirection to the right link compared to programId or matchParams
+	 */
+	const navigationGoBack = () => {
+		history.goBack()
+		// programId ? history.goBack() : history.push(headerAction.link)
+	}
+	/**
+	 * Create head action button with correct redirection and right link
+	 */
+	return (
+		<section className='placement-action'>
+			{match ? null : (
+				<>
+					<button className='action-button-home' onClick={homeHandler}>
+						<BsHouseFill size='1em' />
+					</button>
+					{canAccess && canGo && (
+						<div className='navigation-button'>
+							<button
+								className='action-button-other'
+								onClick={navigationGoBack}
+							>
+								<RiArrowLeftSLine size={'1em'} className='action-img' />
+							</button>
+							<button
+								className='action-button-other'
+								onClick={navigationLinkHandler}
+							>
+								{headerAction.message}
+							</button>
+						</div>
+					)}
+				</>
+			)}
+		</section>
+	)
+}
+
+export default HeadAction

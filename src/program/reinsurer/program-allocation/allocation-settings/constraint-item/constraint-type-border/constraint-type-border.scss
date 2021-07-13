@@ -1,0 +1,69 @@
+.constraint-border-box {
+  width: 100%;
+  margin: 10px 0;
+
+  .constraint-border-settings {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-content: flex-start;
+
+    .constraint-border-group {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      max-width: 25%;
+      padding: 0;
+      background: #EDF5FE;
+      border: 1px solid #BAD9FB;
+      box-sizing: border-box;
+
+      // text
+      font-family: Montserrat, sans-serif;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 13px;
+      line-height: 16px;
+      /* identical to box height, or 23px */
+      color: #317FF6;
+      /* Inside Auto Layout */
+      flex: none;
+      order: 0;
+      flex-grow: 0;
+      //margin: 0px 10px;
+      margin-right: 10px;
+      width: fit-content;
+
+
+      p {
+        border-left: 1px solid #BAD9FB;
+        margin: 0;
+        padding: 0 5px;
+      }
+    }
+
+    .constraint-type {
+      width: 45%;
+      margin: 0 3%;
+    }
+    .constraint-value {
+      width: 7%;
+      margin: 0 1%;
+    }
+    .constraint-target {
+      width: 35%;
+      margin-right: 5%;
+    }
+  }
+
+  .constraint-explanation {
+    display: flex;
+    align-content: flex-start;
+    font-family: Montserrat, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 15px;
+    color: #000000;
+  }
+}

@@ -1,0 +1,152 @@
+.review-content {
+	position: relative;
+	display: flex;
+	flex-flow: column;
+	justify-content: flex-start;
+	align-items: center;
+	height: calc(100% - 60px);
+	width: 100%;
+	background: #ffffff;
+
+	/* grayscale / divider */
+
+	border: 1px solid #dfe0eb;
+	box-sizing: border-box;
+	border-radius: 8px;
+	flex-wrap: wrap;
+	flex-direction: column;
+	overflow-x: auto;
+
+	.review-display {
+		// border: 2px solid red;
+		display: flex;
+		flex-flow: column;
+		align-items: center;
+		justify-content: center;
+		margin: 0;
+		height: 100%;
+		width: 100%;
+		overflow-y: auto;
+		.review-informations {
+			display: flex;
+			flex-flow: column;
+			width: 96%;
+			height: 100%;
+			align-items: flex-start;
+			justify-content: flex-start;
+
+			// .display-modify {
+			// 	display: flex;
+			// 	align-items: center;
+			// 	justify-content: flex-start;
+			// 	h3 {
+			// 		width: 175px;
+			// 		text-align: left;
+			// 		margin: 10px 0 10px 0;
+			// 	}
+
+			// 	.faPen {
+			// 		color: #307ff6;
+			// 		margin-left: 10px;
+			// 	}
+			// 	.faPen:hover {
+			// 		cursor: pointer;
+			// 	}
+			// }
+			// .general-information {
+			// 	width: 70%;
+			// 	ul {
+			// 		list-style-type: none;
+			// 		padding: inherit;
+			// 		display: flex;
+			// 		flex-flow: column;
+			// 		align-items: flex-start;
+			// 	}
+			// 	li {
+			// 		margin-bottom: 8px;
+			// 	}
+			// }
+			// .document {
+			// 	width: 20%;
+			// 	margin-top: 10px;
+			// 	padding-bottom: 20px;
+			// 	display: flex;
+			// 	justify-content: space-between;
+
+			// 	span {
+			// 		height: 80%;
+
+			// 		h5 {
+			// 			font-size: 12px;
+			// 			font-style: normal;
+			// 			font-weight: normal;
+			// 		}
+
+			// 		span {
+			// 			border-radius: 5px;
+			// 			height: 60px;
+			// 			width: 44px;
+			// 			background-color: #ebebeb;
+			// 			margin-right: 5px;
+			// 			display: flex;
+			// 			align-items: flex-end;
+			// 			justify-content: flex-end;
+			// 			padding: 2px;
+			// 		}
+			// 		.pdfDoc {
+			// 			border: 1px #cc2929 solid;
+			// 		}
+			// 		.xlsxDoc {
+			// 			border: 1px #29cc97 solid;
+			// 		}
+			// 		.docDoc {
+			// 			border: 1px #317ff6 solid;
+			// 		}
+			// 	}
+			// 	span:hover {
+			// 		cursor: pointer;
+			// 	}
+			// }
+			// .target-prices {
+			// 	width: 70%;
+			// 	display: flex;
+			// 	flex-flow: column;
+			// 	align-items: flex-start;
+			// 	ul {
+			// 		list-style-type: none;
+			// 		margin: inherit;
+			// 		padding: inherit;
+			// 		margin-bottom: 8px;
+			// 	}
+			// }
+			// .reinsurer-type {
+			// 	width: 100%;
+			// 	display: flex;
+			// 	justify-content: center;
+			// 	justify-content: space-around;
+
+			// 	div {
+			// 		ul {
+			// 			list-style-type: none;
+			// 			padding: inherit;
+			// 		}
+			// 	}
+			// }
+			// .allocation-settings {
+			// 	display: flex;
+			// 	flex-flow: column;
+			// 	align-items: flex-start;
+
+			// 	ul {
+			// 		list-style-type: none;
+			// 		padding: inherit;
+			// 		margin: inherit;
+			// 		margin-bottom: 8px;
+			// 		text-align: left;
+			// 	}
+			// }
+		}
+	}
+}
+
+/* END Header section*/

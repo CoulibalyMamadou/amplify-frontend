@@ -1,0 +1,125 @@
+.constraint-box {
+  width: 100%;
+  margin: 10px 0;
+
+  .constraint-settings {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-content: flex-start;
+
+    .constraint-group {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      max-width: 25%;
+      padding: 0;
+      background: #EDF5FE;
+      border: 1px solid #BAD9FB;
+      box-sizing: border-box;
+
+      // text
+      font-family: Montserrat, sans-serif;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 13px;
+      line-height: 16px;
+      /* identical to box height, or 23px */
+      color: #317FF6;
+      /* Inside Auto Layout */
+      flex: none;
+      order: 0;
+      flex-grow: 0;
+      //margin: 0px 10px;
+      margin-right: 10px;
+      width: fit-content;
+
+
+      p {
+        border-left: 1px solid #BAD9FB;
+        margin: 0;
+        padding: 0 5px;
+      }
+    }
+
+    .constraint-type {
+      width: 35%;
+      margin: 0 3%;
+    }
+
+    .constraint-value {
+      width: 7%;
+      margin: 0 1%;
+    }
+
+    .constraint-target {
+      width: 27%;
+      margin: 0 5%;
+    }
+  }
+
+  .constraint-explanation {
+    display: flex;
+    align-content: flex-start;
+    font-family: Montserrat, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 15px;
+    color: #000000;
+  }
+}
+
+
+.label {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  color: #394a56;
+
+  .toggle {
+    isolation: isolate;
+    position: relative;
+    height: 30px;
+    width: 60px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: -8px -4px 8px 0px #ffffff,
+    8px 4px 12px 0px #d1d9e6,
+    4px 4px 4px 0px #d1d9e6 inset,
+    -4px -4px 4px 0px #ffffff inset;
+
+
+    .toggle-state {
+      display: none;
+
+      :checked ~ .indicator {
+        transform: translate3d(25%, 0, 0);
+      }
+    }
+
+    .indicator {
+      height: 100%;
+      width: 200%;
+      background: #ecf0f3;
+      border-radius: 15px;
+      transform: translate3d(-75%, 0, 0);
+      transition: transform 0.4s cubic-bezier(0.85, 0.05, 0.18, 1.35);
+      box-shadow: -8px -4px 8px 0px #ffffff,
+      8px 4px 12px 0px #d1d9e6;
+    }
+
+
+    .toggle-state:checked ~ .indicator {
+      transform: translate3d(25%, 0, 0);
+    }
+  }
+
+
+  .label-text {
+    margin-left: 16px;
+  }
+
+
+}
+

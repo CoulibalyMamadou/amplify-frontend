@@ -1,0 +1,132 @@
+
+#placementRow:hover {
+  background: #f8f8ff;
+}
+/*Body section*/
+.placement-body {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr) 0.1fr;
+  width: 95%;
+  height: 80px;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+  :hover {
+    background: #f8f8ff;
+  }
+
+  .span-action {
+    color: #C5C7CD;
+  }
+
+  button {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 11px;
+    line-height: 14px;
+    /* identical to box height */
+
+    display: flex;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+
+    /* grayscale / white */
+
+
+  }
+}
+
+
+.wrapContent {
+  width: 100%;
+  display: grid;
+  align-items: flex-start;
+  grid-template-columns: 0.2fr 1fr;
+  grid-row-start: 1;
+  grid-row-end: 2;
+
+  :first-child {
+    /*display: flex;*/
+    justify-content: center;
+    align-items: center;
+    justify-self: center;
+  }
+
+}
+
+.span-box {
+  display: flex;
+  flex-flow: column;
+
+  font-family: Montserrat, sans-serif;
+  font-style: normal;
+
+  :first-child{
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 20px;
+
+    /* identical to box height, or 143% */
+
+    letter-spacing: 0.2px;
+
+    /* grayscale / black */
+
+    color: #252733;
+    margin: 2px 0;
+
+  }
+
+  :last-child {
+    /* identical to box height, or 133% */
+
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 16px;
+
+    letter-spacing: 0.1px;
+
+    /* grayscale / gray light */
+
+    color: #C5C7CD;
+    margin: 2px 0;
+  }
+
+}
+
+.status-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  button {
+    width: auto;
+    height: 24px;
+    padding: 5px 12px;
+    border: none;
+    border-radius: 100px;
+    color: white;
+  }
+  .complete {
+    background: #29CC97;
+  }
+  .communication {
+    background: #56CCF2;
+  }
+  .uncomplete {
+    background: #F2994A;
+  }
+  .quotation {
+    background: #29CC97;
+  }
+  .quotation {
+    background: #BB6BD9;
+  }
+  .quoted {
+    background: #F2C94C;
+  }
+}
