@@ -102,7 +102,7 @@ const UpdateUserProfileProgramHome = ({ user = {} }) => {
 				disabled: true
 			},
 			// value: user.office,
-			value: '',
+			value: user?.office?.name,
 			// validation: {
 			//     required: true
 			// },
@@ -174,6 +174,7 @@ const UpdateUserProfileProgramHome = ({ user = {} }) => {
 		}
 	}
 
+	console.log('user come  -- 2 : ', user)
 	// use state for this declaration
 	const formElementsArray = []
 	const userFormElementsArrayGrid2 = []
