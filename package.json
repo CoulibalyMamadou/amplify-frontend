@@ -31,7 +31,8 @@
     "redux-thunk": "^2.3.0",
     "typescript": "^4.2.3",
     "web-vitals": "^1.0.1",
-    "react-chartjs-2": "^3.0.3"
+    "react-chartjs-2": "^3.0.3",
+    "chart.js": "^3.4.1"
   },
   "scripts": {
     "start": "eslint ./ --fix && react-scripts start",
