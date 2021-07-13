@@ -21,7 +21,10 @@ const QuotationLayerList = ({ limit, layers, quotation, onChanged }) => {
 			layer: layersList[index]._id,
 			quote: stateLayer
 		}
+
 		onChanged(newValue)
+
+		console.log('Update level layerList')
 	}
 
 	return (

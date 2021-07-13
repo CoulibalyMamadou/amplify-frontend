@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import QuotationLayerItem from './quotation-layer-item/quotation-layer-item'
 import { FaPlusCircle } from 'react-icons/fa'
 import * as PropTypes from 'prop-types'
+import QuotationGraph from './quotation-graph/quotation-graph'
 
 const QuotationLayer = ({
 	index,
@@ -20,9 +21,15 @@ const QuotationLayer = ({
 	const [layer, setLayer] = useState([...quotation])
 	const [orderList, setOrderList] = useState([...quotation])
 
+	// useEffect(() => {
+	// 	changed(index, layer)
+	// }, [layer])
+
 	useEffect(() => {
-		changed(index, layer)
-	}, [layer])
+		// changed(index, layer)
+		// setLayer(() => [...quotation])
+		setOrderList(() => quotation)
+	}, [quotation])
 
 	useEffect(() => {
 		setLayer(() => [...orderList])
@@ -35,8 +42,12 @@ const QuotationLayer = ({
 	 */
 	const updateHandler = (inputIdentifier, inputValue) => {
 		const newValue = layer
+
 		newValue[inputIdentifier] = inputValue
-		setLayer(() => newValue)
+		// setLayer(() => newValue)
+		changed(index, newValue)
+
+		console.log('Update level layer')
 		// console.log('quotation Layer :  update: ', inputIdentifier)
 	}
 
@@ -113,6 +124,7 @@ const QuotationLayer = ({
 			{/* body of placement body */}
 			<section className='quotation-display'>
 				<div>GRAPH HERE</div>
+				<QuotationGraph quotation={layer} />
 			</section>
 			{/* content footer of placement body */}
 		</section>

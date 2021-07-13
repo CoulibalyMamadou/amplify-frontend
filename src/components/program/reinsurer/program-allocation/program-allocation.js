@@ -231,7 +231,7 @@ const ProgramAllocation = () => {
 		const updateConstraintList = [
 			...constraintAllocation.filter((layer, index) => index !== idConstraint)
 		]
-		setConstraintAllocation(() => [...updateConstraintList])
+		setConstraintAllocation([...updateConstraintList])
 	}
 
 	const addConstraint = () => {

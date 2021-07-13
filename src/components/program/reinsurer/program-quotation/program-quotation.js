@@ -5,13 +5,16 @@ import QuotationLayerList from './quotation-layer-list/quotation-layer-list'
 import {
 	createProgramQuotation,
 	getAllProgramQuotationListFill,
-	getProgramLayersByIdFill
+	getProgramLayersByIdFill,
+	getProgramByIdFill
 } from '../../../../api/program.service'
-import { FaPlusCircle } from 'react-icons/fa'
+// import { FaPlusCircle } from 'react-icons/fa'
 import useToast from '../../../../containers/Toast/useToast/useToast'
 import { TOAST } from '../../../../constants'
 import { requestInterceptor } from '../../../../sessionStorage/sessionStorage'
 import { getReinsurer } from '../../../../api/reinsurer.service'
+import { IoSave } from 'react-icons/io5'
+import TotalPrice from './quotation-layer-list/total-price/total-price'
 
 const ProgramQuotation = () => {
 	const { updateToast, ToastComponent } = useToast('', 'success')
@@ -26,6 +29,38 @@ const ProgramQuotation = () => {
 	 * @type {*}
 	 */
 	const [reinsurer, setReinsurer] = useState({})
+
+	/**
+	 * Program value
+	 */
+	const [program, setProgram] = useState({})
+
+	/**
+	 * GetLocation Without programId
+	 * @returns {string}
+	 */
+	const getCurrentParamWithoutPath = () => {
+		return location.pathname.slice(
+			location.pathname.lastIndexOf('/') + 1,
+			location.pathname.length
+		)
+	}
+	/**
+	 * Get all the info of a a program by id
+	 * @returns
+	 */
+	const getProgramInfo = async () => {
+		const id = getCurrentParamWithoutPath()
+		return getProgramByIdFill(id)
+			.then((res) => res.json())
+			.then((result) => {
+				setProgram(result)
+				return result
+			})
+			.catch((reason) => {
+				console.log('Program unknown : ', reason)
+			})
+	}
 
 	/**
 	 * get all program list to populate dashboard
@@ -125,6 +160,17 @@ const ProgramQuotation = () => {
 	}, [quotation])
 
 	/**
+	 * Get quoter and follower list
+	 * @returns
+	 */
+
+	useEffect(() => {
+		getProgramInfo().then((result) => {
+			console.log('program link Program : ', result)
+			console.log('Program coming: ', result)
+		})
+	}, [])
+	/**
 	 * Update layer list
 	 * @param quotationData
 	 */
@@ -137,6 +183,7 @@ const ProgramQuotation = () => {
 			program: programId,
 			quotations: quotation
 		}
+		console.log('XXXXX', programQuote)
 
 		createProgramQuotation({ programId, programQuote })
 			.then((val) => val.json())
@@ -173,6 +220,7 @@ const ProgramQuotation = () => {
 	return (
 		<>
 			<section className='add-quotation-content'>
+				<TotalPrice program={program} quotation={quotation} />
 				{/* header of placement box */}
 				<QuotationLayerList
 					limit={limit}
@@ -181,11 +229,15 @@ const ProgramQuotation = () => {
 					onChanged={layerFromListHandler}
 				/>
 			</section>
-			<button className='action-button' onClick={submitQuotation}>
-				<FaPlusCircle className='icon-plus' />
-				Submit quotation
-			</button>
-
+			<section className='action-row'>
+				<section className='save-action-content'>
+					<button className='save-action-button' onClick={submitQuotation}>
+						{/* <button className='action-button' onClick={submitQuotation}> */}
+						<IoSave size='2em' className='icon-plus' />
+						Save quotation
+					</button>
+				</section>
+			</section>
 			<ToastComponent />
 		</>
 	)

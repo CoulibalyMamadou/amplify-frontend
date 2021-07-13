@@ -24,7 +24,7 @@ const QuotationLayerItem = ({
 				type: 'number',
 				placeholder: min,
 				step: 0.1,
-				min,
+				// min,
 				max
 			},
 			value: quotation.quantity,
@@ -39,8 +39,8 @@ const QuotationLayerItem = ({
 				type: 'number',
 				placeholder: 100,
 				step: 0.1,
-				min: 0,
-				max
+				min: 0
+				// max
 			},
 			value: quotation.price,
 			valid: false,
@@ -52,6 +52,7 @@ const QuotationLayerItem = ({
 
 	useEffect(() => {
 		changed(index, layer)
+		console.log('Update level layer item')
 	}, [layer])
 
 	const updateHandler = (inputIdentifier, inputValue) => {
@@ -59,7 +60,8 @@ const QuotationLayerItem = ({
 			...prevState,
 			[inputIdentifier]: inputValue
 		}))
-		// console.log('index Layer update: ', inputIdentifier)
+
+		console.log('index Layer update: ', inputIdentifier)
 	}
 
 	const deleteHandler = () => {

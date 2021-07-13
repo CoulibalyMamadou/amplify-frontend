@@ -17,6 +17,7 @@ const ConstraintItem = ({
 	let displayView = ''
 	const onUpdate = (constraint) => {
 		onChanged(id, constraint)
+		console.log('Update level item')
 	}
 
 	const onRemove = () => {
@@ -67,7 +68,7 @@ ConstraintItem.propTypes = {
 	defaultConstraint: PropTypes.object,
 	isEqualShare: PropTypes.bool,
 	onChanged: PropTypes.func,
-	reinsurer: PropTypes.object,
+	reinsurer: PropTypes.string,
 	onRemoved: PropTypes.func
 }
 

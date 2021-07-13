@@ -1,6 +1,7 @@
 import './add-program-allocation.scss'
 import AllocationSettings from './allocation-settings/allocation-settings'
 import { FaPlusCircle } from 'react-icons/fa'
+import { IoSave } from 'react-icons/io5'
 import { useEffect, useState } from 'react'
 import Select from '../../../../form-component/Select/Select'
 import { useParams } from 'react-router'
@@ -370,15 +371,18 @@ const AddProgramAllocation = () => {
 				{/*  showToast() */}
 				<ToastComponent />
 			</section>
-			<section className='allocation-submit-constraint'>
-				<button
-					// disabled={disableAddConstraint}
-					className='action-button'
-					onClick={submitConstraint}
-				>
-					<FaPlusCircle className='icon-plus' />
-					Submit constraints
-				</button>
+			{/* <section className='allocation-submit-constraint'></section> */}
+			<section className='action-row'>
+				<section className='save-action-content'>
+					<button
+						// disabled={disableAddConstraint}
+						className='save-action-button'
+						onClick={submitConstraint}
+					>
+						<IoSave size='2em' className='icon-plus' />
+						Save constraints
+					</button>
+				</section>
 			</section>
 		</>
 	)

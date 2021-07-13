@@ -5,7 +5,6 @@ import Select from '../../../../../../../form-component/Select/Select'
 import * as PropTypes from 'prop-types'
 import { FaPlusCircle } from 'react-icons/fa'
 import { MdDelete } from 'react-icons/all'
-import { REINSTATEMENT_TYPE_OPTIONS } from '../../../../../../../../constants'
 import Checkbox from '../../../../../../../form-component/Checkbox/Checkbox'
 
 /**
@@ -24,7 +23,7 @@ const AddReinstatement = ({ changed = null }) => {
 			name: 'type',
 			label: 'Type',
 			elementType: 'select',
-			elementConfig: REINSTATEMENT_TYPE_OPTIONS,
+			//	elementConfig: REINSTATEMENT_TYPE_OPTIONS,
 			value: 'Pro rata capita',
 			valid: false,
 			touched: false
