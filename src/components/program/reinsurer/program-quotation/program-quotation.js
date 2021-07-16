@@ -98,6 +98,7 @@ const ProgramQuotation = () => {
 				 * Intercept Error code from API request
 				 */
 				requestInterceptor(allLayer)
+				console.log('all layer come list -- : ', allLayer)
 				setLayerList(allLayer.layers)
 				return allLayer
 			})

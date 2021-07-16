@@ -6,7 +6,7 @@ import * as PropTypes from 'prop-types'
 const QuotationLayerList = ({ limit, layers, quotation, onChanged }) => {
 	const [layersList, setLayersList] = useState([...layers])
 	const [layerList, setLayerList] = useState([...quotation])
-
+	console.log('level layerList, deep one : ', layers)
 	useEffect(() => {
 		setLayersList(layers)
 	}, [layers])
@@ -49,6 +49,7 @@ const QuotationLayerList = ({ limit, layers, quotation, onChanged }) => {
 								{}
 							]
 						}
+						layers={layersList.find((layer) => layer._id === value._id)}
 						changed={updateLayerHandler}
 					/>
 				)

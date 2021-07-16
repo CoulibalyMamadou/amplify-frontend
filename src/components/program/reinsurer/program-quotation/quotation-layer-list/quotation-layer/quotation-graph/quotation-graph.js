@@ -6,14 +6,16 @@ import { useEffect, useState } from 'react'
 const QuotationGraph = ({
 	quotation = [
 		{
-			price: 0,
-			quantity: 0
+			// price: 0,
+			// quantity: 0
 		}
-	]
+	],
+	layers
 }) => {
 	const [layer, setLayer] = useState([])
 	const [label, setLabel] = useState([0])
 	const [data, setData] = useState([0])
+	console.log('layers quotation : ', layers)
 
 	useEffect(() => {
 		setLayer(quotation)
@@ -30,7 +32,10 @@ const QuotationGraph = ({
 	}, [layer])
 
 	const updateGraphData = () => {
-		setData(() => [layer[0]?.price || 0, ...layer.map((item) => item?.price)])
+		setData(() => [
+			layer[0]?.price * 0.8 || 0,
+			...layer.map((item) => item?.price)
+		])
 		setLabel(() => [0, ...layer.map((item) => item?.quantity)], 0)
 	}
 
@@ -39,9 +44,11 @@ const QuotationGraph = ({
 			<Line
 				data={{
 					labels: [...label],
+					backgroundColor: '#f12b2c80',
+					borderColor: '#f12b2c80',
 					datasets: [
 						{
-							label: 'Quantity',
+							label: 'Supply curve',
 							data: [...data],
 							// data: [1, 8, 5, 6],
 							backgroundColor: '#367BF5',
@@ -51,49 +58,116 @@ const QuotationGraph = ({
 							fill: false,
 							stepped: 'after'
 							// borderWidth: 1,
+						},
+						{
+							label: 'Below minimum price',
+							data: [...data.map(() => layers.price?.min || 0)],
+							// data: [1, 8, 5, 6],
+							borderColor: '#a6e4d5',
+							fill: true,
+							pointBackgroundColor: '#ffffff00',
+							pointHoverBackgroundColor: '#ffffff00',
+							pointBorderColor: '#ffffff00',
+							pointHoverBorderColor: '#ffffff00',
+							stepped: 'after',
+							borderWidth: 1,
+							// backgroundColor: '#13F1A9'
+							backgroundColor: '#04FAAA'
+							// backgroundColor: '#78dbba'
+						},
+						{
+							label: 'Below median price',
+							data: [...data.map(() => layers.price?.median || 0)],
+							// data: [1, 8, 5, 6],
+							// borderColor: 'white',
+							fill: true,
+							stepped: 'after',
+							borderWidth: 1,
+
+							pointBackgroundColor: '#ffffff00',
+							pointHoverBackgroundColor: '#ffffff00',
+							borderColor: '#e9a9a9',
+							pointBorderColor: '#ffffff00',
+							pointHoverBorderColor: '#ffffff00',
+							// backgroundColor: '#f92b3c12'
+							backgroundColor: '#a6e4d5'
+							// backgroundColor: '#04FAAA'
+						},
+						{
+							label: 'Above median price',
+							data: [...data.map(() => layers.price?.max || 0)],
+							// data: [1, 8, 5, 6],
+							borderColor: '#f30607',
+							fill: true,
+							stepped: 'after',
+							pointBackgroundColor: '#ffffff00',
+							pointHoverBackgroundColor: '#ffffff00',
+							pointBorderColor: '#ffffff00',
+							pointHoverBorderColor: '#ffffff00',
+							borderWidth: 1,
+							// backgroundColor: '#e27b7b'
+							backgroundColor: '#e9a9a9'
+						},
+						{
+							label: 'Above maximum price',
+							data: [...data.map(() => layers.price?.max * 1.5 || 0)],
+							// data: [1, 8, 5, 6],
+							borderColor: 'white',
+							fill: true,
+							stepped: 'after',
+							pointBackgroundColor: '#ffffff00',
+							pointHoverBackgroundColor: '#ffffff00',
+							pointBorderColor: '#ffffff00',
+							pointHoverBorderColor: '#ffffff00',
+							borderWidth: 1,
+							fillOpacity: 0.3,
+							backgroundColor: '#f30607'
+							// backgroundColor: '#e27b7b'
 						}
-						// {
-						// 	label: 'test',
-						// 	data: [17, 17, 17, 17, 17],
-						// 	// data: [1, 8, 5, 6],
-						// 	borderColor: '#fffff',
-						// 	fill: true,
-						// 	stepped: 'after',
-						// 	borderWidth: 1,
-						// 	backgroundColor: '#28cc9680'
-						// },
-						// {
-						// 	label: 'test1',
-						// 	data: [23, 23, 23, 23, 23],
-						// 	// data: [1, 8, 5, 6],
-						// 	borderColor: 'black',
-						// 	fill: true,
-						// 	stepped: 'after',
-						// 	borderWidth: 1,
-						// 	backgroundColor: '#f12b2c42'
-						// }
 					]
 				}}
 				options={{
+					plugins: {
+						legend: {
+							display: false,
+							// position: 'bottom',
+							// align: 'center',
+							labels: {
+								size: 5,
+								family: 'Montserrat, sans-serif'
+								// color: '#2B2B2B'
+							}
+						}
+					},
 					scales: {
 						yAxes: [
 							{
+								beginAtZero: true,
 								scaleLabel: {
 									display: true,
-									labelString: 'Y text'
+									labelString: 'Y text',
+									autoSkip: true,
+									maxTicksLimit: 4,
+									fontSize: 12,
+									fontFamily: 'Montserrat',
+									fontColor: '#0f1222'
 								}
 							}
 						],
 						xAxes: [
 							{
 								scaleLabel: {
+									beginAtZero: true,
 									display: true,
 									labelString: 'X text',
 									autoSkip: true,
 									maxTicksLimit: 4,
 									fontSize: 12,
 									fontFamily: 'Montserrat',
-									fontColor: '#0f1222'
+									fontColor: '#0f1222',
+									ticks: {
+										stepSize: 0.5
+									}
 								}
 							}
 						]
@@ -111,7 +185,8 @@ const QuotationGraph = ({
 }
 
 QuotationGraph.propTypes = {
-	quotation: PropTypes.array
+	quotation: PropTypes.array,
+	layers: PropTypes.object
 }
 
 export default QuotationGraph

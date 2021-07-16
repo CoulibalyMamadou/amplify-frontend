@@ -11,15 +11,17 @@ const QuotationLayer = ({
 	limit,
 	quotation = [
 		{
-			price: 0,
+			// price: 0,
 			// lowerQuantity: 0,
-			quantity: 0
+			// quantity: 0
 		}
 	],
+	layers,
 	limitMin
 }) => {
 	const [layer, setLayer] = useState([...quotation])
 	const [orderList, setOrderList] = useState([...quotation])
+	console.log('level layer verif : ', layers)
 
 	// useEffect(() => {
 	// 	changed(index, layer)
@@ -126,7 +128,7 @@ const QuotationLayer = ({
 			{/* body of placement body */}
 			<section className='quotation-display'>
 				{/* <div>GRAPH HERE</div> */}
-				<QuotationGraph quotation={layer} />
+				<QuotationGraph quotation={layer} layers={layers} />
 			</section>
 			{/* content footer of placement body */}
 		</section>
@@ -138,6 +140,7 @@ QuotationLayer.propTypes = {
 	changed: PropTypes.func,
 	limit: PropTypes.number,
 	quotation: PropTypes.array,
+	layers: PropTypes.object,
 	limitMin: PropTypes.number
 }
 
