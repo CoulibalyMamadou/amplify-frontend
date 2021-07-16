@@ -110,7 +110,11 @@ const QuotationGraph = ({
 						},
 						{
 							label: 'Above maximum price',
-							data: [...data.map(() => layers.price?.max * 1.5 || 0)],
+							data: [
+								...data.map(
+									() => layers.price?.max + layers.price?.min * 0.7 || 0
+								)
+							],
 							// data: [1, 8, 5, 6],
 							borderColor: 'white',
 							fill: true,
