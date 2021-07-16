@@ -129,7 +129,7 @@ const QuotationGraph = ({
 				options={{
 					plugins: {
 						legend: {
-							display: false,
+							display: true,
 							// position: 'bottom',
 							// align: 'center',
 							labels: {
