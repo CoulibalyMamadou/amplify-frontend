@@ -33,7 +33,7 @@ const QuotationGraph = ({
 
 	const updateGraphData = () => {
 		setData(() => [
-			layer[0]?.price * 0.8 || 0,
+			layer[0]?.price * 0.2 || 0,
 			...layer.map((item) => item?.price)
 		])
 		setLabel(() => [0, ...layer.map((item) => item?.quantity)], 0)
@@ -53,6 +53,10 @@ const QuotationGraph = ({
 							// data: [1, 8, 5, 6],
 							backgroundColor: '#367BF5',
 							// backgroundColor: '#7d49c6|#daa3ff',
+							// pointBackgroundColor: '#ffffff00',
+							pointHoverBackgroundColor: '#ffffff00',
+							// pointBorderColor: '#ffffff00',
+							pointHoverBorderColor: '#ffffff00',
 							borderWidth: 1,
 							borderColor: '#3333ff',
 							fill: false,
