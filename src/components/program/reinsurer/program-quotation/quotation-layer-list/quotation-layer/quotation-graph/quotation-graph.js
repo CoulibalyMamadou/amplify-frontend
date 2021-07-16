@@ -43,13 +43,13 @@ const QuotationGraph = ({
 		<>
 			<Line
 				data={{
-					labels: [...label],
+					labels: layer[0]?.quantity ? [...label] : [0, 100],
 					backgroundColor: '#f12b2c80',
 					borderColor: '#f12b2c80',
 					datasets: [
 						{
 							label: 'Supply curve',
-							data: [...data],
+							data: layer[0]?.price ? [...data] : [0, 0],
 							// data: [1, 8, 5, 6],
 							backgroundColor: '#367BF5',
 							// backgroundColor: '#7d49c6|#daa3ff',
