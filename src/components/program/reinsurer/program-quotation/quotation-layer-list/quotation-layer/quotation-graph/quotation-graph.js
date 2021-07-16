@@ -65,7 +65,9 @@ const QuotationGraph = ({
 						},
 						{
 							label: 'Below minimum price',
-							data: [...data.map(() => layers.price?.min || 0)],
+							data: data.length
+								? [...data.map(() => layers.price?.min || 0)]
+								: [0],
 							// data: [1, 8, 5, 6],
 							borderColor: '#a6e4d5',
 							fill: true,
@@ -81,7 +83,9 @@ const QuotationGraph = ({
 						},
 						{
 							label: 'Below median price',
-							data: [...data.map(() => layers.price?.median || 0)],
+							data: data.length
+								? [...data.map(() => layers.price?.median || 0)]
+								: [0],
 							// data: [1, 8, 5, 6],
 							// borderColor: 'white',
 							fill: true,
@@ -99,7 +103,9 @@ const QuotationGraph = ({
 						},
 						{
 							label: 'Above median price',
-							data: [...data.map(() => layers.price?.max || 0)],
+							data: data.length
+								? [...data.map(() => layers.price?.max || 0)]
+								: [0],
 							// data: [1, 8, 5, 6],
 							borderColor: '#f30607',
 							fill: true,
@@ -114,11 +120,13 @@ const QuotationGraph = ({
 						},
 						{
 							label: 'Above maximum price',
-							data: [
-								...data.map(
-									() => layers.price?.max + layers.price?.min * 0.7 || 0
-								)
-							],
+							data: data.length
+								? [
+										...data.map(
+											() => layers.price?.max + layers.price?.min * 0.7 || 0
+										)
+								  ]
+								: [0],
 							// data: [1, 8, 5, 6],
 							borderColor: 'white',
 							fill: true,
