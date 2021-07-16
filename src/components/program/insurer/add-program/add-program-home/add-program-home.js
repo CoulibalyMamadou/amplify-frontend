@@ -222,6 +222,7 @@ const AddProgramHome = () => {
 				 * Intercept Error code from API request
 				 */
 				requestInterceptor(programDTO)
+				console.log('New program', programDTO)
 				showToast(
 					TOAST.PROGRAM_CREATE_SUCCESS.message,
 					TOAST.PROGRAM_CREATE_SUCCESS.state
@@ -291,8 +292,11 @@ const AddProgramHome = () => {
 			...saveProgram,
 			layers
 		}
+
 		const keysInit = Object.keys(program)
+
 		const keysSave = Object.keys(saveProgram)
+
 		const programIsValid = keysInit.every((v, i) => v === keysSave[i])
 
 		const programDTO = {

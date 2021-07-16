@@ -23,7 +23,7 @@ const ConstraintTypeBorder = ({
 			elementType: 'select',
 			elementConfig: {
 				options: [
-					{ value: '', displayValue: '' },
+					// { value: '', displayValue: '' },
 					{ value: 'Overall program', displayValue: 'Overall program' },
 					...layerList.map((layer, index) => {
 						return { value: layer._id, displayValue: 'Layer ' + (index + 1) }

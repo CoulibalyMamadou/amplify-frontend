@@ -37,6 +37,10 @@ const ProgramAllocation = () => {
 	 * @type {*}
 	 */
 	const [office, setOffice] = useState({})
+	/**
+	 * Loader
+	 */
+	const [isLoading, setIsLoading] = useState(true)
 
 	/**
 	 * get all program list to populate dashboard
@@ -91,6 +95,7 @@ const ProgramAllocation = () => {
 				 */
 				requestInterceptor(allLayer)
 				setLayerList(allLayer.layers)
+				setIsLoading(false)
 				console.log('allLayer : ', allLayer)
 				return allLayer
 			})
@@ -159,7 +164,7 @@ const ProgramAllocation = () => {
 					setLoadingAllocation(true)
 				})
 			})
-
+		// setIsLoading(false)
 		return () => {
 			setProgramConstraint([])
 			setConstraintAllocation([])
@@ -242,9 +247,10 @@ const ProgramAllocation = () => {
 		}
 		setConstraintAllocation((prevState) => [...prevState, newConstraint])
 	}
-	console.log('XXXXX', reinsurer)
 
-	return (
+	return isLoading ? (
+		<div></div>
+	) : (
 		<>
 			<section className='allocation-content'>
 				<AllocationHeader
