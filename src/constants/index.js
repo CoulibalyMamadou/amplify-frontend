@@ -763,8 +763,6 @@ export const ACTION_BUTTON_QUOTATION = {
 		guard: true,
 		requireStatus: []
 	}
-	
-	
 	// '/reinsurer/program/review': {
 	// 	// 	link: '/reinsurer/cedent/ask',
 	// 	// 	message: (
@@ -810,32 +808,32 @@ export const ACTION_BUTTON_QUOTATION = {
 	// },
 	// // '/reinsurer/program/quotation/follower': {
 	// '/reinsurer/program/quotation': {
-		link: '/reinsurer/dashboard',
-		// link: '/reinsurer/dashboard',
-		// 	message: (
-		// 		<>
-		// 			Submit <RiArrowRightSLine size={'1em'} className='action-img' />
-		// 		</>
-		// 	),
-		// 	guard: true,
-		// 	requireStatus: [StatusStructureTypeEnum.QUOTATION]
-		// },
-		// '/reinsurer/program/quotation/review': {
-		// 	link: '/',
-		// link: LIST_LINK.RE_DASHBOARD,
-		message: <>Submit</>,
-		guard: true,
-		requireStatus: [
-			StatusStructureTypeEnum.QUOTATION_RESTRICTED,
-			StatusStructureTypeEnum.QUOTATION
-		]
-	} /* ,
-	'/reinsurer/dashboard': {
-		link: '/reinsurer/dashboard',
-		message: <BsHouseFill size='1em' />,
-		guard: true,
-		requireStatus: []
-	} */
+	// 	link: '/reinsurer/dashboard',
+	// 	// link: '/reinsurer/dashboard',
+	// 	// 	message: (
+	// 	// 		<>
+	// 	// 			Submit <RiArrowRightSLine size={'1em'} className='action-img' />
+	// 	// 		</>
+	// 	// 	),
+	// 	// 	guard: true,
+	// 	// 	requireStatus: [StatusStructureTypeEnum.QUOTATION]
+	// 	// },
+	// 	// '/reinsurer/program/quotation/review': {
+	// 	// 	link: '/',
+	// 	// link: LIST_LINK.RE_DASHBOARD,
+	// 	message: <>Submit</>,
+	// 	guard: true,
+	// 	requireStatus: [
+	// 		StatusStructureTypeEnum.QUOTATION_RESTRICTED,
+	// 		StatusStructureTypeEnum.QUOTATION
+	// 	]
+	// } /* ,
+	// '/reinsurer/dashboard': {
+	// 	link: '/reinsurer/dashboard',
+	// 	message: <BsHouseFill size='1em' />,
+	// 	guard: true,
+	// 	requireStatus: []
+	// } */
 }
 
 // Program structure group option
