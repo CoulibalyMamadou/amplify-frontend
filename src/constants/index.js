@@ -730,7 +730,8 @@ export const ACTION_BUTTON_QUOTATION = {
 		// 	]
 		// },
 		// '/reinsurer/cedent/ask': {
-		link: '/reinsurer/program/quotation/update',
+		link: '/reinsurer/program/allocation',
+		// link: '/reinsurer/program/quotation/update',
 		message: (
 			<>
 				Allocation constraints{' '}
@@ -744,7 +745,8 @@ export const ACTION_BUTTON_QUOTATION = {
 		]
 	},
 	'/reinsurer/program/quotation/update': {
-		link: '/reinsurer/program/quotation/follower',
+		link: '/reinsurer/program/quotation',
+		// link: '/reinsurer/program/quotation/follower',
 		// link: '/reinsurer/dashboard',
 		message: (
 			<>
@@ -752,9 +754,13 @@ export const ACTION_BUTTON_QUOTATION = {
 			</>
 		),
 		guard: true,
-		requireStatus: [StatusStructureTypeEnum.QUOTATION]
+		requireStatus: [
+			StatusStructureTypeEnum.QUOTATION_RESTRICTED,
+			StatusStructureTypeEnum.QUOTATION
+		]
 	},
-	'/reinsurer/program/quotation/follower': {
+	// '/reinsurer/program/quotation/follower': {
+	'/reinsurer/program/quotation': {
 		link: '/reinsurer/dashboard',
 		// link: '/reinsurer/dashboard',
 		// 	message: (
@@ -770,7 +776,10 @@ export const ACTION_BUTTON_QUOTATION = {
 		// link: LIST_LINK.RE_DASHBOARD,
 		message: <>Submit</>,
 		guard: true,
-		requireStatus: [StatusStructureTypeEnum.QUOTATION]
+		requireStatus: [
+			StatusStructureTypeEnum.QUOTATION_RESTRICTED,
+			StatusStructureTypeEnum.QUOTATION
+		]
 	} /* ,
 	'/reinsurer/dashboard': {
 		link: '/reinsurer/dashboard',
