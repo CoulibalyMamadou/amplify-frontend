@@ -125,8 +125,8 @@ const ProgramQuotation = () => {
 				 * Intercept Error code from API request
 				 */
 				requestInterceptor(allQuotation)
-				const { quotations } = allQuotation
-				// const { quotations } = allQuotation.quotation[0].quotation
+				// const { quotations } = allQuotation
+				const { quotations } = allQuotation.quotation[0].quotation
 				console.log('allQuotation newly -- : ', allQuotation)
 				console.log('allQuotation newly -- : ', allQuotation.quotations)
 				setQuotation(() => quotations)
