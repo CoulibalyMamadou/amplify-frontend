@@ -3,16 +3,16 @@ import './total-price.scss'
 import { useEffect } from 'react'
 
 const TotalPrice = ({
-						program,
-						quotation = [
-							{
-								quote: {
-									quantity: 0,
-									price: 0
-								}
-							}
-						]
-					}) => {
+	program,
+	quotation = [
+		{
+			quote: {
+				quantity: 0,
+				price: 0
+			}
+		}
+	]
+}) => {
 	// const [sum, setSum] = useState(0)
 
 	useEffect(() => {
@@ -33,9 +33,9 @@ const TotalPrice = ({
 
 		const array = []
 		quote &&
-		quote.map((elem) => {
-			return array.push(maxPrice(elem.quote))
-		})
+			quote.map((elem) => {
+				return array.push(maxPrice(elem.quote))
+			})
 		console.log('quotation in array : ', array)
 
 		/**
