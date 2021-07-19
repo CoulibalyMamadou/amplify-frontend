@@ -129,13 +129,6 @@ export const getProgramQuoteConstraintListFill = ({ programId }) => {
 	})
 }
 
-export const getProgramQuoteConstraintListFillOfOffice = ({ programId }) => {
-	// return fetch(`${API}/program/quoteConstraint/${programId}`, {
-	return fetch(`${API}/quoteConstraint/${programId}`, {
-		headers: loadHeaderWithAuth()
-	})
-}
-
 export const getAllProgramQuotationListFill = ({ programId }) => {
 	// return fetch(`${API}/program/quotation/${programId}`, {
 	return fetch(`${API}/quotation/${programId}`, {
