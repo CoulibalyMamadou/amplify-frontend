@@ -1,19 +1,19 @@
 import * as PropTypes from 'prop-types'
 import './total-price.scss'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 
 const TotalPrice = ({
-	program,
-	quotation = [
-		{
-			quote: {
-				quantity: 0,
-				price: 0
-			}
-		}
-	]
-}) => {
-	const [sum, setSum] = useState(0)
+						program,
+						quotation = [
+							{
+								quote: {
+									quantity: 0,
+									price: 0
+								}
+							}
+						]
+					}) => {
+	// const [sum, setSum] = useState(0)
 
 	useEffect(() => {
 		console.log('quotation coming : ', quotation[0])
@@ -33,9 +33,9 @@ const TotalPrice = ({
 
 		const array = []
 		quote &&
-			quote.map((elem) => {
-				return array.push(maxPrice(elem.quote))
-			})
+		quote.map((elem) => {
+			return array.push(maxPrice(elem.quote))
+		})
 		console.log('quotation in array : ', array)
 
 		/**
@@ -53,8 +53,8 @@ const TotalPrice = ({
 		/**
 		 * Return value with 4 decimal
 		 */
-		setSum(num.toFixed(4))
-		// return num.toFixed(4)
+		// setSum(num.toFixed(4))
+		return num.toFixed(4)
 	}
 
 	/**
@@ -71,7 +71,7 @@ const TotalPrice = ({
 		<section className='budget-totalPrice'>
 			<p>Budget of the cedent for the program : {program.cedentBudget} (M€)</p>
 			<p>
-				Total price of reinsurer: {/* TotalPrice(quotation) */} {sum} (M€)
+				Total price of reinsurer: {TotalPrice(quotation)} {/* sum */} (M€)
 			</p>
 		</section>
 	)
