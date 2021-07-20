@@ -1,6 +1,6 @@
 import * as PropTypes from 'prop-types'
 import './total-price.scss'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
 const TotalPrice = ({
 	program,
@@ -13,13 +13,14 @@ const TotalPrice = ({
 		}
 	]
 }) => {
-	// const [sum, setSum] = useState(0)
+	const [sum, setSum] = useState(0)
+	const newQuotation = [...quotation]
 
 	useEffect(() => {
 		console.log('quotation coming : ', quotation[0])
 		console.log('quotation coming : ', program[0])
-		TotalPrice(quotation)
-	}, [quotation, program])
+		TotalPrice(newQuotation)
+	}, [newQuotation, program])
 
 	/**
 	 * Return premium income * sum of max price of each layer
@@ -49,12 +50,13 @@ const TotalPrice = ({
 		const num = sumPrice * premiumIncome
 		console.log('quotation in array num premiumIncome: ', premiumIncome)
 		console.log('quotation in array num: ', num)
+		console.log('quotation in array sum: ', sum)
 
 		/**
 		 * Return value with 4 decimal
 		 */
-		// setSum(num.toFixed(4))
-		return num.toFixed(4)
+		setSum(num.toFixed(4))
+		// return num.toFixed(4)
 	}
 
 	/**
@@ -71,7 +73,7 @@ const TotalPrice = ({
 		<section className='budget-totalPrice'>
 			<p>Budget of the cedent for the program : {program.cedentBudget} (M€)</p>
 			<p>
-				Total price of reinsurer: {TotalPrice(quotation)} {/* sum */} (M€)
+				Total price of reinsurer: {/* TotalPrice(quotation) */} {sum} (M€)
 			</p>
 		</section>
 	)

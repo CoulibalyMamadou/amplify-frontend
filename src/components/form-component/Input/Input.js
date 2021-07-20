@@ -30,13 +30,14 @@ const Input = ({
 	}, [input])
 
 	const numberTypeChangeHandler = () => {
-		let { value, min } = inputRef.current
-		const max = inputRef.current.max ? inputRef.current.max : 1000000
+		// let { value, min } = inputRef.current
+		// const max = inputRef.current.max ? inputRef.current.max : 1000000
 
-		value = Math.max(Number(min), Math.min(Number(max), Number(value)))
+		// value = Math.max(Number(min), Math.min(Number(max), Number(value)))
 
-		inputRef.current.value = value
-		setInput(value)
+		// inputRef.current.value = value
+		// setInput(value)
+		setInput(inputRef.current.value)
 	}
 
 	const textTypeChangeHandler = () => {
