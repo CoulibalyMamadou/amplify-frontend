@@ -331,7 +331,7 @@ const AddProgramAllocation = () => {
 						onClick={addConstraint}
 					>
 						<FaPlusCircle className='icon-plus' />
-						New constraint
+						Constraint
 					</button>
 				</section>
 				{/* header of placement box */}

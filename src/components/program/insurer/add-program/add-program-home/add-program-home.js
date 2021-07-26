@@ -330,35 +330,31 @@ const AddProgramHome = () => {
 	 * Set content bloc for home program
 	 */
 	return (
-		<section className='add-placement-content'>
-			<section className='placement-info'>
-				<div className='info-card'>
-					<AddProgramInfo
-						programInfoStructureData={formElementsArray}
-						programFieldChangedHandler={programFieldChangedHandler}
-					/>
-					<AddLayerList limit={limit} setData={layerFromListHandler} />
-
-					<div className='program-save-button'>
-						<button className='action-button' onClick={programCreateHandler}>
-							<FaPlusCircle className='icon-plus' />
-							Create Program
-						</button>
-						{/* <button className='action-button' onClick={showToast}>
-							<img
-								src={add}
-								alt='Supporting documents'
-								className='action-img'
-							/>
-							showToast
-						</button> */}
+		<>
+			{' '}
+			<section className='add-placement-content'>
+				<section className='placement-info'>
+					<div className='info-card'>
+						<AddProgramInfo
+							programInfoStructureData={formElementsArray}
+							programFieldChangedHandler={programFieldChangedHandler}
+						/>
+						<AddLayerList limit={limit} setData={layerFromListHandler} />
 					</div>
+				</section>
+
+				{/*  showToast() */}
+				<ToastComponent />
+			</section>{' '}
+			<section className='container-button'>
+				<div className='program-save-button'>
+					<button className='action-button' onClick={programCreateHandler}>
+						<FaPlusCircle className='icon-plus' />
+						Create Program
+					</button>
 				</div>
 			</section>
-
-			{/*  showToast() */}
-			<ToastComponent />
-		</section>
+		</>
 	)
 }
 

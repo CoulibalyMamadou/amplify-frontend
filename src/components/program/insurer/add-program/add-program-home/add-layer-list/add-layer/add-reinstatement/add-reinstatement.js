@@ -207,7 +207,7 @@ const AddReinstatement = ({ changed = null }) => {
 				<div className='layer-reinstatement-button'>
 					<button className='action-button' onClick={updateReinstatementView}>
 						<FaPlusCircle className='icon-plus' />
-						Add reinstatement
+						Reinstatement
 					</button>
 				</div>
 			)}

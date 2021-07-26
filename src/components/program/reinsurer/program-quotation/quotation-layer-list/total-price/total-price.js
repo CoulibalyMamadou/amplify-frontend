@@ -71,7 +71,7 @@ const TotalPrice = ({
 
 	return (
 		<section className='budget-totalPrice'>
-			<p>Budget of the cedent for the program : {program.cedentBudget} (M€)</p>
+			<p>Budget of the cedent for the program: {program.cedentBudget} (M€)</p>
 			<p>
 				Total price of reinsurer: {/* TotalPrice(quotation) */} {sum} (M€)
 			</p>
