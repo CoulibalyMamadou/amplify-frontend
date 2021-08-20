@@ -116,6 +116,26 @@ export const getAllConstraintListFill = (programId) => {
 	})
 }
 
+export const getAllScenarioListFill = (programId) => {
+	return fetch(`${API}/program/scenario/${programId}`, {
+		headers: loadHeaderWithAuth()
+	})
+}
+
+export const getFinalScenario = (programId) => {
+	return fetch(`${API}/program/finalScenario/${programId}`, {
+		headers: loadHeaderWithAuth()
+	})
+}
+
+export const allocationUpdate = ({ allocationId, leadOffice }) => {
+	return fetch(`${API}/allocation/${allocationId}`, {
+		method: 'PATCH',
+		headers: loadHeaderWithAuth(),
+		body: JSON.stringify({ leadOffice })
+	})
+}
+
 export const getProgramStatus = (programId) => {
 	return fetch(`${API}/program/status/${programId}`, {
 		headers: loadHeaderWithAuth()
@@ -123,6 +143,13 @@ export const getProgramStatus = (programId) => {
 }
 
 export const getProgramQuoteConstraintListFill = ({ programId }) => {
+	// return fetch(`${API}/program/quoteConstraint/${programId}`, {
+	return fetch(`${API}/quoteConstraint/${programId}`, {
+		headers: loadHeaderWithAuth()
+	})
+}
+
+export const getProgramQuoteConstraintListFillOfOffice = ({ programId }) => {
 	// return fetch(`${API}/program/quoteConstraint/${programId}`, {
 	return fetch(`${API}/quoteConstraint/${programId}`, {
 		headers: loadHeaderWithAuth()
@@ -171,10 +198,18 @@ export const createProgramQuotation = ({ programId, programQuote }) => {
 }
 
 export const programUpdate = (body) => {
-	return fetch(`/api/v1/program/${body.id}`, {
+	return fetch(`${API}/program/${body.id}`, {
 		method: 'PATCH',
 		headers: loadHeaderWithAuth(),
 		body: JSON.stringify(body.program)
+	})
+}
+
+export const programUpdateScenarioFinal = ({ programId, scenarioId }) => {
+	return fetch(`${API}/program/scenario/final/${programId}`, {
+		method: 'PATCH',
+		headers: loadHeaderWithAuth(),
+		body: JSON.stringify({ scenarioId })
 	})
 }
 

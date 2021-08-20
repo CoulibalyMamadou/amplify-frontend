@@ -67,7 +67,7 @@ const InsurerRouter = () => {
 				/>
 				<AuthConfig
 					// exact
-					path={ROUTE_PREFIX.INSURER + '/program/allocation'}
+					path={ROUTE_PREFIX.INSURER + '/program/allocation/:programId'}
 					component={AllocationProgram}
 				/>
 				<AuthConfig

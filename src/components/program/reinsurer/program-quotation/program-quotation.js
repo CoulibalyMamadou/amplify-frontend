@@ -1,5 +1,6 @@
 import './program-quotation.scss'
-import { useEffect, useState } from 'react'
+import img1 from '../../../../../src/assets/img/tooltip1.PNG'
+import { useEffect, useState, useRef } from 'react'
 import { useParams } from 'react-router'
 import QuotationLayerList from './quotation-layer-list/quotation-layer-list'
 import {
@@ -8,7 +9,7 @@ import {
 	getProgramLayersByIdFill,
 	getProgramByIdFill
 } from '../../../../api/program.service'
-// import { FaPlusCircle } from 'react-icons/fa'
+import { FaInfo } from 'react-icons/fa'
 import useToast from '../../../../containers/Toast/useToast/useToast'
 import { TOAST } from '../../../../constants'
 import { requestInterceptor } from '../../../../sessionStorage/sessionStorage'
@@ -218,18 +219,103 @@ const ProgramQuotation = () => {
 		updateToast(message, variant)
 	}
 
+	const tooltipReinsurer = useRef(null)
+	const [isActive, setIsActive] = useState(false)
+	const onClick = () => setIsActive(!isActive)
+	useEffect(() => {
+		const pageClickEvent = (e) => {
+			// If the active element exists and is clicked outside of
+			if (
+				tooltipReinsurer.current !== null &&
+				!tooltipReinsurer.current.contains(e.target)
+			) {
+				setIsActive(!isActive)
+			}
+		}
+		// If the item is active (ie open) then listen for clicks
+		if (isActive) {
+			window.addEventListener('click', pageClickEvent)
+		}
+		return () => {
+			window.removeEventListener('click', pageClickEvent)
+		}
+	}, [isActive])
+
 	return (
 		<>
-			<section className='add-quotation-content'>
-				<TotalPrice program={program} quotation={quotation} />
-				{/* header of placement box */}
-				<QuotationLayerList
-					limit={limit}
-					layers={layerList}
-					quotation={quotation}
-					onChanged={layerFromListHandler}
-				/>
-			</section>
+			<div
+				style={{
+					display: 'flex',
+					width: '100%',
+					justifyContent: 'space-between'
+				}}
+			>
+				<section className='add-quotation-content'>
+					<div className={'quotation-header-box'}>
+						<TotalPrice program={program} quotation={quotation} />
+						<button
+							className='action-button'
+							// style={{ marginLeft: '93%', marginTop: '5px' }}
+							onClick={onClick}
+						>
+							<FaInfo />
+						</button>
+					</div>
+					{/* header of placement box */}
+					<QuotationLayerList
+						limit={limit}
+						layers={layerList}
+						quotation={quotation}
+						onChanged={layerFromListHandler}
+					/>
+				</section>
+
+				<nav
+					style={{
+						top: '38%',
+						height: 'auto',
+						width: '55%',
+						left: 'auto',
+						right: '11%'
+					}}
+					id=' '
+					ref={tooltipReinsurer}
+					className={`menu ${isActive ? 'active' : 'inactive'}`}
+				>
+					<br />
+					<p style={{ textAlign: 'left', margin: '0 10px' }}>
+						<span>
+							On this page, you can enter your quotation in the form of one
+							supply curve per layer of the program. For each layer, quantities
+							should go in ascending order. <br />
+							<br />
+							In the example below, the reinsurer indicated that they are ready
+							to provide at most 1% of layer 2 for a premium rate between 0.415%
+							and 0.555%. Additionally, for a premium rate between 0.555% and
+							0.59%, they are ready to provide between 1% and 5% of the layer.
+							Finally, for a premium rate above 0.59%, they are ready to provide
+							up to 15% of the layer.
+							<br />
+							<br />
+							<figure>
+								<img src={img1} alt='test' style={{ width: '100%' }}></img>
+							</figure>
+							<br />
+							The above example means that if the final market price is for
+							example 0.56%, then the reinsurer won’t provide more than 5% of
+							the layer. It also means that if the final share of the reinsurer
+							for layer 2 is 12%, then the final premium rate cannot be below
+							0.59%.
+							<br /> <br /> Once your quotation is saved, the total price of
+							your quotation is computed and you can compare it with the budget
+							of the cedent for the program.
+							<br />
+						</span>
+					</p>
+					<br />
+				</nav>
+			</div>
+
 			<section className='action-row'>
 				<section className='save-action-content'>
 					<button className='save-action-button' onClick={submitQuotation}>

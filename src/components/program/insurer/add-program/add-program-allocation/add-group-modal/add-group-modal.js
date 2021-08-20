@@ -1,10 +1,10 @@
 import * as PropTypes from 'prop-types'
-import { FaPlusCircle } from 'react-icons/fa'
+import { FaPlusCircle, FaInfo } from 'react-icons/fa'
 import Modal from '../../../../../../containers/Modal/modal'
 import Input from '../../../../../form-component/Input/Input'
 import DropdownMultiple from '../../../../../form-component/DropdownMultiple/DropdownMultiple'
 import useModal from '../../../../../../containers/Modal/useModal'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import useToast from '../../../../../../containers/Toast/useToast/useToast'
 import { TOAST } from '../../../../../../constants'
 
@@ -130,17 +130,94 @@ const AddGroupModal = ({ saveGroup, listOffice }) => {
 		}
 		setNewGroup(val)
 	}
-
+	const dropdownRef = useRef(null)
+	const [isActive, setIsActive] = useState(false)
+	const onClick = () => setIsActive(!isActive)
+	useEffect(() => {
+		const pageClickEvent = (e) => {
+			// If the active element exists and is clicked outside of
+			if (
+				dropdownRef.current !== null &&
+				!dropdownRef.current.contains(e.target)
+			) {
+				setIsActive(!isActive)
+			}
+		}
+		// If the item is active (ie open) then listen for clicks
+		if (isActive) {
+			window.addEventListener('click', pageClickEvent)
+		}
+		return () => {
+			window.removeEventListener('click', pageClickEvent)
+		}
+	}, [isActive])
 	/**
 	 * Set content bloc for modal group
 	 */
 	return (
 		<>
-			<button className='action-button' onClick={toggleLoginForm}>
-				<FaPlusCircle className='icon-plus' />
-				Create group
-			</button>
-
+			<div
+				style={{
+					display: 'flex',
+					width: '100%',
+					justifyContent: 'space-between'
+				}}
+			>
+				<button className='action-button' onClick={toggleLoginForm}>
+					<FaPlusCircle className='icon-plus' />
+					Create group
+				</button>
+				<button className='action-button' onClick={onClick}>
+					<FaInfo />
+				</button>
+				<nav
+					style={{
+						top: '38%',
+						height: 'auto',
+						width: '55%',
+						left: 'auto',
+						right: '11%'
+					}}
+					id=' '
+					ref={dropdownRef}
+					className={`menu ${isActive ? 'active' : 'inactive'}`}
+				>
+					<br />
+					<p style={{ textAlign: 'left', margin: '0 10px' }}>
+						<span>
+							On this page, you can finetune the final allocation and enforce
+							your commercial relationship with reinsurers, as well as the
+							predominance of certain reinsurers on a line of business. <br />
+							<br />
+							<strong>Create group</strong>
+							<br />
+							Start by creating a group of reinsurers and naming this group.
+							Once a group is created you can apply a new constraint. Every
+							constraint you will apply to a group will apply to each member of
+							the group individually. <br />
+							<br />
+							<strong>Maximum share</strong>
+							<br />
+							The shares of reinsurers in the group will not exceed individually
+							the percentage entered. This constraint can be applied globally to
+							the whole program, or on different layers. <br />
+							<br />
+							<strong>Conditional minimum share</strong>
+							<br />
+							The shares of reinsurers in the group will exceed individually the
+							percentage entered. This constraint can be applied globally to the
+							whole program, or on different layers.
+							<br /> It is conditional to each quotation being below final
+							market price. If a reinsurer has a conditional minimum share but
+							is above final market price, then an additional allocation
+							scenario could be created with the reinsurer on the program but
+							with a higher market price. You would then have the opportunity to
+							select your preferred allocation scenario.
+						</span>
+					</p>
+					<br />
+				</nav>
+			</div>
 			<Modal
 				isShowing={isLoginFormShowed}
 				hide={toggleLoginForm}

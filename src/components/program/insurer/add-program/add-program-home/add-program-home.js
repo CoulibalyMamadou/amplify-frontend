@@ -228,7 +228,7 @@ const AddProgramHome = () => {
 					TOAST.PROGRAM_CREATE_SUCCESS.state
 				)
 				setTimeout(() => {
-					history.push(LIST_LINK.ADD_DOCUMENT + '/' + programDTO._id)
+					history.push(LIST_LINK.ADD_QUOTER_LIST + '/' + programDTO._id)
 				}, 3000)
 			})
 			.catch((reason) => {

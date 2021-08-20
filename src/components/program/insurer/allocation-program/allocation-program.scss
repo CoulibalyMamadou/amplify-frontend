@@ -1,21 +1,63 @@
+.scenario-header {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+  margin: 2% 0;
+
+  span {
+
+  }
+}
+
+.action-bar {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+  margin: 2% 0;
+
+  span {
+
+  }
+}
+
 .allocation-program-content {
   position: relative;
   display: flex;
-  justify-content: flex-start;
-  align-items: center;
+  /* justify-content: flex-start; */
+  /* align-items: center; */
   height: calc(100% - 60px);
   width: 100%;
-  background: #FFFFFF;
-  /* grayscale / divider */
+  /* background: #FFFFFF; */
   border: 1px solid #DFE0EB;
-  box-sizing: border-box;
+  /* box-sizing: border-box; */
   border-radius: 8px;
-  flex-wrap: wrap;
-  flex-direction: column;
+  /* flex-wrap: wrap; */
+  /* flex-direction: column; */
   overflow-x: auto;
+
+  // position: relative;
+  // display: flex;
+  // justify-content: flex-start;
+  // align-items: center;
+  // height: calc(100% - 60px);
+  // width: 100%;
+  // background: #FFFFFF;
+  /* grayscale / divider */
+  // border: 1px solid #DFE0EB;
+  // box-sizing: border-box;
+  // border-radius: 8px;
+  // flex-wrap: wrap;
+  // flex-direction: column;
+  // overflow-x: auto;
 
   :last-child {
     border-right: none;
   }
 
+}
+.scenario-choose {
+  background-color: #28cc97;
+  color: white;
 }

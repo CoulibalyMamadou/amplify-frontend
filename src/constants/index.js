@@ -7,7 +7,7 @@ export const IS_LOGIN = 'IS_LOGIN'
 export const ERROR_LOGIN = 'ERROR_LOGIN'
 export const INVALID_LOGIN = 'INVALID_LOGIN'
 export const VALID_LOGIN = 'VALID_LOGIN'
-export const INVALID_LOGIN_MESSAGE = 'Incorrect login or password'
+export const INVALID_LOGIN_MESSAGE = 'Identifiant ou mot de passe incorrect'
 export const LOGIN_MESSAGE = 'Veuillez vous reconnecter'
 export const VALID_LOGIN_MESSAGE = 'Bienvenue sur Bifrost web app'
 export const LOGOUT = 'LOGOUT'
@@ -534,26 +534,63 @@ export const ACTION_BUTTON_INSURER_REVIEW = {
 	}
 }
 
-export const ACTION_BUTTON_INSURER_UNCOMPLETE = {
-	'/insurer/program/review': {
-		link: LIST_LINK.ADD_DOCUMENT,
+export const ACTION_BUTTON_INSURER_COMPLETE = {
+	'/insurer': {
+		link: LIST_LINK.ADD_PROGRAM,
+		message: <>New Program</>
+	},
+	'/insurer/dashboard': {
+		link: LIST_LINK.ADD_PROGRAM,
+		message: <>New Program</>
+	},
+	'/insurer/program/add': {
+		link: LIST_LINK.DASHBOARD,
 		// message: 'Dashboard'
-		message: (
-			<>
-				Add Document <RiArrowRightSLine size={'1em'} className='action-img' />
-			</>
-		),
+		message: <BsHouseFill size='1em' />
+	},
+	'/insurer/program/review': {
+		link: LIST_LINK.ALLOCATION,
+		// message: 'Dashboard'
+		message: <BsHouseFill size='1em' />,
 		guard: true,
 		requireStatus: [
 			StatusStructureTypeEnum.REVIEW,
-			StatusStructureTypeEnum.UN_COMPLETE
+			StatusStructureTypeEnum.COMPLETE
 		]
 	},
-	'/insurer/program/add/document': {
-		link: LIST_LINK.ADD_TARGET_PRICE,
+	'/insurer/program/allocation': {
+		link: LIST_LINK.DASHBOARD,
+		// message: 'Dashboard'
+		message: <BsHouseFill size='1em' />,
+		guard: true,
+		requireStatus: [
+			StatusStructureTypeEnum.REVIEW,
+			StatusStructureTypeEnum.COMPLETE
+		]
+	}
+}
+
+export const ACTION_BUTTON_INSURER_UNCOMPLETE = {
+	'/insurer/program/review': {
+		// 	link: LIST_LINK.ADD_DOCUMENT,
+		// 	// message: 'Dashboard'
+		// 	message: (
+		// 		<>
+		// 			Add Document <RiArrowRightSLine size={'1em'} className='action-img' />
+		// 		</>
+		// 	),
+		// 	guard: true,
+		// 	requireStatus: [
+		// 		StatusStructureTypeEnum.REVIEW,
+		// 		StatusStructureTypeEnum.UN_COMPLETE
+		// 	]
+		// },
+		// '/insurer/program/add/document': {
+		link: LIST_LINK.ADD_QUOTER_LIST,
 		message: (
 			<>
-				Target Price <RiArrowRightSLine size={'1em'} className='action-img' />
+				Reinsurer types{' '}
+				<RiArrowRightSLine size={'1em'} className='action-img' />
 			</>
 		),
 		guard: true,
@@ -577,17 +614,17 @@ export const ACTION_BUTTON_INSURER_UNCOMPLETE = {
 	// 	guard: true,
 	// 	requireStatus: [StatusStructureTypeEnum.UN_COMPLETE]
 	// },
-	'/insurer/program/add/targetPrice': {
-		link: LIST_LINK.ADD_QUOTER_LIST,
-		message: (
-			<>
-				Reinsurer types{' '}
-				<RiArrowRightSLine size={'1em'} className='action-img' />
-			</>
-		),
-		guard: true,
-		requireStatus: [StatusStructureTypeEnum.UN_COMPLETE]
-	},
+	// '/insurer/program/add/targetPrice': {
+	// 	link: LIST_LINK.ADD_QUOTER_LIST,
+	// 	message: (
+	// 		<>
+	// 			Reinsurer types{' '}
+	// 			<RiArrowRightSLine size={'1em'} className='action-img' />
+	// 		</>
+	// 	),
+	// 	guard: true,
+	// 	requireStatus: [StatusStructureTypeEnum.UN_COMPLETE]
+	// },
 	'/insurer/program/add/quoter/list': {
 		link: LIST_LINK.ADD_ALLOCATION_CONSTRAINT,
 		message: (
@@ -716,6 +753,30 @@ export const ACTION_BUTTON_QUOTATION_RESTRICTED = {
 }
 
 export const ACTION_BUTTON_QUOTATION = {
+	// '/reinsurer/program/review': {
+	// 	link: '/reinsurer/cedent/ask',
+	// 	message: (
+	// 		<>
+	// 			Ask cedent <RiArrowRightSLine size={'1em'} className='action-img' />
+	// 		</>
+	// 	),
+	// 	guard: true,
+	// 	requireStatus: [
+	// 		StatusStructureTypeEnum.QUOTATION_RESTRICTED,
+	// 		StatusStructureTypeEnum.QUOTATION
+	// 	]
+	// },
+	// '/reinsurer/cedent/ask': {
+	// 	link: '/reinsurer/program/allocation',
+	// 	message: (
+	// 		<>
+	// 			Allocation constraints{' '}
+	// 			<RiArrowRightSLine size={'1em'} className='action-img' />
+	// 		</>
+	// 	),
+	// 	guard: true,
+	// 	requireStatus: [StatusStructureTypeEnum.QUOTATION_RESTRICTED]
+	// },
 	'/reinsurer/program/review': {
 		link: '/reinsurer/program/allocation',
 		message: (
@@ -763,6 +824,68 @@ export const ACTION_BUTTON_QUOTATION = {
 		guard: true,
 		requireStatus: []
 	}
+	// '/reinsurer/program/review': {
+	// 	// 	link: '/reinsurer/cedent/ask',
+	// 	// 	message: (
+	// 	// 		<>
+	// 	// 			Ask cedent <RiArrowRightSLine size={'1em'} className='action-img' />
+	// 	// 		</>
+	// 	// 	),
+	// 	// 	guard: true,
+	// 	// 	requireStatus: [
+	// 	// 		StatusStructureTypeEnum.QUOTATION_RESTRICTED,
+	// 	// 		StatusStructureTypeEnum.QUOTATION
+	// 	// 	]
+	// 	// },
+	// 	// '/reinsurer/cedent/ask': {
+	// 	link: '/reinsurer/program/quotation/update',
+	// 	message: (
+	// 		<>
+	// 			Allocation constraints{' '}
+	// 			<RiArrowRightSLine size={'1em'} className='action-img' />
+	// 		</>
+	// 	),
+	// 	guard: true,
+	// 	requireStatus: [
+	// 		StatusStructureTypeEnum.QUOTATION_RESTRICTED,
+	// 		StatusStructureTypeEnum.QUOTATION
+	// 	]
+	// },
+	// '/reinsurer/program/quotation/update': {
+	// 	link: '/reinsurer/program/quotation/follower',
+	// 	// link: '/reinsurer/dashboard',
+	// 	message: (
+	// 		<>
+	// 			Quotation <RiArrowRightSLine size={'1em'} className='action-img' />
+	// 		</>
+	// 	),
+	// 	guard: true,
+	// 	requireStatus: [StatusStructureTypeEnum.QUOTATION]
+	// },
+	// '/reinsurer/program/quotation/follower': {
+	// 	link: '/reinsurer/dashboard',
+	// 	// link: '/reinsurer/dashboard',
+	// 	// 	message: (
+	// 	// 		<>
+	// 	// 			Submit <RiArrowRightSLine size={'1em'} className='action-img' />
+	// 	// 		</>
+	// 	// 	),
+	// 	// 	guard: true,
+	// 	// 	requireStatus: [StatusStructureTypeEnum.QUOTATION]
+	// 	// },
+	// 	// '/reinsurer/program/quotation/review': {
+	// 	// 	link: '/',
+	// 	// link: LIST_LINK.RE_DASHBOARD,
+	// 	message: <>Submit</>,
+	// 	guard: true,
+	// 	requireStatus: [StatusStructureTypeEnum.QUOTATION]
+	// } /* ,
+	// '/reinsurer/dashboard': {
+	// 	link: '/reinsurer/dashboard',
+	// 	message: <BsHouseFill size='1em' />,
+	// 	guard: true,
+	// 	requireStatus: []
+	// } */
 }
 
 // Program structure group option
