@@ -16,7 +16,8 @@ const AllocationItem = ({ allocation, index, setLead, leadOffice = '' }) => {
 				<>
 					<span
 						className='quotation-item'
-						onClick={() => setIsActive(!isActive)}
+						onClick={setLeadInsurer}
+						// onClick={() => setIsActive(!isActive)}
 					>
 						<span className='quotation-badge'>
 							<span className='badge-left'>

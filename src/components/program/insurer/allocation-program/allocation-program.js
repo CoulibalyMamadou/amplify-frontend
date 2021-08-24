@@ -244,7 +244,7 @@ const AllocationProgram = () => {
 					{/* <button className='action-button' onClick={switchScenario(index)}> */}
 					<div>
 						{/* <TotalPrice program={program} quotation={quotation}/> */}
-						<p>Please validate if the scenario suits you </p>
+						<p>teste </p>
 					</div>
 					{finalScenario === scenarios[selectedIndex]?._id ? (
 						<button
@@ -257,7 +257,7 @@ const AllocationProgram = () => {
 					) : (
 						<button className='action-button' onClick={chooseScenario}>
 							<FiCheckCircle size={'1em'} className={'action-img'} />
-							<span>Validate scenario </span>
+							<span>Choose scenario </span>
 						</button>
 					)}
 				</div>

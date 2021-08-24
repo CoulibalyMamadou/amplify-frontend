@@ -26,7 +26,11 @@ const AllocationLayer = ({
 		<>
 			{/* header of placement box */}
 			<section className='allocation-layer-content'>
-				<LayerHead layerId={layerId} layerPrice={layerPrice} />
+				<LayerHead
+					layerId={layerId}
+					layerPrice={layerPrice}
+					allocation={allocationList}
+				/>
 				<LayerAllocation
 					allocation={allocationList}
 					allocationId={allocations?._id}

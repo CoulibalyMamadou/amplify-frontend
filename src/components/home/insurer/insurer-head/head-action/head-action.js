@@ -4,7 +4,8 @@ import { matchPath, useHistory, useLocation, useParams } from 'react-router'
 import { useEffect, useState } from 'react'
 import { BsHouseFill } from 'react-icons/bs'
 import {
-	ACTION_BUTTON_INSURER_ALLOCATION,
+	ACTION_BUTTON_INSURER_COMPLETE,
+	ACTION_BUTTON_INSURER_QUOTED,
 	ACTION_BUTTON_INSURER_REVIEW,
 	ACTION_BUTTON_INSURER_UNCOMPLETE,
 	LIST_LINK,
@@ -127,7 +128,10 @@ const HeadAction = () => {
 				actionButton = ACTION_BUTTON_INSURER_UNCOMPLETE
 				break
 			case StatusStructureTypeEnum.COMPLETE:
-				actionButton = ACTION_BUTTON_INSURER_ALLOCATION
+				actionButton = ACTION_BUTTON_INSURER_COMPLETE
+				break
+			case StatusStructureTypeEnum.QUOTED:
+				actionButton = ACTION_BUTTON_INSURER_QUOTED
 				break
 			default:
 				actionButton = ACTION_BUTTON_INSURER_REVIEW

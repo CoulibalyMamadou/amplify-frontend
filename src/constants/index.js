@@ -150,7 +150,8 @@ export const LIST_LINK = {
 	REINSURER_ASK: '/reinsurer/cedent/ask',
 	RE_SUBMIT_PROGRAM: '/reinsurer/program/submit',
 	RE_DASHBOARD: '/reinsurer/dashboard',
-	USER_PROFILE: '/user-profile'
+	USER_PROFILE: '/user-profile',
+	PLACEMENT_OUTCOME: '/reinsurer/program/placement'
 }
 export const USER_LINK = {
 	DASHBOARD: '/user-profile'
@@ -176,7 +177,8 @@ export const VIEW_ACTION_MESSAGE = {
 	[LIST_LINK.REINSURER_QUOTATION]: 'Quotation',
 	[LIST_LINK.REINSURER_ALLOCATION_CONSTRAINTS]: 'Allocation constraints',
 	[LIST_LINK.REINSURER_QUOTATION_2]: 'Quotation',
-	[LIST_LINK.REINSURER_ASK]: 'Ask cedent'
+	[LIST_LINK.REINSURER_ASK]: 'Ask cedent',
+	[LIST_LINK.PLACEMENT_OUTCOME]: 'Placement Outcome'
 }
 
 export const StatusStructureTypeEnum = {
@@ -549,13 +551,43 @@ export const ACTION_BUTTON_INSURER_COMPLETE = {
 		message: <BsHouseFill size='1em' />
 	},
 	'/insurer/program/review': {
-		link: LIST_LINK.ALLOCATION,
+		link: LIST_LINK.DASHBOARD,
 		// message: 'Dashboard'
 		message: <BsHouseFill size='1em' />,
 		guard: true,
 		requireStatus: [
 			StatusStructureTypeEnum.REVIEW,
-			StatusStructureTypeEnum.COMPLETE
+			StatusStructureTypeEnum.QUOTATION_RESTRICTED,
+			StatusStructureTypeEnum.QUOTATION,
+			StatusStructureTypeEnum.QUOTED,
+			StatusStructureTypeEnum.COMPLETE,
+			StatusStructureTypeEnum.COMMUNICATION
+		]
+	}
+}
+
+export const ACTION_BUTTON_INSURER_QUOTED = {
+	'/insurer': {
+		link: LIST_LINK.ADD_PROGRAM,
+		message: <>New Program</>
+	},
+	'/insurer/dashboard': {
+		link: LIST_LINK.ADD_PROGRAM,
+		message: <>New Program</>
+	},
+	'/insurer/program/add': {
+		link: LIST_LINK.DASHBOARD,
+		// message: 'Dashboard'
+		message: <BsHouseFill size='1em' />
+	},
+	'/insurer/program/review': {
+		link: LIST_LINK.ALLOCATION,
+		// message: 'Dashboard'
+		message: <>Allocation</>,
+		guard: true,
+		requireStatus: [
+			StatusStructureTypeEnum.REVIEW,
+			StatusStructureTypeEnum.QUOTED
 		]
 	},
 	'/insurer/program/allocation': {
@@ -565,7 +597,7 @@ export const ACTION_BUTTON_INSURER_COMPLETE = {
 		guard: true,
 		requireStatus: [
 			StatusStructureTypeEnum.REVIEW,
-			StatusStructureTypeEnum.COMPLETE
+			StatusStructureTypeEnum.QUOTED
 		]
 	}
 }
@@ -886,6 +918,28 @@ export const ACTION_BUTTON_QUOTATION = {
 	// 	guard: true,
 	// 	requireStatus: []
 	// } */
+}
+
+export const ACTION_BUTTON_COMPLETE = {
+	'/reinsurer/program/review': {
+		link: '/reinsurer/program/placement',
+		message: (
+			<>
+				Placement Outcome{' '}
+				<RiArrowRightSLine size={'1em'} className='action-img' />
+			</>
+		),
+		guard: true,
+		requireStatus: [StatusStructureTypeEnum.COMPLETE]
+	},
+	'/reinsurer/program/placement': {
+		link: '/reinsurer/dashboard',
+
+		message: <BsHouseFill size='1em' />,
+
+		guard: true,
+		requireStatus: [StatusStructureTypeEnum.COMPLETE]
+	}
 }
 
 // Program structure group option

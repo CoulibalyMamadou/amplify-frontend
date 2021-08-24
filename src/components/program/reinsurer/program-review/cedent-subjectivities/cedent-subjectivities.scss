@@ -1,0 +1,20 @@
+.insurer-constraint {
+	h4 {
+		text-align: left;
+		margin-top: 2%;
+	}
+	div {
+		ul {
+			list-style-type: none;
+			padding: inherit;
+			display: flex;
+			flex-flow: column;
+			align-items: flex-start;
+			// border: 2px red solid;
+			margin-top: 2%;
+		}
+		ul:last-child {
+			margin-bottom: 5%;
+		}
+	}
+}

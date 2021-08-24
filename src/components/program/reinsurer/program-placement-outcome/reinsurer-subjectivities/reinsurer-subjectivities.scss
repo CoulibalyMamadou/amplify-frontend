@@ -1,0 +1,20 @@
+.quotation-constraints {
+	h4 {
+		text-align: left;
+		margin-top: 2%;
+	}
+	.equal-share {
+		margin-top: 1%;
+	}
+	div {
+		text-align: left;
+		ul {
+			list-style-type: none;
+			padding: inherit;
+			display: flex;
+			flex-flow: column;
+			align-items: flex-start;
+			margin-top: 1%;
+		}
+	}
+}

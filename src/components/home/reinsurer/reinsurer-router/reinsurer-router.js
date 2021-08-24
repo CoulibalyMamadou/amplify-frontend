@@ -7,6 +7,7 @@ import AddProgramTargetPrice from '../../../program/insurer/add-program/add-prog
 import AllocationProgram from '../../../program/insurer/allocation-program/allocation-program'
 import ReinsurerProgramAskCedent from '../../../program/reinsurer/program-ask-cedent/reinsurer-program-ask-cedent'
 import ProgramReview from '../../../program/reinsurer/program-review/program-review'
+import PlacementOutcome from '../../../program/reinsurer/program-placement-outcome/placement-outcome'
 import ProgramAllocation from '../../../program/reinsurer/program-allocation/program-allocation'
 import ProgramQuotation from '../../../program/reinsurer/program-quotation/program-quotation'
 import ReinsurerProgramHome from '../../../program/reinsurer/reinsurer-program-home/reinsurer-program-home'
@@ -33,6 +34,7 @@ const ReinsurerRouter = () => {
 					path={ROUTE_PREFIX.REINSURER + '/dashboard'}
 					component={ReinsurerProgramHome}
 				/>
+
 				<AuthConfig
 					exact
 					path={ROUTE_PREFIX.REINSURER + '/program/review/:programId'}
@@ -90,6 +92,11 @@ const ReinsurerRouter = () => {
 					exact
 					path={ROUTE_PREFIX.REINSURER + '/program/allocation'}
 					component={AllocationProgram}
+				/>
+				<AuthConfig
+					exact
+					path={ROUTE_PREFIX.REINSURER + '/program/placement/:programId'}
+					component={PlacementOutcome}
 				/>
 			</Switch>
 		</>
