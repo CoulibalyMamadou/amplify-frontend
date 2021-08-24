@@ -150,7 +150,6 @@ const AllocationProgram = () => {
 	}
 
 	const scenarioChoose = async () => {
-		// eslint-disable-next-line no-unused-vars
 		return getFinalScenario(programId)
 			.then((res) => res.json())
 			.then((scenario) => {
@@ -238,30 +237,22 @@ const AllocationProgram = () => {
 						</>
 					)
 				})}
+				{scenarios.length && finalScenario === scenarios[selectedIndex]?._id ? (
+					<button
+						className='action-button scenario-choose'
+						onClick={chooseScenario}
+					>
+						<FaCheckCircle size={'1em'} className={'action-img'} />
+						<span>Your choice </span>
+					</button>
+				) : (
+					<button className='action-button' onClick={chooseScenario}>
+						<FiCheckCircle size={'1em'} className={'action-img'} />
+						<span>Choose scenario </span>
+					</button>
+				)}
 			</div>
-			{scenarios.length && (
-				<div className={'action-bar'}>
-					{/* <button className='action-button' onClick={switchScenario(index)}> */}
-					<div>
-						{/* <TotalPrice program={program} quotation={quotation}/> */}
-						<p>teste </p>
-					</div>
-					{finalScenario === scenarios[selectedIndex]?._id ? (
-						<button
-							className='action-button scenario-choose'
-							onClick={chooseScenario}
-						>
-							<FaCheckCircle size={'1em'} className={'action-img'} />
-							<span>Your choice </span>
-						</button>
-					) : (
-						<button className='action-button' onClick={chooseScenario}>
-							<FiCheckCircle size={'1em'} className={'action-img'} />
-							<span>Choose scenario </span>
-						</button>
-					)}
-				</div>
-			)}
+
 			<section className='allocation-program-content'>
 				{/* header of placement box */}
 				{allocationList &&
