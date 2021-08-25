@@ -6,9 +6,11 @@ import { useHistory, useParams } from 'react-router'
 import {
 	getAllScenarioListFill,
 	getFinalScenario,
-	programUpdate,
-	programUpdateScenarioFinal
+	programUpdateScenarioFinal,
+	getProgramByIdFill,
+	programUpdate
 } from '../../../../api/program.service'
+import ScenarioTotalCost from './scenario-total-cost/screnario-total-cost'
 
 const AllocationProgram = () => {
 	const allocationData = [
@@ -134,6 +136,7 @@ const AllocationProgram = () => {
 	const [scenarios, setScenarios] = useState([])
 	const [selectedIndex, setSelectedIndex] = useState(0)
 	const [finalScenario, setFinalScenario] = useState('')
+	const [program, setProgram] = useState({})
 	// console.log('setConstraintList : ', setAllocationList)
 
 	const getScenario = async () => {
@@ -159,6 +162,18 @@ const AllocationProgram = () => {
 			})
 	}
 
+	const getProgramInfo = async () => {
+		return getProgramByIdFill(programId)
+			.then((res) => res.json())
+			.then((result) => {
+				setProgram(result)
+				return result
+			})
+			.catch((reason) => {
+				console.log('Scenario unknown : ', reason)
+			})
+	}
+
 	const scenarioChoose = async () => {
 		return getFinalScenario(programId)
 			.then((res) => res.json())
@@ -175,6 +190,9 @@ const AllocationProgram = () => {
 	useEffect(() => {
 		scenarioChoose().then((value) => {
 			console.log('Final Scenario : ', value)
+		})
+		getProgramInfo().then((result) => {
+			console.log('program link Program : ', result)
 		})
 	}, [])
 
@@ -242,7 +260,6 @@ const AllocationProgram = () => {
 		console.log('update allocation new allocationUpdate : ', allocationUpdate)
 		console.log('update allocation new value : ', updateValue)
 	}
-
 	return (
 		<>
 			<div className={'scenario-header'}>
@@ -276,6 +293,29 @@ const AllocationProgram = () => {
 					<span>Send to reinsurers</span>
 				</button>
 			</div>
+			{scenarios.length && (
+				<div className={'action-bar'}>
+					{/* <button className='action-button' onClick={switchScenario(index)}> */}
+					<ScenarioTotalCost
+						program={program}
+						selected={scenarios[selectedIndex]}
+					/>
+					{/* finalScenario === scenarios[selectedIndex]?._id ? (
+						<button
+							className='action-button scenario-choose'
+							onClick={chooseScenario}
+						>
+							<FaCheckCircle size={'1em'} className={'action-img'} />
+							<span>Your choice </span>
+						</button>
+					) : (
+						<button className='action-button' onClick={chooseScenario}>
+							<FiCheckCircle size={'1em'} className={'action-img'} />
+							<span>Choose scenario </span>
+						</button>
+					) */}
+				</div>
+			)}
 
 			<section className='allocation-program-content'>
 				{/* header of placement box */}
@@ -297,5 +337,4 @@ const AllocationProgram = () => {
 		</>
 	)
 }
-
 export default AllocationProgram
