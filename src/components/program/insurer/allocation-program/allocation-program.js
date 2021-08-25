@@ -1,11 +1,12 @@
 import './allocation-program.scss'
 import AllocationLayer from './allocation-layer/allocation-layer'
 import { useEffect, useState } from 'react'
-import { FaCheckCircle, FiCheckCircle, RiFilePaper2Line } from 'react-icons/all'
-import { useParams } from 'react-router'
+import { FiCheck, RiFilePaper2Line } from 'react-icons/all'
+import { useHistory, useParams } from 'react-router'
 import {
 	getAllScenarioListFill,
 	getFinalScenario,
+	programUpdate,
 	programUpdateScenarioFinal
 } from '../../../../api/program.service'
 
@@ -127,6 +128,7 @@ const AllocationProgram = () => {
 	console.log('Scenario come programId : ', programId)
 	console.log('Scenario come allocationData : ', allocationData)
 
+	const history = useHistory()
 	const [allocationList, setAllocationList] = useState([])
 	const [newValue, setNewValue] = useState([])
 	const [scenarios, setScenarios] = useState([])
@@ -141,7 +143,15 @@ const AllocationProgram = () => {
 				console.log('Scenario come: ', scenariosLoad)
 				console.log('Scenario come 0: ', scenariosLoad.scenarios[0].allocations)
 				setScenarios(() => scenariosLoad.scenarios)
-				setAllocationList(() => scenariosLoad.scenarios[0].allocations)
+				// selected by default
+				finalScenario.length >= 3
+					? setAllocationList(
+							() =>
+								scenariosLoad.scenarios.find(
+									(data) => data._id === finalScenario
+								).allocations
+					  )
+					: setAllocationList(() => scenariosLoad.scenarios[0].allocations)
 				return scenariosLoad
 			})
 			.catch((reason) => {
@@ -154,7 +164,7 @@ const AllocationProgram = () => {
 			.then((res) => res.json())
 			.then((scenario) => {
 				console.log('Scenario choose: ', scenario)
-				setFinalScenario(scenario.finalScenario)
+				setFinalScenario(scenario.finalScenario._id)
 				return scenario
 			})
 			.catch((reason) => {
@@ -163,9 +173,6 @@ const AllocationProgram = () => {
 	}
 
 	useEffect(() => {
-		getScenario().then((value) => {
-			console.log('Scenario come retour appel : ', value)
-		})
 		scenarioChoose().then((value) => {
 			console.log('Final Scenario : ', value)
 		})
@@ -177,18 +184,40 @@ const AllocationProgram = () => {
 	}, [newValue])
 
 	useEffect(() => {
+		getScenario().then((value) => {
+			console.log('Scenario come retour appel : ', value)
+		})
+	}, [finalScenario])
+
+	useEffect(() => {
 		console.log('update allocation new value update : ', newValue)
 		setAllocationList(() => scenarios[selectedIndex]?.allocations)
+		// setAllocationList(newValue)
 	}, [selectedIndex])
 
 	const switchScenario = (scenarioIndex) => {
 		setSelectedIndex(scenarioIndex)
+		chooseScenario(scenarioIndex)
 	}
 
-	const chooseScenario = () => {
+	const changeStatus = () => {
+		const body = {
+			id: programId,
+			program: {
+				status: 'COMPLETE'
+			}
+		}
+		programUpdate(body)
+			.then((res) => res.json())
+			.then((program) => {
+				program.status === 'COMPLETE' && history.push('/')
+			})
+	}
+
+	const chooseScenario = (index) => {
 		const param = {
 			programId,
-			scenarioId: scenarios[selectedIndex]?._id
+			scenarioId: scenarios[index]?._id
 		}
 		programUpdateScenarioFinal(param)
 			.then((res) => res.json())
@@ -209,11 +238,6 @@ const AllocationProgram = () => {
 		)
 		updateValue[allocationIndex] = allocationUpdate
 		console.log('update allocation new value : ', updateValue)
-		// setAllocationList((prevState) => [
-		// 	...updateValue
-		// 	// ...prevState,
-		// 	// ([allocationIndex] = allocationUpdate)
-		// ])
 		setNewValue(() => updateValue)
 		console.log('update allocation new allocationUpdate : ', allocationUpdate)
 		console.log('update allocation new value : ', updateValue)
@@ -223,9 +247,19 @@ const AllocationProgram = () => {
 		<>
 			<div className={'scenario-header'}>
 				{scenarios.map((value, index) => {
-					return (
+					return finalScenario === value._id ? (
 						<>
-							{/* <button className='action-button' onClick={switchScenario(index)}> */}
+							<button
+								key={index}
+								className='action-button scenario-choose'
+								onClick={() => switchScenario(index)}
+							>
+								<RiFilePaper2Line size={'1em'} className={'action-img'} />
+								<span>Scenario {index + 1} </span>
+							</button>
+						</>
+					) : (
+						<>
 							<button
 								key={index}
 								className='action-button'
@@ -237,20 +271,10 @@ const AllocationProgram = () => {
 						</>
 					)
 				})}
-				{scenarios.length && finalScenario === scenarios[selectedIndex]?._id ? (
-					<button
-						className='action-button scenario-choose'
-						onClick={chooseScenario}
-					>
-						<FaCheckCircle size={'1em'} className={'action-img'} />
-						<span>Your choice </span>
-					</button>
-				) : (
-					<button className='action-button' onClick={chooseScenario}>
-						<FiCheckCircle size={'1em'} className={'action-img'} />
-						<span>Choose scenario </span>
-					</button>
-				)}
+				<button className='action-button' onClick={changeStatus}>
+					<FiCheck size={'1em'} className={'action-img'} />
+					<span>Send to reinsurers</span>
+				</button>
 			</div>
 
 			<section className='allocation-program-content'>
