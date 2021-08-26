@@ -13,6 +13,7 @@ const LayerHead = ({ layerId, layerPrice, allocation }) => {
 	useEffect(() => {
 		capacityValue()
 	}, [allocation])
+
 	const viewDisplay = (
 		<>
 			{/* header of placement box */}

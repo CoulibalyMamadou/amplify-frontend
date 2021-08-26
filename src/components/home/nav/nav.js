@@ -48,7 +48,6 @@ const Nav = () => {
 	 */
 	const headMessageHandler = () => {
 		getCurrentPathWithoutLastPart()
-		console.log('OOOO', VIEW_ACTION_MESSAGE)
 		return VIEW_ACTION_MESSAGE[pathname]
 			? VIEW_ACTION_MESSAGE[pathname]
 			: VIEW_ACTION_MESSAGE[getCurrentPathWithoutLastPart()] || 'Dashboard'
@@ -59,10 +58,6 @@ const Nav = () => {
 	 * @returns {string}
 	 */
 	const getCurrentPathWithoutLastPart = () => {
-		console.log(
-			'OOOO',
-			location.pathname.slice(0, location.pathname.lastIndexOf('/'))
-		)
 		return location.pathname.slice(0, location.pathname.lastIndexOf('/'))
 	}
 
@@ -70,7 +65,6 @@ const Nav = () => {
 	 * content of action button
 	 */
 	const [headerMessage, setHeaderMessage] = useState(headMessageHandler())
-	console.log('XXXX', headerMessage)
 
 	useEffect(() => {
 		setHeaderMessage(headMessageHandler())

@@ -279,41 +279,32 @@ const AllocationProgram = () => {
 						<>
 							<button
 								key={index}
-								className='action-button'
+								className='action-button-scenario'
 								onClick={() => switchScenario(index)}
 							>
-								<RiFilePaper2Line size={'1em'} className={'action-img'} />
+								&nbsp;&nbsp;
+								{/* <RiFilePaper2Line size={'1em'} className={'action-img'} /> */}
 								<span>Scenario {index + 1} </span>
 							</button>
 						</>
 					)
 				})}
-				<button className='action-button' onClick={changeStatus}>
-					<FiCheck size={'1em'} className={'action-img'} />
+
+				<ScenarioTotalCost
+					program={program}
+					selected={scenarios[selectedIndex]}
+				/>
+				{/* <button className='action-button-choose' onClick={changeStatus}>
+					<FiCheck size={'1em'} className={'action-img'}/>
 					<span>Send to reinsurers</span>
-				</button>
+				</button> */}
 			</div>
 			{scenarios.length && (
 				<div className={'action-bar'}>
-					{/* <button className='action-button' onClick={switchScenario(index)}> */}
-					<ScenarioTotalCost
-						program={program}
-						selected={scenarios[selectedIndex]}
-					/>
-					{/* finalScenario === scenarios[selectedIndex]?._id ? (
-						<button
-							className='action-button scenario-choose'
-							onClick={chooseScenario}
-						>
-							<FaCheckCircle size={'1em'} className={'action-img'} />
-							<span>Your choice </span>
-						</button>
-					) : (
-						<button className='action-button' onClick={chooseScenario}>
-							<FiCheckCircle size={'1em'} className={'action-img'} />
-							<span>Choose scenario </span>
-						</button>
-					) */}
+					<button className='action-button-choose' onClick={changeStatus}>
+						<FiCheck size={'1em'} className={'action-img'} />
+						<span>Send to reinsurers</span>
+					</button>
 				</div>
 			)}
 

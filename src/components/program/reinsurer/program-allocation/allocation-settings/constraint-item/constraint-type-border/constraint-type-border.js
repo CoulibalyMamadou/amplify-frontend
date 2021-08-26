@@ -185,7 +185,7 @@ const ConstraintTypeBorder = ({
 			  })
 		setTargetOption(options)
 	}
-
+	console.log('QQQQQ', targetOption)
 	/**
 	 * update constraint type value on change
 	 * @param id constraint Id

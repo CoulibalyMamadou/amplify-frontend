@@ -163,15 +163,6 @@ export const getAllProgramQuotationListFill = ({ programId }) => {
 	})
 }
 
-export const getAllProgramQuotationAndPreviousQuotationListFill = ({
-	programId
-}) => {
-	// return fetch(`${API}/program/quotation/${programId}`, {
-	return fetch(`${API}/program/quotation/${programId}`, {
-		headers: loadHeaderWithAuth()
-	})
-}
-
 export const createConstraintProgram = ({
 	programId,
 	constraintsAllocation

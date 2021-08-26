@@ -5,7 +5,6 @@ import {
 	ACTION_BUTTON_QUOTATION,
 	ACTION_BUTTON_QUOTATION_RESTRICTED,
 	ACTION_BUTTON_REVIEW,
-	ACTION_BUTTON_COMPLETE,
 	ROUTE_PREFIX,
 	StatusStructureTypeEnum
 } from '../../../../../constants'
@@ -114,9 +113,6 @@ const HeadAction = () => {
 	const actionButtonInitHandler = (pathname) => {
 		const url = getCurrentPathWithoutLastPart()
 		console.log('url  de la page : ', url)
-		console.log('the status is :', status)
-		console.log('Pathname ', pathname)
-		console.log('Action button ', ACTION_BUTTON_COMPLETE)
 		let actionButton = {}
 		switch (status) {
 			case StatusStructureTypeEnum.QUOTATION_RESTRICTED:
@@ -125,16 +121,12 @@ const HeadAction = () => {
 			case StatusStructureTypeEnum.QUOTATION:
 				actionButton = ACTION_BUTTON_QUOTATION
 				break
-			case StatusStructureTypeEnum.COMPLETE:
-				actionButton = ACTION_BUTTON_COMPLETE
-				break
 			default:
 				actionButton = ACTION_BUTTON_REVIEW
 				break
 		}
 
 		console.log('actionButton : ', actionButton)
-
 		// getStatus()
 		return actionButton[pathname]
 			? actionButton[pathname]

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import * as PropTypes from 'prop-types'
 import './scenario-total-cost.scss'
 
-const ScenarioTotalCost = ({ program, selected }) => {
+const ScenarioTotalCost = ({ program, selected = { allocations: [] } }) => {
 	const [totalCost, setTotalCost] = useState(0)
 	/**
 	 * Return premium income * sum of max price of each layer
@@ -36,8 +36,8 @@ const ScenarioTotalCost = ({ program, selected }) => {
 	}, [selected.allocations])
 
 	return (
-		<div>
-			<p>Scenario total cost: {totalCost} </p>
+		<div className={'scenario-total-cost-view'}>
+			<p>Scenario total cost: {totalCost} M€</p>
 		</div>
 	)
 }

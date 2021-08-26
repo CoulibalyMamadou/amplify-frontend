@@ -1,9 +1,10 @@
-.review-content-reinsurer {
+.review-content {
 	position: relative;
 	display: flex;
 	flex-flow: column;
 	justify-content: flex-start;
 	align-items: center;
+	//height: calc(100% - 60px);
 	height: calc(100% - 60px);
 	width: 100%;
 	background: #ffffff;
@@ -12,9 +13,6 @@
 	border: 1px solid #dfe0eb;
 	box-sizing: border-box;
 	border-radius: 8px;
-	flex-wrap: wrap;
-	flex-direction: column;
-	overflow-x: auto;
 
 	.review-display {
 		display: flex;
@@ -23,17 +21,9 @@
 		justify-content: center;
 		margin: 0;
 		height: 100%;
+		// height: calc(100% - 215px);
 		width: 100%;
 		overflow-y: auto;
-
-		.review-informations {
-			display: flex;
-			flex-flow: column;
-			width: 96%;
-			height: 100%;
-			align-items: flex-start;
-			justify-content: flex-start;
-		}
 	}
 }
 

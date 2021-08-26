@@ -150,8 +150,7 @@ export const LIST_LINK = {
 	REINSURER_ASK: '/reinsurer/cedent/ask',
 	RE_SUBMIT_PROGRAM: '/reinsurer/program/submit',
 	RE_DASHBOARD: '/reinsurer/dashboard',
-	USER_PROFILE: '/user-profile',
-	PLACEMENT_OUTCOME: '/reinsurer/program/placement'
+	USER_PROFILE: '/user-profile'
 }
 export const USER_LINK = {
 	DASHBOARD: '/user-profile'
@@ -177,8 +176,7 @@ export const VIEW_ACTION_MESSAGE = {
 	[LIST_LINK.REINSURER_QUOTATION]: 'Quotation',
 	[LIST_LINK.REINSURER_ALLOCATION_CONSTRAINTS]: 'Allocation constraints',
 	[LIST_LINK.REINSURER_QUOTATION_2]: 'Quotation',
-	[LIST_LINK.REINSURER_ASK]: 'Ask cedent',
-	[LIST_LINK.PLACEMENT_OUTCOME]: 'Placement Outcome'
+	[LIST_LINK.REINSURER_ASK]: 'Ask cedent'
 }
 
 export const StatusStructureTypeEnum = {
@@ -918,28 +916,6 @@ export const ACTION_BUTTON_QUOTATION = {
 	// 	guard: true,
 	// 	requireStatus: []
 	// } */
-}
-
-export const ACTION_BUTTON_COMPLETE = {
-	'/reinsurer/program/review': {
-		link: '/reinsurer/program/placement',
-		message: (
-			<>
-				Placement Outcome{' '}
-				<RiArrowRightSLine size={'1em'} className='action-img' />
-			</>
-		),
-		guard: true,
-		requireStatus: [StatusStructureTypeEnum.COMPLETE]
-	},
-	'/reinsurer/program/placement': {
-		link: '/reinsurer/dashboard',
-
-		message: <BsHouseFill size='1em' />,
-
-		guard: true,
-		requireStatus: [StatusStructureTypeEnum.COMPLETE]
-	}
 }
 
 // Program structure group option
