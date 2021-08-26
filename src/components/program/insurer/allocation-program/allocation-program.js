@@ -263,33 +263,34 @@ const AllocationProgram = () => {
 	return (
 		<>
 			<div className={'scenario-header'}>
-				{scenarios.map((value, index) => {
-					return finalScenario === value._id ? (
-						<>
-							<button
-								key={index}
-								className='action-button scenario-choose'
-								onClick={() => switchScenario(index)}
-							>
-								<RiFilePaper2Line size={'1em'} className={'action-img'} />
-								<span>Scenario {index + 1} </span>
-							</button>
-						</>
-					) : (
-						<>
-							<button
-								key={index}
-								className='action-button-scenario'
-								onClick={() => switchScenario(index)}
-							>
-								&nbsp;&nbsp;
-								{/* <RiFilePaper2Line size={'1em'} className={'action-img'} /> */}
-								<span>Scenario {index + 1} </span>
-							</button>
-						</>
-					)
-				})}
-
+				<div className={'scenario-header-tabs'}>
+					{scenarios.map((value, index) => {
+						return finalScenario === value._id ? (
+							<>
+								<button
+									key={index}
+									className='action-button scenario-choose'
+									onClick={() => switchScenario(index)}
+								>
+									<RiFilePaper2Line size={'1em'} className={'action-img'} />
+									<span>Scenario {index + 1} </span>
+								</button>
+							</>
+						) : (
+							<>
+								<button
+									key={index}
+									className='action-button-scenario'
+									onClick={() => switchScenario(index)}
+								>
+									&nbsp;&nbsp;
+									{/* <RiFilePaper2Line size={'1em'} className={'action-img'} /> */}
+									<span>Scenario {index + 1} </span>
+								</button>
+							</>
+						)
+					})}
+				</div>
 				<ScenarioTotalCost
 					program={program}
 					selected={scenarios[selectedIndex]}
@@ -328,4 +329,5 @@ const AllocationProgram = () => {
 		</>
 	)
 }
+
 export default AllocationProgram
