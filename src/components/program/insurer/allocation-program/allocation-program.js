@@ -291,15 +291,15 @@ const AllocationProgram = () => {
 						)
 					})}
 				</div>
-				<ScenarioTotalCost
-					program={program}
-					selected={scenarios[selectedIndex]}
-				/>
 				{/* <button className='action-button-choose' onClick={changeStatus}>
 					<FiCheck size={'1em'} className={'action-img'}/>
 					<span>Send to reinsurers</span>
 				</button> */}
 			</div>
+			<ScenarioTotalCost
+				program={program}
+				selected={scenarios[selectedIndex]}
+			/>
 			{scenarios.length && (
 				<div className={'action-bar'}>
 					<button className='action-button-choose' onClick={changeStatus}>
