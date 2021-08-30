@@ -5,13 +5,15 @@ import { useEffect, useState } from 'react'
 import {
 	getProgramQuoteConstraintListFill,
 	getProgramByIdFill,
-	getAllProgramQuotationAndPreviousQuotationListFill
+	getAllProgramQuotationAndPreviousQuotationListFill,
+	getFinalScenario
 } from '../../../../api/program.service'
 import { requestInterceptor } from '../../../../sessionStorage/sessionStorage'
 import { getReinsurer } from '../../../../api/reinsurer.service'
 import Quotation from './quotation/quotation'
 import PreviousQuotation from './previous-quotation/previous-quotation'
 import ReinsurerSubjectivities from './reinsurer-subjectivities/reinsurer-subjectivities'
+import FinalScenario from './final-scenario/final-scenario'
 
 const PlacementOutcome = () => {
 	/**
@@ -44,6 +46,9 @@ const PlacementOutcome = () => {
 	 */
 	const [reinsurer, setReinsurer] = useState([])
 
+	const [finalResult, setFinalResult] = useState({})
+	console.log(finalResult)
+
 	/**
 	 * Get quote constraints
 	 * @returns {Object}
@@ -62,6 +67,18 @@ const PlacementOutcome = () => {
 				const { constraints } = allQuoteConstraints
 				setConstraintAllocation(() => [...constraints])
 				return constraints
+			})
+			.catch((reason) => {
+				console.log('reason : ', reason)
+			})
+	}
+
+	const getFinalResult = () => {
+		return getFinalScenario(programId)
+			.then((res) => res.json())
+			.then((result) => {
+				setFinalResult(result)
+				return result
 			})
 			.catch((reason) => {
 				console.log('reason : ', reason)
@@ -120,6 +137,9 @@ const PlacementOutcome = () => {
 		getQuoteConstraintList().then((result) => {
 			console.log('Constraints Quotations : ', result)
 		})
+		getFinalResult().then((result) => {
+			console.log('Final Scenario : ', result)
+		})
 	}, [])
 	console.log('quotation', quotation)
 	return isLoading ? (
@@ -160,6 +180,10 @@ const PlacementOutcome = () => {
 					</section>
 					<section className='placement-outcome-container'>
 						<h3>Placement Outcome</h3>
+						<FinalScenario
+							finalResult={finalResult}
+							reinsurer={reinsurer.office?._id}
+						/>
 					</section>
 				</section>
 			</section>

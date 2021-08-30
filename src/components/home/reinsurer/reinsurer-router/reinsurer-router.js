@@ -11,6 +11,7 @@ import ProgramAllocation from '../../../program/reinsurer/program-allocation/pro
 import ProgramQuotation from '../../../program/reinsurer/program-quotation/program-quotation'
 import ReinsurerProgramHome from '../../../program/reinsurer/reinsurer-program-home/reinsurer-program-home'
 import ReinsurerHead from '../reinsurer-head/reinsurer-head'
+import Placement0utcome from '../../../program/reinsurer/program-placement-outcome/placement-outcome'
 // import ProgramQuotationFinal from '../../../program/reinsurer/program-quotation-final/program-quotation-final'
 
 const ReinsurerRouter = () => {
@@ -90,6 +91,11 @@ const ReinsurerRouter = () => {
 					exact
 					path={ROUTE_PREFIX.REINSURER + '/program/allocation'}
 					component={AllocationProgram}
+				/>
+				<AuthConfig
+					exact
+					path={ROUTE_PREFIX.REINSURER + '/program/placement/:programId'}
+					component={Placement0utcome}
 				/>
 			</Switch>
 		</>

@@ -2,6 +2,7 @@ import './head-action.scss'
 import { matchPath, useHistory, useLocation, useParams } from 'react-router'
 import {
 	ACTION_BUTTON,
+	ACTION_BUTTON_COMPLETE,
 	ACTION_BUTTON_QUOTATION,
 	ACTION_BUTTON_QUOTATION_RESTRICTED,
 	ACTION_BUTTON_REVIEW,
@@ -120,6 +121,9 @@ const HeadAction = () => {
 				break
 			case StatusStructureTypeEnum.QUOTATION:
 				actionButton = ACTION_BUTTON_QUOTATION
+				break
+			case StatusStructureTypeEnum.COMPLETE:
+				actionButton = ACTION_BUTTON_COMPLETE
 				break
 			default:
 				actionButton = ACTION_BUTTON_REVIEW

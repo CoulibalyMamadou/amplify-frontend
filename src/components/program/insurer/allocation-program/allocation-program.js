@@ -307,6 +307,21 @@ const AllocationProgram = () => {
 						<span>Send to reinsurers</span>
 					</button>
 				</div>
+				// 	{finalScenario === scenarios[selectedIndex]?._id ? (
+				// 		<button
+				// 			className='action-button scenario-choose'
+				// 			onClick={chooseScenario}
+				// 		>
+				// 			<FaCheckCircle size={'1em'} className={'action-img'} />
+				// 			<span>Your choice </span>
+				// 		</button>
+				// 	) : (
+				// 		<button className='action-button' onClick={chooseScenario}>
+				// 			<FiCheckCircle size={'1em'} className={'action-img'} />
+				// 			<span>Validate scenario </span>
+				// 		</button>
+				// 	)}
+				// </div>
 			)}
 
 			<section className='allocation-program-content'>
