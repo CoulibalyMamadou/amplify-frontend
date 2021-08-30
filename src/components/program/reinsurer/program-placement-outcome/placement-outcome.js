@@ -148,6 +148,13 @@ const PlacementOutcome = () => {
 		<section className='placementOutcome-content'>
 			<section className='placement-display'>
 				<section className='placement-container'>
+					<section className='placement-outcome-container'>
+						<h3>Placement Outcome</h3>
+						<FinalScenario
+							finalResult={finalResult}
+							reinsurer={reinsurer.office?._id}
+						/>
+					</section>
 					<section className='first-stage-container'>
 						<h3>Quotation First Stage</h3>
 						<ReinsurerSubjectivities
@@ -175,13 +182,6 @@ const PlacementOutcome = () => {
 						<Quotation
 							quotation={quotation.quotation}
 							program={program}
-							reinsurer={reinsurer.office?._id}
-						/>
-					</section>
-					<section className='placement-outcome-container'>
-						<h3>Placement Outcome</h3>
-						<FinalScenario
-							finalResult={finalResult}
 							reinsurer={reinsurer.office?._id}
 						/>
 					</section>

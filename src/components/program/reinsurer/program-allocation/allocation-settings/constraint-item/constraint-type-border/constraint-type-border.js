@@ -40,7 +40,7 @@ const ConstraintTypeBorder = ({
 			elementType: 'select',
 			elementConfig: {
 				options: [
-					{ value: '', displayValue: '' },
+					// { value: '', displayValue: '' },
 					{ value: CONSTRAINT_TYPE.MAXIMUM, displayValue: 'Maximum share' },
 					{
 						value: CONSTRAINT_TYPE.RELATIVE_MAXIMUM,
@@ -115,7 +115,7 @@ const ConstraintTypeBorder = ({
 		isEqualShare
 			? (options = {
 					options: [
-						{ value: '', displayValue: 'Choose type', disabled: true },
+						// { value: '', displayValue: 'Choose type', disabled: true },
 						{ value: CONSTRAINT_TYPE.MAXIMUM, displayValue: 'Maximum share' },
 						{
 							value: CONSTRAINT_TYPE.CONDITIONAL_MINIMUM,
@@ -125,7 +125,7 @@ const ConstraintTypeBorder = ({
 			  })
 			: (options = {
 					options: [
-						{ value: '', displayValue: 'Choose type', disabled: true },
+						// { value: '', displayValue: 'Choose type', disabled: true },
 						{ value: CONSTRAINT_TYPE.MAXIMUM, displayValue: 'Maximum share' },
 						{
 							value: CONSTRAINT_TYPE.RELATIVE_MAXIMUM,
