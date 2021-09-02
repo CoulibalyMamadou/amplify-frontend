@@ -48,17 +48,9 @@ const QuotationGraph = ({
 		console.log('testValue : ', testValaue)
 	}, [scenarioIndex])
 
-	// useEffect(() => {
-	// 	data.sort((a, b) => a - b)
-	// }, [data])
-
 	const updateGraphData = () => {
 		setData(() =>
-			[
-				layer[0]?.price * 0.2 || 0,
-				...layer.map((item) => item?.price)
-				// outcome.price ? outcome.price : 0
-			]
+			[layer[0]?.price * 0.2 || 0, ...layer.map((item) => item?.price)]
 				.map((value, index) =>
 					scenarioIndex === index ? [value, value] : value
 				)
@@ -69,12 +61,9 @@ const QuotationGraph = ({
 	const updateGraphLabel = () => {
 		setLabel(() => [
 			...new Set(
-				[
-					0,
-					...layer.map((item) => item?.quantity),
-					outcomeData.share
-					// outcome.quantity ? outcome.quantity : 0
-				].sort((a, b) => a - b)
+				[0, ...layer.map((item) => item?.quantity), outcomeData.share].sort(
+					(a, b) => a - b
+				)
 			)
 		])
 	}
@@ -110,23 +99,6 @@ const QuotationGraph = ({
 		// backgroundColor: '#04FAAA'
 		// backgroundColor: '#78dbba'
 	}
-	// :  {
-	// 		label: 'Below minimum price',
-	// 		// data: [...data.map(() => layers.price?.min || 0)],
-	// 		data: [1, 8, 5, 6],
-	// 		borderColor: '#a6e4d5',
-	// 		fill: true,
-	// 		pointBackgroundColor: '#ffffff00',
-	// 		pointHoverBackgroundColor: '#ffffff00',
-	// 		pointBorderColor: '#ffffff00',
-	// 		pointHoverBorderColor: '#ffffff00',
-	// 		stepped: 'after',
-	// 		borderWidth: 1,
-	// 		// backgroundColor: '#13F1A9'
-	// 		backgroundColor: '#04FAAA'
-	// 		// backgroundColor: '#78dbba'
-	//   }
-	// {}
 
 	const layerDisplay =
 		layers.length > 1

@@ -79,7 +79,7 @@ const Quotation = ({ quotation, program, reinsurer, share = [] }) => {
 
 	useEffect(() => {
 		quotationList(quotationArray)
-	}, [quotation])
+	}, [quotation, share])
 
 	return (
 		<>
