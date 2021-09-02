@@ -1,14 +1,16 @@
 import * as PropTypes from 'prop-types'
 import './quotation.scss'
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import TotalPrice from './total-price/total-price'
+import QuotationGraph from '../../program-quotation/quotation-layer-list/quotation-layer/quotation-graph/quotation-graph'
 
-const Quotation = ({ quotation, program, reinsurer }) => {
+const Quotation = ({ quotation, program, reinsurer, share = [] }) => {
 	/**
 	 * Quotation list
 	 */
 	const [list, setlist] = useState([])
-
+	// const [shareOutcome, setShareOutcome] = useState([])
+	console.log('Share quotation', share)
 	/**
 	 * reinsurer id
 	 */
@@ -40,25 +42,35 @@ const Quotation = ({ quotation, program, reinsurer }) => {
 			quotation[0].map((elem, index) => {
 				return (
 					<ul key={index} className='layer-name'>
-						<li className='layer'>
+						<div className='layer'>
 							<div className='layer-container'>Layer {index + 1} :</div>
-							<ul>
-								<li>
-									{elem.quote &&
-										elem.quote.map((item, index) => {
-											return (
-												<div key={index} className='text-container'>
-													<div className='share-container'>
-														Share {item.quantity}%
-													</div>
 
-													<div>Adjusted Rate {item.price.toFixed(3)}%</div>
+							{elem.quote &&
+								elem.quote.map((item, index2) => {
+									return (
+										<section key={index2} className={'quotation-display-box'}>
+											<div className='text-container'>
+												<div className='share-container'>
+													Share {item.quantity}%
 												</div>
-											)
-										})}
-								</li>
-							</ul>
-						</li>
+
+												<div>Adjusted Rate {item.price.toFixed(3)}%</div>
+											</div>
+
+											<section className='quotation-display'>
+												{/* <div>GRAPH HERE</div> */}
+												{share[index] && (
+													<QuotationGraph
+														quotation={elem.quote}
+														layers={[]}
+														outcome={share[index]}
+													/>
+												)}
+											</section>
+										</section>
+									)
+								})}
+						</div>
 					</ul>
 				)
 			})
@@ -70,18 +82,21 @@ const Quotation = ({ quotation, program, reinsurer }) => {
 	}, [quotation])
 
 	return (
-		<section className='quotation-container'>
-			<h4>Quotation</h4>
-			<TotalPrice quotation={quotationArray} program={program} />
-			<div className='quotation-list'>{list}</div>
-		</section>
+		<>
+			<section className='quotation-container'>
+				<h4>Quotation</h4>
+				<TotalPrice quotation={quotationArray} program={program} />
+				<div className='quotation-list'>{list}</div>
+			</section>
+		</>
 	)
 }
 
 Quotation.propTypes = {
 	quotation: PropTypes.array,
 	program: PropTypes.object,
-	reinsurer: PropTypes.object
+	reinsurer: PropTypes.object,
+	share: PropTypes.array
 }
 
 export default Quotation

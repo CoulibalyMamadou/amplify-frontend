@@ -2,7 +2,7 @@ import * as PropTypes from 'prop-types'
 import './final-scenario.scss'
 import { useEffect, useState } from 'react'
 
-const FinalScenario = ({ finalResult, reinsurer }) => {
+const FinalScenario = ({ finalResult, reinsurer, setShare }) => {
 	/**
 	 * Quotation list
 	 */
@@ -17,16 +17,40 @@ const FinalScenario = ({ finalResult, reinsurer }) => {
 	const placementArray = finalResult.finalScenario?.allocations
 
 	/**
+	 * Array of object who containes share + adjusted reate
+	 */
+	const arrayOfShare = []
+
+	/**
 	 * return correct share regarding the id of the office
 	 * @param {*} target
 	 * @returns
 	 */
+
 	const reinsurerShare = (target) => {
 		const recup =
 			target && target.find((match) => match.idOffice === reinsurerId)
+		console.log('share recup', recup.share)
+		// arrayOfShare.map((item) => (item.share = recup.share))
+		// arrayOfShare.push({ share: recup.share })
+		// setShare(arrayOfShare)
 		return recup.share
 	}
 
+	const adjustedRate = (placementArray) => {
+		placementArray &&
+			placementArray.map((elem, index) => {
+				return arrayOfShare.push({
+					rate: elem.price,
+					layer: 'layer ' + (index + 1),
+					share: reinsurerShare(elem.allocation)
+				})
+			})
+		setShare(arrayOfShare)
+	}
+
+	console.log('share adjusted', adjustedRate)
+	console.log('share array', arrayOfShare)
 	/**
 	 * Display quotations
 	 * @param {*} finalQuote
@@ -58,6 +82,7 @@ const FinalScenario = ({ finalResult, reinsurer }) => {
 
 	useEffect(() => {
 		placementOutcome(placementArray)
+		adjustedRate(placementArray)
 	}, [placementArray])
 
 	return (
@@ -69,7 +94,8 @@ const FinalScenario = ({ finalResult, reinsurer }) => {
 
 FinalScenario.propTypes = {
 	finalResult: PropTypes.object,
-	reinsurer: PropTypes.object
+	reinsurer: PropTypes.object,
+	setShare: PropTypes.func
 }
 
 export default FinalScenario

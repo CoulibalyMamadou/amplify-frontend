@@ -47,8 +47,12 @@ const PlacementOutcome = () => {
 	const [reinsurer, setReinsurer] = useState([])
 
 	const [finalResult, setFinalResult] = useState({})
-	console.log(finalResult)
 
+	const [shareArray, setShareArray] = useState([])
+
+	const setShare = (share) => {
+		setShareArray(share)
+	}
 	/**
 	 * Get quote constraints
 	 * @returns {Object}
@@ -153,6 +157,7 @@ const PlacementOutcome = () => {
 						<FinalScenario
 							finalResult={finalResult}
 							reinsurer={reinsurer.office?._id}
+							setShare={setShare}
 						/>
 					</section>
 					<section className='first-stage-container'>
@@ -183,6 +188,7 @@ const PlacementOutcome = () => {
 							quotation={quotation.quotation}
 							program={program}
 							reinsurer={reinsurer.office?._id}
+							share={shareArray}
 						/>
 					</section>
 				</section>

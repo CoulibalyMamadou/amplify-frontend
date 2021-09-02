@@ -4,7 +4,7 @@ import { MdHome } from 'react-icons/all'
 import { useEffect, useState } from 'react'
 import * as PropTypes from 'prop-types'
 
-const ProgramList = ({ listProgram }) => {
+const ProgramList = ({ listProgram = [{}] }) => {
 	const [programList, setProgramList] = useState([{}])
 
 	useEffect(() => {

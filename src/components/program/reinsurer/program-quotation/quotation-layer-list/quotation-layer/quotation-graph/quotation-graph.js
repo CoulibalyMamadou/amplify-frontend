@@ -10,34 +10,198 @@ const QuotationGraph = ({
 			// quantity: 0
 		}
 	],
-	layers
+	layers,
+	outcome = {
+		share: 0,
+		rate: 0
+	}
 }) => {
 	const [layer, setLayer] = useState([])
 	const [label, setLabel] = useState([0])
 	const [data, setData] = useState([0])
+	const [outcomeData, setOutcomeData] = useState(outcome)
+	const [scenarioIndex, setScenarioIndex] = useState(-1)
 	console.log('layers quotation : ', layers)
+	console.log('outcome quotation : ', outcome)
 
 	useEffect(() => {
 		setLayer(quotation)
+		setOutcomeData(outcome)
 		console.log('quotation coming : ', quotation)
-		// setLayer(() => [...quotation])
-		// return () => {
-		// 	setLayer([])
-		// }
 	}, [quotation])
 
 	useEffect(() => {
 		console.log('Layer coming : ', layer)
-		updateGraphData()
+		updateGraphLabel()
+		finalIndex()
 	}, [layer])
 
+	useEffect(() => {
+		updateGraphData()
+		finalIndex()
+	}, [label])
+
+	useEffect(() => {
+		const testValaue = data.map((value, index) =>
+			scenarioIndex === index ? [1.5, value] : [1.7, value]
+		)
+		console.log('testValue : ', testValaue)
+	}, [scenarioIndex])
+
+	// useEffect(() => {
+	// 	data.sort((a, b) => a - b)
+	// }, [data])
+
 	const updateGraphData = () => {
-		setData(() => [
-			layer[0]?.price * 0.2 || 0,
-			...layer.map((item) => item?.price)
-		])
-		setLabel(() => [0, ...layer.map((item) => item?.quantity)], 0)
+		setData(() =>
+			[
+				layer[0]?.price * 0.2 || 0,
+				...layer.map((item) => item?.price)
+				// outcome.price ? outcome.price : 0
+			]
+				.map((value, index) =>
+					scenarioIndex === index ? [value, value] : value
+				)
+				.flat()
+		)
 	}
+
+	const updateGraphLabel = () => {
+		setLabel(() => [
+			...new Set(
+				[
+					0,
+					...layer.map((item) => item?.quantity),
+					outcomeData.share
+					// outcome.quantity ? outcome.quantity : 0
+				].sort((a, b) => a - b)
+			)
+		])
+	}
+
+	const finalIndex = () => {
+		const index = label.indexOf(4.5)
+		setScenarioIndex(index)
+		console.log('label of graph : ', label)
+		console.log('data of graph : ', data)
+		console.log('value of index come in graph : ', index)
+	}
+
+	const outcomeDisplay = {
+		label: 'Below minimum price',
+		// data: [...data.map(() => layers.price?.min || 0)],
+		data: [outcomeData.rate, outcomeData.rate],
+		// borderColor: '#a6e4d5',
+		fill: true,
+		// pointBackgroundColor: '#ffffff00',
+		// pointHoverBackgroundColor: '#ffffff00',
+		// pointBorderColor: '#ffffff00',
+		// pointHoverBorderColor: '#ffffff00',
+
+		pointBackgroundColor: '#99f6d7',
+		pointHoverBackgroundColor: '#99f6d7',
+		pointBorderColor: '#99f6d7',
+		pointHoverBorderColor: '#99f6d7',
+		stepped: 'after',
+		borderWidth: 1,
+		// backgroundColor: '#13F1A9'
+		backgroundColor: '#99f6d7',
+		borderColor: '#13F1A9'
+		// backgroundColor: '#04FAAA'
+		// backgroundColor: '#78dbba'
+	}
+	// :  {
+	// 		label: 'Below minimum price',
+	// 		// data: [...data.map(() => layers.price?.min || 0)],
+	// 		data: [1, 8, 5, 6],
+	// 		borderColor: '#a6e4d5',
+	// 		fill: true,
+	// 		pointBackgroundColor: '#ffffff00',
+	// 		pointHoverBackgroundColor: '#ffffff00',
+	// 		pointBorderColor: '#ffffff00',
+	// 		pointHoverBorderColor: '#ffffff00',
+	// 		stepped: 'after',
+	// 		borderWidth: 1,
+	// 		// backgroundColor: '#13F1A9'
+	// 		backgroundColor: '#04FAAA'
+	// 		// backgroundColor: '#78dbba'
+	//   }
+	// {}
+
+	const layerDisplay =
+		layers.length > 1
+			? [
+					{
+						label: 'Below minimum price',
+						data: [...data.map(() => layers.price?.min || 0)],
+						// data: [1, 8, 5, 6],
+						borderColor: '#a6e4d5',
+						fill: true,
+						pointBackgroundColor: '#ffffff00',
+						pointHoverBackgroundColor: '#ffffff00',
+						pointBorderColor: '#ffffff00',
+						pointHoverBorderColor: '#ffffff00',
+						stepped: 'after',
+						borderWidth: 1,
+						// backgroundColor: '#13F1A9'
+						backgroundColor: '#04FAAA'
+						// backgroundColor: '#78dbba'
+					},
+					{
+						label: 'Below median price',
+						data: [...data.map(() => layers.price?.median || 0)],
+						// data: [1, 8, 5, 6],
+						// borderColor: 'white',
+						fill: true,
+						stepped: 'after',
+						borderWidth: 1,
+
+						pointBackgroundColor: '#ffffff00',
+						pointHoverBackgroundColor: '#ffffff00',
+						borderColor: '#e9a9a9',
+						pointBorderColor: '#ffffff00',
+						pointHoverBorderColor: '#ffffff00',
+						// backgroundColor: '#f92b3c12'
+						backgroundColor: '#a6e4d5'
+						// backgroundColor: '#04FAAA'
+					},
+					{
+						label: 'Above median price',
+						data: [...data.map(() => layers.price?.max || 0)],
+						// data: [1, 8, 5, 6],
+						borderColor: '#f30607',
+						fill: true,
+						stepped: 'after',
+						pointBackgroundColor: '#ffffff00',
+						pointHoverBackgroundColor: '#ffffff00',
+						pointBorderColor: '#ffffff00',
+						pointHoverBorderColor: '#ffffff00',
+						borderWidth: 1,
+						// backgroundColor: '#e27b7b'
+						backgroundColor: '#e9a9a9'
+					},
+					{
+						label: 'Above maximum price',
+						data: [
+							...data.map(
+								() => layers.price?.max + layers.price?.min * 0.7 || 0
+							)
+						],
+						// data: [1, 8, 5, 6],
+						borderColor: 'white',
+						fill: true,
+						stepped: 'after',
+						pointBackgroundColor: '#ffffff00',
+						pointHoverBackgroundColor: '#ffffff00',
+						pointBorderColor: '#ffffff00',
+						pointHoverBorderColor: '#ffffff00',
+						borderWidth: 1,
+						fillOpacity: 0.3,
+						backgroundColor: '#f30607'
+						// backgroundColor: '#e27b7b'
+					}
+			  ]
+			: []
 
 	const viewDisplay = (
 		<>
@@ -49,7 +213,12 @@ const QuotationGraph = ({
 					datasets: [
 						{
 							label: 'Supply curve',
-							data: [...data],
+							// data: [...data],
+							data: [
+								...data.map((value, index) =>
+									scenarioIndex === index ? [1.5, value] : [1.7, value]
+								)
+							],
 							// data: [1, 8, 5, 6],
 							backgroundColor: '#367BF5',
 							// backgroundColor: '#7d49c6|#daa3ff',
@@ -63,75 +232,76 @@ const QuotationGraph = ({
 							stepped: 'after'
 							// borderWidth: 1,
 						},
-						{
-							label: 'Below minimum price',
-							data: [...data.map(() => layers.price?.min || 0)],
-							// data: [1, 8, 5, 6],
-							borderColor: '#a6e4d5',
-							fill: true,
-							pointBackgroundColor: '#ffffff00',
-							pointHoverBackgroundColor: '#ffffff00',
-							pointBorderColor: '#ffffff00',
-							pointHoverBorderColor: '#ffffff00',
-							stepped: 'after',
-							borderWidth: 1,
-							// backgroundColor: '#13F1A9'
-							backgroundColor: '#04FAAA'
-							// backgroundColor: '#78dbba'
-						},
-						{
-							label: 'Below median price',
-							data: [...data.map(() => layers.price?.median || 0)],
-							// data: [1, 8, 5, 6],
-							// borderColor: 'white',
-							fill: true,
-							stepped: 'after',
-							borderWidth: 1,
-
-							pointBackgroundColor: '#ffffff00',
-							pointHoverBackgroundColor: '#ffffff00',
-							borderColor: '#e9a9a9',
-							pointBorderColor: '#ffffff00',
-							pointHoverBorderColor: '#ffffff00',
-							// backgroundColor: '#f92b3c12'
-							backgroundColor: '#a6e4d5'
-							// backgroundColor: '#04FAAA'
-						},
-						{
-							label: 'Above median price',
-							data: [...data.map(() => layers.price?.max || 0)],
-							// data: [1, 8, 5, 6],
-							borderColor: '#f30607',
-							fill: true,
-							stepped: 'after',
-							pointBackgroundColor: '#ffffff00',
-							pointHoverBackgroundColor: '#ffffff00',
-							pointBorderColor: '#ffffff00',
-							pointHoverBorderColor: '#ffffff00',
-							borderWidth: 1,
-							// backgroundColor: '#e27b7b'
-							backgroundColor: '#e9a9a9'
-						},
-						{
-							label: 'Above maximum price',
-							data: [
-								...data.map(
-									() => layers.price?.max + layers.price?.min * 0.7 || 0
-								)
-							],
-							// data: [1, 8, 5, 6],
-							borderColor: 'white',
-							fill: true,
-							stepped: 'after',
-							pointBackgroundColor: '#ffffff00',
-							pointHoverBackgroundColor: '#ffffff00',
-							pointBorderColor: '#ffffff00',
-							pointHoverBorderColor: '#ffffff00',
-							borderWidth: 1,
-							fillOpacity: 0.3,
-							backgroundColor: '#f30607'
-							// backgroundColor: '#e27b7b'
-						}
+						...layerDisplay,
+						outcomeDisplay
+						// {
+						// 	label: 'Below minimum price',
+						// 	data: [...data.map(() => layers.price?.min || 0)],
+						// 	// data: [1, 8, 5, 6],
+						// 	borderColor: '#a6e4d5',
+						// 	fill: true,
+						// 	pointBackgroundColor: '#ffffff00',
+						// 	pointHoverBackgroundColor: '#ffffff00',
+						// 	pointBorderColor: '#ffffff00',
+						// 	pointHoverBorderColor: '#ffffff00',
+						// 	stepped: 'after',
+						// 	borderWidth: 1,
+						// 	// backgroundColor: '#13F1A9'
+						// 	backgroundColor: '#04FAAA'
+						// 	// backgroundColor: '#78dbba'
+						// },
+						// {
+						// 	label: 'Below median price',
+						// 	data: [...data.map(() => layers.price?.median || 0)],
+						// 	// data: [1, 8, 5, 6],
+						// 	// borderColor: 'white',
+						// 	fill: true,
+						// 	stepped: 'after',
+						// 	borderWidth: 1,
+						// 	pointBackgroundColor: '#ffffff00',
+						// 	pointHoverBackgroundColor: '#ffffff00',
+						// 	borderColor: '#e9a9a9',
+						// 	pointBorderColor: '#ffffff00',
+						// 	pointHoverBorderColor: '#ffffff00',
+						// 	// backgroundColor: '#f92b3c12'
+						// 	backgroundColor: '#a6e4d5'
+						// 	// backgroundColor: '#04FAAA'
+						// },
+						// {
+						// 	label: 'Above median price',
+						// 	data: [...data.map(() => layers.price?.max || 0)],
+						// 	// data: [1, 8, 5, 6],
+						// 	borderColor: '#f30607',
+						// 	fill: true,
+						// 	stepped: 'after',
+						// 	pointBackgroundColor: '#ffffff00',
+						// 	pointHoverBackgroundColor: '#ffffff00',
+						// 	pointBorderColor: '#ffffff00',
+						// 	pointHoverBorderColor: '#ffffff00',
+						// 	borderWidth: 1,
+						// 	// backgroundColor: '#e27b7b'
+						// 	backgroundColor: '#e9a9a9'
+						// },
+						// {
+						// 	label: 'Above maximum price',
+						// 	data: [
+						// 		...data.map(
+						// 			() => layers.price?.max + layers.price?.min * 0.7 || 0
+						// 		)
+						// 	],
+						// 	// data: [1, 8, 5, 6],
+						// 	borderColor: 'white',
+						// 	fill: true,
+						// 	stepped: 'after',
+						// 	pointBackgroundColor: '#ffffff00',
+						// 	pointHoverBackgroundColor: '#ffffff00',
+						// 	pointBorderColor: '#ffffff00',
+						// 	pointHoverBorderColor: '#ffffff00',
+						// 	borderWidth: 1,
+						// 	fillOpacity: 0.3,
+						// 	backgroundColor: '#f30607'
+						// 	// backgroundColor: '#e27b7b'
+						// }
 					]
 				}}
 				options={{
@@ -194,7 +364,8 @@ const QuotationGraph = ({
 
 QuotationGraph.propTypes = {
 	quotation: PropTypes.array,
-	layers: PropTypes.object
+	layers: PropTypes.object,
+	outcome: PropTypes.object
 }
 
 export default QuotationGraph
