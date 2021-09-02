@@ -1,5 +1,5 @@
 import * as PropTypes from 'prop-types'
-import './previous-quotation'
+import './previous-quotation.scss'
 import { useState, useEffect } from 'react'
 import TotalPrice from '../quotation/total-price/total-price'
 

@@ -160,21 +160,6 @@ const PlacementOutcome = () => {
 							setShare={setShare}
 						/>
 					</section>
-					<section className='first-stage-container'>
-						<h3>Quotation First Stage</h3>
-						<ReinsurerSubjectivities
-							reinsurer={reinsurer.office.name}
-							constraintQuotation={constraintAllocation}
-							quotation={quotation.quotation}
-							equalShare={equalShare}
-							program={program}
-						/>
-						<PreviousQuotation
-							quotation={quotation.quotation}
-							program={program}
-							reinsurer={reinsurer.office?._id}
-						/>
-					</section>
 					<section className='second-stage-container'>
 						<h3>Quotation Second Stage</h3>
 						<ReinsurerSubjectivities
@@ -189,6 +174,21 @@ const PlacementOutcome = () => {
 							program={program}
 							reinsurer={reinsurer.office?._id}
 							share={shareArray}
+						/>
+					</section>
+					<section className='first-stage-container'>
+						<h3>Quotation First Stage</h3>
+						<ReinsurerSubjectivities
+							reinsurer={reinsurer.office.name}
+							constraintQuotation={constraintAllocation}
+							quotation={quotation.quotation}
+							equalShare={equalShare}
+							program={program}
+						/>
+						<PreviousQuotation
+							quotation={quotation.quotation}
+							program={program}
+							reinsurer={reinsurer.office?._id}
 						/>
 					</section>
 				</section>
