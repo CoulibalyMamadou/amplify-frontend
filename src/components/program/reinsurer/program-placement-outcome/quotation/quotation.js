@@ -41,37 +41,32 @@ const Quotation = ({ quotation, program, reinsurer, share = [] }) => {
 			quotation[0] &&
 			quotation[0].map((elem, index) => {
 				return (
-					<ul key={index} className='layer-name'>
+					<div key={index} className='layer-name'>
 						<div className='layer'>
-							<div className='layer-container'>Layer {index + 1} :</div>
-
-							{elem.quote &&
-								elem.quote.map((item, index2) => {
-									return (
-										<section key={index2} className={'quotation-display-box'}>
-											<div className='text-container'>
-												<div className='share-container'>
-													Share {item.quantity}%
-												</div>
-
-												<div>Adjusted Rate {item.price.toFixed(3)}%</div>
-											</div>
-
-											<section className='quotation-display'>
-												{/* <div>GRAPH HERE</div> */}
-												{share[index] && (
-													<QuotationGraph
-														quotation={elem.quote}
-														layers={[]}
-														outcome={share[index]}
-													/>
-												)}
-											</section>
-										</section>
-									)
-								})}
+							<section className={'layer-info'}>
+								<div className='layer-container'>Layer {index + 1} :</div>
+								{elem.quote &&
+									elem.quote.map((item, index2) => {
+										return (
+											<span key={index2} className='text-container-share'>
+												<span> Share {item.quantity}% </span>
+												<span>Adjusted Rate {item.price.toFixed(3)}%</span>
+											</span>
+										)
+									})}
+							</section>
+							<section className='quotation-display'>
+								{/* <div>GRAPH HERE</div> */}
+								{share[index] && (
+									<QuotationGraph
+										quotation={elem.quote}
+										layers={[]}
+										outcome={share[index]}
+									/>
+								)}
+							</section>
 						</div>
-					</ul>
+					</div>
 				)
 			})
 		setlist(list)

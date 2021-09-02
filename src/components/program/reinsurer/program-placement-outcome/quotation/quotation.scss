@@ -18,7 +18,6 @@
 
     .layer-name {
       width: 100%;
-      list-style-type: none;
       padding: inherit;
       display: flex;
       margin-top: 1%;
@@ -27,76 +26,38 @@
         display: flex;
         width: 100%;
 
-        .layer-container {
-          // border: 2px red solid;
-          // width: 6%;
+        .layer-info {
           display: flex;
-          text-align: left;
-          width: 100%;
+          flex-flow: column;
+          width: 50%;
+          justify-content: space-evenly;
 
+          .layer-container {
+            display: flex;
+            text-align: left;
+            width: 100%;
+
+            .text-container-share {
+              display: flex;
+              justify-content: space-around;
+              width: 100%;
+
+              .quantity {
+                width: 50%;
+                text-align: center;
+              }
+            }
+
+          }
+        }
+
+        .quotation-display {
+          width: 50%;
         }
       }
 
-      // ul {
-        // list-style-type: none;
-        // padding: inherit;
-        // // border: red 2px solid;
-        width: 100%;
-//
-        // margin-left: 1%;
-
-        .layer {
-          display: flex;
-          flex-flow: column;
-          padding: inherit;
-          text-align: left;
-          margin: 0px;
-
-          // border: red 2px solid;
-          width: 100%;
-          .quotation-display-box {
-            display: flex;
-            justify-content: space-between;
-            // align-items: center;
-            // align-content: center;
-            width: 100%;
-
-            .text-container {
-              display: flex;
-              justify-content: space-evenly;
-              align-items: flex-start;
-              width: 50%;
-              padding-bottom: 1%;
-            }
-
-            .quotation-display {
-              width: 50%;
-            }
-          }
-
-          .text-container {
-            // border: red 2px solid;
-            // width: 50%;
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            width: 40%;
-            height: 100%;
-            padding-bottom: 1%;
-            align-content: center;
-            flex-wrap: wrap;
-
-            // .share-container {
-            //   width: 8%;
-            // }
-
-            // justify-content: space-between;
-          }
-        }
-      // }
-
-
     }
   }
+
 }
 
