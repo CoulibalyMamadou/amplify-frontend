@@ -31,13 +31,18 @@ const QuotationGraph = ({
 	}, [quotation, outcome])
 
 	useEffect(() => {
+		setLayer(quotation)
+		setOutcomeData(outcome)
+	}, [])
+
+	useEffect(() => {
 		console.log('Layer coming : ', layer)
 		updateGraphLabel()
 	}, [layer])
 
 	useEffect(() => {
 		finalIndex()
-		// updateGraphData()
+		updateGraphData()
 	}, [label])
 
 	useEffect(() => {
@@ -53,11 +58,13 @@ const QuotationGraph = ({
 		setData(() =>
 			[
 				layer[0]?.price * 0.2 || 0,
-				...layer.map((item, index) =>
-					label.indexOf(outcomeData.share) >= index
-						? [item?.price, item?.price]
-						: item?.price
-				)
+				...layer
+					.map((item, index) =>
+						label.indexOf(outcomeData?.share) >= index
+							? [item?.price, item?.price]
+							: item?.price
+					)
+					.flat()
 				// scenarioIndex ? layer[scenarioIndex]?.price : null
 			]
 				.map((value, index) =>
