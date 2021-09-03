@@ -15,7 +15,7 @@ import Quotation from './quotation/quotation'
 import ReinsurerSubjectivities from './reinsurer-subjectivities/reinsurer-subjectivities'
 import FinalScenario from './final-scenario/final-scenario'
 import PorgramTotalPremiums from './program-total-premiums/program-total-premiums'
-import PreviousQuotation from './previous-quotation/previous-quotation'
+// import PreviousQuotation from './previous-quotation/previous-quotation'
 
 const PlacementOutcome = () => {
 	/**
