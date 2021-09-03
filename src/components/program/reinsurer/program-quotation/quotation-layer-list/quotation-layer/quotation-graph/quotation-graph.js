@@ -37,22 +37,28 @@ const QuotationGraph = ({
 
 	useEffect(() => {
 		finalIndex()
-		updateGraphData()
+		// updateGraphData()
 	}, [label])
 
 	useEffect(() => {
-		const testValaue = data.map((value, index) =>
-			scenarioIndex === index ? [1.5, value] : [1.7, value]
-		)
-		console.log('testValue : ', testValaue)
+		// const testValaue = data.map((value, index) =>
+		// 	scenarioIndex === index ? [1.5, value] : [1.7, value]
+		// )
+
+		updateGraphData()
+		// console.log('testValue : ', testValaue)
 	}, [scenarioIndex])
 
 	const updateGraphData = () => {
 		setData(() =>
 			[
 				layer[0]?.price * 0.2 || 0,
-				...layer.map((item) => item?.price),
-				outcomeData.rate
+				...layer.map((item, index) =>
+					label.indexOf(outcomeData.share) >= index
+						? [item?.price, item?.price]
+						: item?.price
+				)
+				// scenarioIndex ? layer[scenarioIndex]?.price : null
 			]
 				.map((value, index) =>
 					scenarioIndex === index ? [value, value] : value
