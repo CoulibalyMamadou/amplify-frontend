@@ -57,7 +57,7 @@ const Quotation = ({ quotation, program, reinsurer, share = [] }) => {
 							</section>
 							<section className='quotation-display'>
 								{/* <div>GRAPH HERE</div> */}
-								{share[index] && (
+								{share[index] && elem && (
 									<QuotationGraph
 										quotation={elem.quote}
 										layers={[]}

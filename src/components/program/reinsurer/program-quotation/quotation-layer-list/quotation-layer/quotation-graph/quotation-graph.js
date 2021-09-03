@@ -22,30 +22,29 @@ const QuotationGraph = ({
 	const [outcomeData, setOutcomeData] = useState(outcome)
 	const [scenarioIndex, setScenarioIndex] = useState(-1)
 	console.log('layers quotation : ', layers)
-	console.log('outcome quotation : ', outcome)
+	console.log('outcome outcome : ', outcome)
 
 	useEffect(() => {
 		setLayer(quotation)
 		setOutcomeData(outcome)
 		console.log('quotation coming : ', quotation)
-	}, [quotation])
+	}, [quotation, outcome])
 
 	useEffect(() => {
 		console.log('Layer coming : ', layer)
 		updateGraphLabel()
-		finalIndex()
 	}, [layer])
 
 	useEffect(() => {
-		updateGraphData()
 		finalIndex()
+		updateGraphData()
 	}, [label])
 
 	useEffect(() => {
-		const testValue = data.map((value, index) =>
+		const testValaue = data.map((value, index) =>
 			scenarioIndex === index ? [1.5, value] : [1.7, value]
 		)
-		console.log('testValue : ', testValue)
+		console.log('testValue : ', testValaue)
 	}, [scenarioIndex])
 
 	const updateGraphData = () => {
@@ -81,27 +80,21 @@ const QuotationGraph = ({
 	}
 
 	const outcomeDisplay = {
-		label: 'Below minimum price',
-		// data: [...data.map(() => layers.price?.min || 0)],
-		data: [outcomeData.rate, outcomeData.rate],
-		// borderColor: '#a6e4d5',
+		label: 'Price & Obtained Share',
+		data: [
+			...data.map((value, index) =>
+				label.indexOf(outcomeData.share) >= index ? outcomeData.rate : null
+			)
+		],
 		fill: true,
-		// pointBackgroundColor: '#ffffff00',
-		// pointHoverBackgroundColor: '#ffffff00',
-		// pointBorderColor: '#ffffff00',
-		// pointHoverBorderColor: '#ffffff00',
-
 		pointBackgroundColor: '#99f6d7',
 		pointHoverBackgroundColor: '#99f6d7',
 		pointBorderColor: '#99f6d7',
 		pointHoverBorderColor: '#99f6d7',
 		stepped: 'after',
 		borderWidth: 1,
-		// backgroundColor: '#13F1A9'
 		backgroundColor: '#99f6d7',
 		borderColor: '#13F1A9'
-		// backgroundColor: '#04FAAA'
-		// backgroundColor: '#78dbba'
 	}
 
 	const layerDisplay =
@@ -188,13 +181,14 @@ const QuotationGraph = ({
 					borderColor: '#f12b2c80',
 					datasets: [
 						{
-							label: 'Supply curve',
-							data: [...data],
-							// data: [
-							// 	...data.map((value, index) =>
-							// 		scenarioIndex === index ? [1.5, value] : [1.7, value]
-							// 	)
-							// ],
+							// label: 'Supply curve',
+							label: 'Quotation second stage',
+							// data: [...data],
+							data: [
+								...data.map((value, index) =>
+									scenarioIndex === index ? [1.5, value] : [1.7, value]
+								)
+							],
 							// data: [1, 8, 5, 6],
 							backgroundColor: '#367BF5',
 							// backgroundColor: '#7d49c6|#daa3ff',
