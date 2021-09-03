@@ -164,7 +164,7 @@ const PlacementOutcome = () => {
 						/>
 					</section>
 					<section className='second-stage-container'>
-						<h3>Quotation Second Stage</h3>
+						<h3>Final Quotation</h3>
 						<ReinsurerSubjectivities
 							reinsurer={reinsurer.office.name}
 							constraintQuotation={constraintAllocation}
@@ -179,7 +179,7 @@ const PlacementOutcome = () => {
 							share={shareArray}
 						/>
 					</section>
-					<section className='first-stage-container'>
+					{/* <section className='first-stage-container'>
 						<h3>Quotation First Stage</h3>
 						<ReinsurerSubjectivities
 							reinsurer={reinsurer.office.name}
@@ -193,7 +193,7 @@ const PlacementOutcome = () => {
 							program={program}
 							reinsurer={reinsurer.office?._id}
 						/>
-					</section>
+					</section> */}
 				</section>
 			</section>
 		</section>
