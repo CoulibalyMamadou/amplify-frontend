@@ -1,7 +1,7 @@
 import * as PropTypes from 'prop-types'
 import './quotation.scss'
 import { useEffect, useState } from 'react'
-import TotalPrice from './total-price/total-price'
+// import TotalPrice from './total-price/total-price'
 import QuotationGraph from '../../program-quotation/quotation-layer-list/quotation-layer/quotation-graph/quotation-graph'
 
 const Quotation = ({ quotation, program, reinsurer, share = [] }) => {
@@ -43,7 +43,7 @@ const Quotation = ({ quotation, program, reinsurer, share = [] }) => {
 				return (
 					<div key={index} className='layer-name'>
 						<div className='layer'>
-							<section className={'layer-info'}>
+							<section className='layer-info'>
 								<div className='layer-container'>Layer {index + 1} :</div>
 								{elem.quote &&
 									elem.quote.map((item, index2) => {
@@ -80,7 +80,7 @@ const Quotation = ({ quotation, program, reinsurer, share = [] }) => {
 		<>
 			<section className='quotation-container'>
 				<h4>Quotation</h4>
-				<TotalPrice quotation={quotationArray} program={program} />
+				{/* <TotalPrice quotation={quotationArray} program={program} /> */}
 				<div className='quotation-list'>{list}</div>
 			</section>
 		</>

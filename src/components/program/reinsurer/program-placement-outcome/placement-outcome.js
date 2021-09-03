@@ -11,9 +11,11 @@ import {
 import { requestInterceptor } from '../../../../sessionStorage/sessionStorage'
 import { getReinsurer } from '../../../../api/reinsurer.service'
 import Quotation from './quotation/quotation'
-import PreviousQuotation from './previous-quotation/previous-quotation'
+// import PreviousQuotation from './previous-quotation/previous-quotation'
 import ReinsurerSubjectivities from './reinsurer-subjectivities/reinsurer-subjectivities'
 import FinalScenario from './final-scenario/final-scenario'
+import PorgramTotalPremiums from './program-total-premiums/program-total-premiums'
+import PreviousQuotation from './previous-quotation/previous-quotation'
 
 const PlacementOutcome = () => {
 	/**
@@ -154,6 +156,7 @@ const PlacementOutcome = () => {
 				<section className='placement-container'>
 					<section className='placement-outcome-container'>
 						<h3>Placement Outcome</h3>
+						<PorgramTotalPremiums program={program} finalResult={finalResult} />
 						<FinalScenario
 							finalResult={finalResult}
 							reinsurer={reinsurer.office?._id}

@@ -1,63 +1,57 @@
-
 .quotation-container {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: center;
 
-  h4 {
-    text-align: left;
-    margin-top: 1%;
-  }
+	h4 {
+		text-align: left;
+		margin-top: 1%;
+	}
 
-  .quotation-list {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
+	.quotation-list {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
 
-    .layer-name {
-      width: 100%;
-      padding: inherit;
-      display: flex;
-      margin-top: 1%;
+		.layer-name {
+			width: 100%;
+			padding: inherit;
+			display: flex;
+			margin-top: 1%;
 
-      .layer {
-        display: flex;
-        width: 100%;
+			.layer {
+				display: flex;
+				width: 100%;
 
-        .layer-info {
-          display: flex;
-          flex-flow: column;
-          width: 50%;
-          justify-content: space-evenly;
+				.layer-info {
+					display: flex;
+					flex-flow: column;
+					width: 50%;
+					justify-content: space-evenly;
+					.layer-container {
+						display: flex;
+						text-align: left;
+						width: 100%;
 
-          .layer-container {
-            display: flex;
-            text-align: left;
-            width: 100%;
+						.text-container-share {
+							display: flex;
+							justify-content: space-around;
+							width: 100%;
 
-            .text-container-share {
-              display: flex;
-              justify-content: space-around;
-              width: 100%;
+							.quantity {
+								width: 50%;
+								text-align: center;
+							}
+						}
+					}
+				}
 
-              .quantity {
-                width: 50%;
-                text-align: center;
-              }
-            }
-
-          }
-        }
-
-        .quotation-display {
-          width: 50%;
-        }
-      }
-
-    }
-  }
-
+				.quotation-display {
+					width: 50%;
+				}
+			}
+		}
+	}
 }
-

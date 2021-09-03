@@ -71,7 +71,7 @@ const PreviousQuotation = ({ quotation, program, reinsurer }) => {
 	}, [quotation])
 
 	return (
-		<section className='quotation-container'>
+		<section className='quotation-first-container'>
 			<h4>Quotation</h4>
 			<TotalPrice quotation={quotationArray} program={program} />
 			<div className='quotation-list'>{list}</div>
