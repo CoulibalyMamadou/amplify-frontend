@@ -58,34 +58,30 @@ const QuotationGraph = ({
 		setData(() =>
 			[
 				layer[0]?.price * 0.2 || 0,
-				...layer
-					.map((item, index) =>
-						label.indexOf(outcomeData?.share) >= index
-							? [item?.price, item?.price]
-							: item?.price
-					)
-					.flat()
-				// scenarioIndex ? layer[scenarioIndex]?.price : null
-			]
-				.map((value, index) =>
-					scenarioIndex === index ? [value, value] : value
-				)
-				.flat()
+				...layer.map((item) => item?.price).flat()
+			].flat()
 		)
 	}
 
 	const updateGraphLabel = () => {
-		setLabel(() => [
-			...new Set(
-				[0, ...layer.map((item) => item?.quantity), outcomeData.share].sort(
-					(a, b) => a - b
+		setLabel(() => {
+			return [
+				...new Set(
+					[
+						0,
+						...new Set([
+							...layer.map((item) => item?.quantity),
+							outcomeData.share
+						])
+					].sort((a, b) => a - b)
 				)
-			)
-		])
+			]
+		})
 	}
 
 	const finalIndex = () => {
-		const index = label.indexOf(4.5)
+		// const index = label.indexOf(4.5)
+		const index = label.indexOf(outcome?.share)
 		setScenarioIndex(index)
 		console.log('label of graph : ', label)
 		console.log('data of graph : ', data)
@@ -196,13 +192,17 @@ const QuotationGraph = ({
 						{
 							// label: 'Supply curve',
 							label: 'Quotation second stage',
-							data: [...data],
-							// data: [
-							// 	...data.map((value, index) =>
-							// 		scenarioIndex === index ? [1.5, value] : [1.7, value]
-							// 	)
-							// ],
-							// data: [1, 8, 5, 6],
+							data: [
+								...(data.length === label.length
+									? data
+									: data
+											.map((item, index) =>
+												index === scenarioIndex
+													? [item, data[index + 1] ? data[index + 1] : item] // item
+													: item
+											)
+											.flat())
+							],
 							backgroundColor: '#367BF5',
 							// backgroundColor: '#7d49c6|#daa3ff',
 							// pointBackgroundColor: '#ffffff00',
@@ -217,74 +217,6 @@ const QuotationGraph = ({
 						},
 						...layerDisplay,
 						outcomeDisplay
-						// {
-						// 	label: 'Below minimum price',
-						// 	data: [...data.map(() => layers.price?.min || 0)],
-						// 	// data: [1, 8, 5, 6],
-						// 	borderColor: '#a6e4d5',
-						// 	fill: true,
-						// 	pointBackgroundColor: '#ffffff00',
-						// 	pointHoverBackgroundColor: '#ffffff00',
-						// 	pointBorderColor: '#ffffff00',
-						// 	pointHoverBorderColor: '#ffffff00',
-						// 	stepped: 'after',
-						// 	borderWidth: 1,
-						// 	// backgroundColor: '#13F1A9'
-						// 	backgroundColor: '#04FAAA'
-						// 	// backgroundColor: '#78dbba'
-						// },
-						// {
-						// 	label: 'Below median price',
-						// 	data: [...data.map(() => layers.price?.median || 0)],
-						// 	// data: [1, 8, 5, 6],
-						// 	// borderColor: 'white',
-						// 	fill: true,
-						// 	stepped: 'after',
-						// 	borderWidth: 1,
-						// 	pointBackgroundColor: '#ffffff00',
-						// 	pointHoverBackgroundColor: '#ffffff00',
-						// 	borderColor: '#e9a9a9',
-						// 	pointBorderColor: '#ffffff00',
-						// 	pointHoverBorderColor: '#ffffff00',
-						// 	// backgroundColor: '#f92b3c12'
-						// 	backgroundColor: '#a6e4d5'
-						// 	// backgroundColor: '#04FAAA'
-						// },
-						// {
-						// 	label: 'Above median price',
-						// 	data: [...data.map(() => layers.price?.max || 0)],
-						// 	// data: [1, 8, 5, 6],
-						// 	borderColor: '#f30607',
-						// 	fill: true,
-						// 	stepped: 'after',
-						// 	pointBackgroundColor: '#ffffff00',
-						// 	pointHoverBackgroundColor: '#ffffff00',
-						// 	pointBorderColor: '#ffffff00',
-						// 	pointHoverBorderColor: '#ffffff00',
-						// 	borderWidth: 1,
-						// 	// backgroundColor: '#e27b7b'
-						// 	backgroundColor: '#e9a9a9'
-						// },
-						// {
-						// 	label: 'Above maximum price',
-						// 	data: [
-						// 		...data.map(
-						// 			() => layers.price?.max + layers.price?.min * 0.7 || 0
-						// 		)
-						// 	],
-						// 	// data: [1, 8, 5, 6],
-						// 	borderColor: 'white',
-						// 	fill: true,
-						// 	stepped: 'after',
-						// 	pointBackgroundColor: '#ffffff00',
-						// 	pointHoverBackgroundColor: '#ffffff00',
-						// 	pointBorderColor: '#ffffff00',
-						// 	pointHoverBorderColor: '#ffffff00',
-						// 	borderWidth: 1,
-						// 	fillOpacity: 0.3,
-						// 	backgroundColor: '#f30607'
-						// 	// backgroundColor: '#e27b7b'
-						// }
 					]
 				}}
 				options={{
