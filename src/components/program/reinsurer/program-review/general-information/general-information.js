@@ -8,7 +8,7 @@ const GeneralInformation = ({ program }) => {
 	 * @param {*} str
 	 * @returns {string}
 	 */
-	const capitalizeFirstLetter = (str) => {
+	const capitalizeFirstLetter = (str = '') => {
 		return (
 			str.charAt(0).toUpperCase() +
 			str.slice(1).toLowerCase().replaceAll('_', ' ')
@@ -41,23 +41,24 @@ const GeneralInformation = ({ program }) => {
 						Budget of the cedent for the program : {program.cedentBudget} (M€)
 					</li>
 					<li>Limit : {program.limit} (M€)</li>
-					{program.layers.map((layer, index) => {
-						return (
-							<ul key={index}>
-								<li>
-									Layer {index + 1} : {layer.layerLimit}M xs{' '}
-									{layer.attachmentPoint}M {layer.portion}%
-									{layer.reinstatement ? (
-										` - ${replaceComaByDot(layer.reinstatement.number)}@${
-											layer.reinstatement.clause
-										}%`
-									) : (
-										<div></div>
-									)}
-								</li>
-							</ul>
-						)
-					})}
+					{program.layers &&
+						program.layers?.map((layer, index) => {
+							return (
+								<ul key={index}>
+									<li>
+										Layer {index + 1} : {layer.layerLimit}M xs{' '}
+										{layer.attachmentPoint}M {layer.portion}%
+										{layer.reinstatement ? (
+											` - ${replaceComaByDot(layer.reinstatement.number)}@${
+												layer.reinstatement.clause
+											}%`
+										) : (
+											<div></div>
+										)}
+									</li>
+								</ul>
+							)
+						})}
 				</ul>
 			</section>
 		</section>

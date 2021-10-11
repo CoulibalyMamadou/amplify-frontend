@@ -15,14 +15,15 @@ const ProgramList = ({ listProgram = [{}] }) => {
 	return (
 		<>
 			{/* placement list */}
-			{programList.map((program, index) => (
-				<ProgramItem
-					icon={<MdHome size='2em' />}
-					status='complete'
-					key={index}
-					program={program}
-				/>
-			))}
+			{programList &&
+				programList?.map((program, index) => (
+					<ProgramItem
+						icon={<MdHome size='2em' />}
+						status='complete'
+						key={index}
+						program={program}
+					/>
+				))}
 		</>
 	)
 }

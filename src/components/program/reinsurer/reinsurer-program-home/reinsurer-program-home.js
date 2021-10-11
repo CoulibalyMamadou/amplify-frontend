@@ -16,7 +16,7 @@ const ReinsurerProgramHome = () => {
 	useEffect(() => {
 		getProgramListHandler().then((value) => {
 			console.log('Program first state   : ', programList)
-			setProgramList(value)
+			// setProgramList(value)
 			console.log('Program second state : ', programList)
 			getReinsurerInfo().then((info) => {
 				console.log('Info user : ', info)
@@ -95,7 +95,7 @@ const ReinsurerProgramHome = () => {
 
 				{/* body of placement body */}
 				<section className='placement-display'>
-					{programList ? <ProgramList listProgram={programList} /> : ''}
+					{programList && <ProgramList listProgram={programList} />}
 				</section>
 
 				{/* content footer of placement body */}
